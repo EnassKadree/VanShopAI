@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:vanshopai/Visuals/animationrouts.dart';
+import 'package:vanshopai/Helper/navigators.dart';
+import 'package:vanshopai/View/Auth/Other/usertype.dart';
 import 'package:vanshopai/Visuals/clipper.dart';
-import 'package:vanshopai/View/singup.dart';
+import 'package:vanshopai/constants.dart';
 
 class EntryPage extends StatelessWidget 
 {
@@ -24,18 +25,30 @@ class EntryPage extends StatelessWidget
             clipper: MyCustomClipper(),
             child: Container
             (
+              width: double.infinity,
               color: Colors.white,
               child: Column
               (
                 children:
                 [
-                  SizedBox(height: MediaQuery.of(context).size.height/6,),
-                  Text('VanShopAI', style: TextStyle(fontSize: 65, fontWeight: FontWeight.bold, color: Colors.orange[700]!),),
+                  SizedBox(height: MediaQuery.of(context).size.height/8,),
+                  Text
+                  (
+                    'VanShopAI', 
+                    style: TextStyle
+                    (
+                      fontSize: 65, 
+                      fontWeight: FontWeight.bold, 
+                      color: Colors.orange[700]!,
+                      shadows: const [Shadow(color: Colors.grey, blurRadius: 2, offset: Offset(0,0))],
+
+                    ),
+                  ),
                   const SizedBox(height: 16,),
                   Padding
                   (
                     padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Image.asset('Assets/Images/1.png',),
+                    child: Image.asset(image1, height: 200,),
                   ),
                   //const SizedBox(height: 42,),
                   SizedBox(height: MediaQuery.of(context).size.height/7,),
@@ -43,10 +56,10 @@ class EntryPage extends StatelessWidget
               ),
             ),
           ),
-          const SizedBox(height: 24,),
+          const Spacer(),
           const Text('Order', style: TextStyle(fontSize: 45, color: Colors.white),),
           const Text('عالبكلة', style: TextStyle(fontSize: 40, color: Colors.white),),
-          const Spacer(),
+          const Spacer(flex: 2,),
           Padding
           (
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -54,7 +67,7 @@ class EntryPage extends StatelessWidget
             (
               onTap: () 
               {
-                Navigator.of(context).pushReplacement(SlideRight(Page: const SignupPage()));
+                navigateReplace(context, const CheckUserType());
               },
               child: const Row
               (
@@ -67,7 +80,7 @@ class EntryPage extends StatelessWidget
               ),
             ),
           ),
-          const SizedBox(height: 32,)
+          const Spacer()
         ],
       ),
     );

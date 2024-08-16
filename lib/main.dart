@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vanshopai/View/entry.dart';
-import 'package:vanshopai/View/singup.dart';
+import 'package:vanshopai/View/Auth/Other/entry.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,18 +12,30 @@ class MyApp extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return MaterialApp
+    return Directionality
     (
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        fontFamily: 'Cairo',
-        useMaterial3: true,
+      textDirection: TextDirection.rtl,
+      child: MaterialApp
+        (
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+            fontFamily: 'Cairo',
+            useMaterial3: true,
+          ),
+          localizationsDelegates: 
+          const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales:   
+          const [
+            Locale('ar', ''),
+          ],
+          locale: const Locale('ar', ''), 
+          home: const EntryPage(),
       ),
-      home: const Directionality
-      (
-        textDirection: TextDirection.rtl,
-        child: EntryPage()
-      )
     );
   }
 }
