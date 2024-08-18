@@ -2,13 +2,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:vanshopai/Widgets/radioListView.dart';
+import 'package:vanshopai/Widgets/checkboxlistview.dart';
 import 'package:vanshopai/Widgets/custombutton.dart';
 
-class CheckDistributorCategory extends StatelessWidget 
+class CheckCompanyCategory extends StatefulWidget 
 {
-  CheckDistributorCategory({super.key});
+  const CheckCompanyCategory({super.key});
+
+  @override
+  State<CheckCompanyCategory> createState() => _CheckCompanyCategoryState();
+}
+
+class _CheckCompanyCategoryState extends State<CheckCompanyCategory> {
   int selectedValue = 0;
+
   List<String> items = 
   [
     'فئة معينة',
@@ -39,10 +46,10 @@ class CheckDistributorCategory extends StatelessWidget
           crossAxisAlignment: CrossAxisAlignment.start,
           children: 
           [
-            Text('ما هي فئة منتجاتك؟',
+            Text('ما هي منتجات شركتك؟',
             style: TextStyle(color: Colors.orange[700]!, fontSize: 32, fontWeight: FontWeight.bold),),
             const SizedBox(height: 16,),
-            RadioListView(items: items, selectedValue: selectedValue),
+            CheckBoxListView(items: items),
             CustomButton(text: 'تم')
           ],
         ),

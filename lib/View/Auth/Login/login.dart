@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/View/Auth/Other/checkcompanycategory.dart';
+import 'package:vanshopai/View/Auth/Check%20Categories/checkcompanycategory.dart';
 import 'package:vanshopai/View/Auth/Other/usertype.dart';
 import 'package:vanshopai/Widgets/custombutton.dart';
 import 'package:vanshopai/Widgets/customtextfield.dart';

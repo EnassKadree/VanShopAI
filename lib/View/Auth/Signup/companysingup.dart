@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/View/Auth/Login/login.dart';
-import 'package:vanshopai/View/Auth/Other/checkcompanycategory.dart';
+import 'package:vanshopai/View/Auth/Check%20Categories/checkcompanycategory.dart';
 import 'package:vanshopai/Widgets/custombutton.dart';
 import 'package:vanshopai/Widgets/customdropdownbutton.dart';
 import 'package:vanshopai/Widgets/customtextfield.dart';
@@ -60,17 +60,6 @@ class CompanySignupPage extends StatelessWidget
                         Text('اختر البلد', style: TextStyle(color: Colors.blue[900]!, fontSize: 18),),
                         const SizedBox(width: 76,),
                         CustomDropDownButton(values: const ['بلد1', 'بلد2', 'بلد3'],selectedValue: 'بلد1',),
-                      ],
-                    ),
-                    
-                    const SizedBox(height: 10,),
-                    Row
-                    (
-                      children: 
-                      [
-                        Text('مندوبين الشركة', style: TextStyle(color: Colors.blue[900]!, fontSize: 18),),
-                        const SizedBox(width: 16,),
-                        CustomDropDownButton(values: const ['عدد مندوبين1', 'عدد مندوبين2', 'عدد مندوبين3'],selectedValue: 'عدد مندوبين1',),
                       ],
                     ),
                     

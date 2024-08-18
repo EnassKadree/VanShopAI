@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget
             useMaterial3: true,
           ),
           localizationsDelegates: 
-          const [
+          const 
+          [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,

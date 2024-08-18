@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/View/Auth/Login/login.dart';
-import 'package:vanshopai/View/Auth/Other/checkdistributorcategory.dart';
+import 'package:vanshopai/View/Auth/Check%20Categories/checkdistributorcategory.dart';
 import 'package:vanshopai/Widgets/custombutton.dart';
 import 'package:vanshopai/Widgets/customdropdownbutton.dart';
 import 'package:vanshopai/Widgets/customtextfield.dart';
