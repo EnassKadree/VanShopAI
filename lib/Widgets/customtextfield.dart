@@ -4,16 +4,18 @@ import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget 
 {
-  CustomTextFormField({super.key, required this.hint});
+  CustomTextFormField({super.key, required this.hint, this.controller});
   String? hint;
+  TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) 
   {
     return TextFormField
     (
+      controller: controller,
       obscureText: hint == 'كلمة السر' ? true : false,
-      keyboardType: hint == 'رقم الهاتف' ? TextInputType.phone: TextInputType.name,
+      keyboardType: hint == 'رقم الهاتف' ? TextInputType.phone : hint == 'البريد الإلكتروني' ? TextInputType.emailAddress : TextInputType.name,
       style: TextStyle(color: Colors.grey[600]!),
       validator: (data)
       {

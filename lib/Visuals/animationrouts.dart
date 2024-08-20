@@ -13,7 +13,7 @@ class SlideRight extends PageRouteBuilder
       var end = Offset.zero;
       var tween = Tween(begin: begin, end: end);
       //var offsetAnimation = animation.drive(tween);
-      var curvedAnimation = CurvedAnimation(parent: animation, curve: Curves.fastEaseInToSlowEaseOut);
+      var curvedAnimation = CurvedAnimation(parent: animation, curve: Curves.linear);
       return SlideTransition(position: tween.animate(curvedAnimation), child: child,);
     }
   );

@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:vanshopai/Helper/navigators.dart';
+import 'package:vanshopai/View/Auth/Login/login.dart';
 import 'package:vanshopai/Widgets/checkboxlistview.dart';
 import 'package:vanshopai/Widgets/custombutton.dart';
 
@@ -43,7 +45,14 @@ class CheckDistributorCategory extends StatelessWidget
             style: TextStyle(color: Colors.orange[700]!, fontSize: 32, fontWeight: FontWeight.bold),),
             const SizedBox(height: 16,),
             CheckBoxListView(items: items),
-            CustomButton(text: 'تم')
+            CustomButton
+            (
+              text: 'تم',
+              onTap: ()
+              {
+                navigateRemoveUntil(context, LoginPage());
+              },
+            )
           ],
         ),
       )

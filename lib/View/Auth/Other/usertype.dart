@@ -22,7 +22,6 @@ class CheckUserType extends StatelessWidget
             (
               width: double.infinity,
               height: MediaQuery.of(context).size.height/4,
-              //color: Colors.orange,
               decoration: BoxDecoration
               (
                 gradient: LinearGradient
@@ -31,7 +30,7 @@ class CheckUserType extends StatelessWidget
                 )
               ),
               child: const Padding(
-                padding: EdgeInsets.all(40.0),
+                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 54),
                 child: Column
                 (
                   crossAxisAlignment: CrossAxisAlignment.start,

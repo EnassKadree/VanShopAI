@@ -8,7 +8,7 @@ void navigateTo(BuildContext context, Widget page)
 
 void navigateReplace(BuildContext context, Widget page) 
 {
-  Navigator.of(context).push(SlideRight(Page: page));
+  Navigator.of(context).pushReplacement(SlideRight(Page: page));
 }
 
 void navigateRemoveUntil(BuildContext context, Widget page) 
