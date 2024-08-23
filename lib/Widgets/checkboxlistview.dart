@@ -1,57 +1,50 @@
 // ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vanshopai/Cubits/Auth/Categories%20Cubit/categories_cubit.dart';
 
-class CheckBoxListView extends StatefulWidget {
-  CheckBoxListView({super.key, required this.items});
-  List<String> items;
-
-  @override
-  State<CheckBoxListView> createState() => _CheckBoxListViewState();
-}
-
-class _CheckBoxListViewState extends State<CheckBoxListView> 
+class CheckBoxListView extends StatelessWidget 
 {
-  late List<bool> isChecked;
+  CheckBoxListView({super.key});
 
   @override
-  void initState() {
-    // TODO: implement initState
-    isChecked = List.filled(widget.items.length, false);
-    super.initState();
-  }
-  @override
-  Widget build(BuildContext context) 
-  {
-    return Expanded
+  Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<CategoriesCubit>(context);
+    return Expanded(child: BlocBuilder<CategoriesCubit, CategoriesState>
     (
-      child: ListView.builder
-      (
-        itemCount: widget.items.length,
-        itemBuilder: ((context, index) 
-        {
-          return Column(
-            children: 
-            [
-              CheckboxListTile
-              (
-                title: Text(widget.items[index]),
-                value: isChecked[index],
-                onChanged: (value)
-                {
-                  setState(() {
-                    isChecked[index] = value ?? false;
-                  });
-                },
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12),
-                child: Divider(thickness: .4),
-              )
-            ],
-          );
-        }),
-      )
-    );
+      builder: (context, state) 
+      {
+        print(state.toString());
+        return ListView.builder
+        (
+          itemCount: cubit.categories.length,
+          itemBuilder: ((context, index) 
+          {
+            final category = cubit.categories[index];
+            final isSelected = cubit.selectedCategories.contains(category);
+
+            return Column
+            (
+              children: 
+              [
+                CheckboxListTile
+                (
+                  title: Text(cubit.categories[index]),
+                  value: isSelected,
+                  onChanged: (value) 
+                  {
+                    cubit.toggleCategorySelection(category, isSelected);
+                  },
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: Divider(thickness: .4),
+                )
+              ],
+            );
+          }),
+        );
+      },
+    ));
   }
 }

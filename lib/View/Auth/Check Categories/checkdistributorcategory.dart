@@ -2,60 +2,81 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vanshopai/Cubits/Auth/Categories%20Cubit/categories_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/View/Auth/Login/login.dart';
+import 'package:vanshopai/View/Auth/Check%20Plan/distributorplan.dart';
 import 'package:vanshopai/Widgets/checkboxlistview.dart';
 import 'package:vanshopai/Widgets/custombutton.dart';
+import 'package:vanshopai/constants.dart';
 
-class CheckDistributorCategory extends StatelessWidget 
-{
-  CheckDistributorCategory({super.key});
-  int selectedValue = 0;
-  List<String> items = 
-  [
-    'فئة معينة',
-    'فئة معينة',
-    'فئة معينة',
-    'فئة معينة',
-    'فئة معينة',
-    'فئة معينة',
-    'فئة معينة',
-    'فئة معينة',
-    'فئة معينة',
-    'فئة معينة',
-    'فئة معينة',
-    'فئة معينة',
-    'فئة معينة',
-  ];
+class CheckDistributorCategories extends StatelessWidget {
+  const CheckDistributorCategories({super.key});
 
   @override
-  Widget build(BuildContext context) 
-  {
-    return Scaffold
+  Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<CategoriesCubit>(context);
+    cubit.fetchCategories();
+    return Scaffold(body: BlocBuilder<CategoriesCubit, CategoriesState>
     (
-      body: Padding
-      (
-        padding: const EdgeInsets.all(16),
-        child: Column
-        (
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: 
-          [
-            Text('ما هي فئة منتجاتك؟',
-            style: TextStyle(color: Colors.orange[700]!, fontSize: 32, fontWeight: FontWeight.bold),),
-            const SizedBox(height: 16,),
-            CheckBoxListView(items: items),
-            CustomButton
+      builder: (context, state) 
+      {
+        if(state is CategoriesLoading)
+          {
+            return  Center(child: CircularProgressIndicator(color: Colors.orange[700]!),);
+          }
+          else if(state is CategoriesFailure)
+          {
+            return Center
             (
-              text: 'تم',
-              onTap: ()
-              {
-                navigateRemoveUntil(context, LoginPage());
-              },
-            )
-          ],
-        ),
-      )
-    );
+              child: Column
+              (
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: 
+                [
+                  const Text('تعذر تحميل الفئات!'),
+                  const SizedBox(height: 24,),
+                  TextButton
+                  (
+                    onPressed: () async
+                    {
+                      await cubit.fetchCategories();
+                    }, 
+                    child: Text('حاول مرة أخرى', style: TextStyle(color: Colors.orange[700]!),)
+                  )
+                ],
+              ),
+            );
+          }
+        return Padding
+        (
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'ما هي فئة منتجاتك؟',
+                style: TextStyle(
+                    color: Colors.orange[700]!,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              CheckBoxListView(),
+              CustomButton(
+                text: 'تم',
+                onTap: () async
+                {
+                  await cubit.saveUserCategories(distributorsConst);
+                  navigateTo(context, const CheckDistributorPlan());
+                },
+              )
+            ],
+          ),
+        );
+      },
+    ));
   }
 }

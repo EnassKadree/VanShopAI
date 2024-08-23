@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/View/Auth/Other/usertype.dart';
+import 'package:vanshopai/View/Auth/Signup/usersignup.dart';
 import 'package:vanshopai/Visuals/clipper.dart';
 import 'package:vanshopai/constants.dart';
 
@@ -65,9 +65,9 @@ class EntryPage extends StatelessWidget
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: GestureDetector
             (
-              onTap: () 
+              onTap: () async
               {
-                navigateReplace(context, const CheckUserType());
+                navigateReplace(context, UserSignupPage());
               },
               child: const Row
               (

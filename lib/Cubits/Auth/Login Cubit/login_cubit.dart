@@ -1,7 +1,10 @@
+// ignore_for_file: argument_type_not_assignable_to_error_handler
+
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:vanshopai/Helper/snackbar.dart';
 
 part 'login_state.dart';
 
@@ -48,5 +51,19 @@ class LoginCubit extends Cubit<LoginState>
       print('===============================================');
       print(e.toString());
     }
+  }
+
+  resetPassword(String email, BuildContext context)
+  {
+    FirebaseAuth.instance.sendPasswordResetEmail(email: email).then
+    ((value) => ShowSnackBar(context, 'لقد أرسلنا رابطاً لإعادة تعيين كلمة السر إلى بريدك الإلكتروني')).catchError
+    (() => ShowSnackBar(context, 'يرجى كتابة بريدك الإلكتروني بشكل صحيح ثم إعادة الطلب'));
+  }
+
+  sendVerification(BuildContext context)
+  {
+    FirebaseAuth.instance.currentUser!.sendEmailVerification().then
+    ((value) => ShowSnackBar(context, 'لقد أرسلنا إلى بريدك الإلكتروني رابطاً لتأكيد الحساب')).
+    catchError(() => ShowSnackBar(context, 'يرجى محاولة تسجيل الدخول أولاً ثم إعادة الطلب'));
   }
 }

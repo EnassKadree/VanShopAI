@@ -9,35 +9,7 @@ class SignUpCubit extends Cubit<SignUpState>
 {
   SignUpCubit() : super(SignUpInitial());
 
-  String? selectedCountry;
-  String? selectedPlan;
-  String? selectedCompany;
-  String? selectedProvince;
-
-
-  void changeCountry(String country) 
-  {
-    selectedCountry = country;
-    emit(CountryChanged(country));
-  }
-
-  void changeSubscriptionPlan(String plan) 
-  {
-    selectedPlan = plan;
-    emit(SubscriptionPlanChanged(plan));
-  }
-
-  void changeProvince(String province) 
-  {
-    selectedProvince = province;
-    emit(ProvinceChanged(province));
-  }
-
-  void changeCompany(String company) 
-  {
-    selectedCompany = company;
-    emit(CompanyChanged(company));
-  }
+  final FirebaseAuth fireAuth = FirebaseAuth.instance;
 
   Future<void> createAccount({required email, required String password}) async
   {
@@ -45,11 +17,12 @@ class SignUpCubit extends Cubit<SignUpState>
     try
     {
       // ignore: unused_local_variable
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword
+      UserCredential userCredential = await fireAuth.createUserWithEmailAndPassword
       (
         email: email,
         password: password,
       );
+
       FirebaseAuth.instance.currentUser!.sendEmailVerification();
       emit(SignUpSuccess());
     }on FirebaseAuthException catch(e)
@@ -62,5 +35,4 @@ class SignUpCubit extends Cubit<SignUpState>
       { emit(SignUpFailure('حدث خطأ ما! يرجى المحاولة مرة أخرى')); }
     }
   }
-
 }

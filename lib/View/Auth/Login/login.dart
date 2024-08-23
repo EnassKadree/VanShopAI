@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, argument_type_not_assignable_to_error_handler
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +19,9 @@ class LoginPage extends StatelessWidget {
   TextEditingController password = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
+    LoginCubit cubit = BlocProvider.of<LoginCubit>(context);
     return BlocConsumer<LoginCubit, LoginState>
     (
       listener: (context, state) 
@@ -84,21 +86,20 @@ class LoginPage extends StatelessWidget {
                         {
                           if(formKey.currentState!.validate())
                           {
-                            BlocProvider.of<LoginCubit>(context).singIn(email: email.text, password: password.text);
-                          }
-                          else
-                          {
-                            debugPrint('==========================problem here======================');
+                            cubit.singIn(email: email.text, password: password.text);
                           }
                         },
                       ),
                       const SizedBox(
                         height: 16,
                       ),
-                      Row(
+                      Row
+                      (
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const Text(
+                        children: 
+                        [
+                          const Text
+                          (
                             'أليس لديك حساب بعد؟',
                             style: TextStyle(color: Colors.grey),
                           ),
@@ -108,6 +109,50 @@ class LoginPage extends StatelessWidget {
                                 style: TextStyle(color: Colors.orange[700]!)),
                             onTap: () {
                               navigateTo(context, const CheckUserType());
+                            },
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 10,),
+                      Row
+                      (
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: 
+                        [
+                          const Text
+                          (
+                            'هل نسيت كلمة السر؟',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          const SizedBox(width: 8,),
+                          InkWell(
+                            child: Text('إرسال رابط لإعادة التعيين',
+                                style: TextStyle(color: Colors.orange[700]!)),
+                            onTap: () 
+                            {
+                              cubit.resetPassword(email.text, context);
+                            },
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 10,),
+                      Row
+                      (
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: 
+                        [
+                          const Text
+                          (
+                            'ألم تقم بتأكيد حسابك بعد؟',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          const SizedBox(width: 8,),
+                          InkWell(
+                            child: Text('إرسال رابط لتأكيد الحساب',
+                                style: TextStyle(color: Colors.orange[700]!)),
+                            onTap: () 
+                            {
+                              cubit.sendVerification(context);
                             },
                           )
                         ],

@@ -2,15 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vanshopai/Cubits/Auth/Signup%20Cubit/sign_up_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
-import 'package:vanshopai/View/Auth/Login/login.dart';
 import 'package:vanshopai/View/Auth/Check%20Categories/checkdistributorcategory.dart';
+import 'package:vanshopai/Cubits/Auth/Signup%20Account%20Cubit/signup_account_cubit.dart';
+import 'package:vanshopai/Widgets/choicebutton.dart';
 import 'package:vanshopai/Widgets/custombutton.dart';
-import 'package:vanshopai/Widgets/customdropdownbutton.dart';
 import 'package:vanshopai/Widgets/customtextfield.dart';
 import 'package:vanshopai/Widgets/signupheader.dart';
+import 'package:vanshopai/constants.dart';
 
 class DistributorSignupPage extends StatelessWidget {
   DistributorSignupPage({super.key});
@@ -18,22 +18,20 @@ class DistributorSignupPage extends StatelessWidget {
   GlobalKey<FormState> formKey = GlobalKey();
   TextEditingController tradeName = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) 
   {
-    return BlocConsumer<SignUpCubit, SignUpState>
+    SignUpAccountCubit cubit = BlocProvider.of<SignUpAccountCubit>(context);
+    return BlocConsumer<SignUpAccountCubit, SignUpAccountState>
     (
       listener: (context, state) 
       {
-        if (state is SignUpSuccess) 
+        if (state is SignUpAccountSuccess) 
         {
-          ShowSnackBar(context, 'لقد أرسلنا رابطاً إلى بريدك الإلكتروني يرجى فتحه للتحقق من حسابك ثم القيام بتسجيل الدخول بعد تحديد الأصناف التي تقوم بتوزيعها');
-          navigateTo(context, CheckDistributorCategory());
+          navigateRemoveUntil(context, CheckDistributorCategories());
         } 
-        else if (state is SignUpFailure) 
+        else if (state is SignUpAccountFailure) 
         {
           ShowSnackBar(context, state.error);
         }
@@ -48,7 +46,7 @@ class DistributorSignupPage extends StatelessWidget {
             child: ListView(
               children: [
                 const SignupHeader(),
-                state is SignUpLoading?
+                state is SignUpAccountLoading?
                 Center(child: CircularProgressIndicator(color: Colors.orange[800]!,),)
                 :
                 Padding(
@@ -56,11 +54,10 @@ class DistributorSignupPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(
-                        height: 8,
-                      ),
+                      const SizedBox(height: 8,),
                       Row(
-                        children: [
+                        children: 
+                        [
                           Text(
                             'إنشاء حساب موزع حر',
                             style: TextStyle(
@@ -68,115 +65,34 @@ class DistributorSignupPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CustomTextFormField(
-                        hint: 'الاسم التجاري',
-                        controller: tradeName,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CustomTextFormField(
-                        hint: 'رقم الهاتف',
-                        controller: phoneNumber,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CustomDropDownButton
-                      (
-                        hint: 'البلد',
-                        values: const ['بلد1', 'بلد2', 'بلد3'],
-                        selectedValue: state is CountryChanged 
-                          ? state.selectedCountry 
-                          : BlocProvider.of<SignUpCubit>(context).selectedCountry
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CustomDropDownButton(
-                        hint: 'المحافظة',
-                        values: const [
-                          '1المحافظة',
-                          '2المحافظة',
-                          '3المحافظة'
-                        ],
-                        selectedValue: state is ProvinceChanged 
-                          ? state.selectedProvince 
-                          : BlocProvider.of<SignUpCubit>(context).selectedProvince
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CustomDropDownButton(
-                        hint: 'خطة الاشتراك',
-                        values: const [
-                          'خطة اشتراك1',
-                          'خطة اشتراك2',
-                          'خطة اشتراك3'
-                        ],
-                        selectedValue: state is SubscriptionPlanChanged 
-                          ? state.selectedPlan 
-                          : BlocProvider.of<SignUpCubit>(context).selectedPlan,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CustomTextFormField
-                      (
-                        hint: 'البريد الإلكتروني',
-                        controller: email,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CustomTextFormField(
-                        hint: 'كلمة السر',
-                        controller: password
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
+                      const SizedBox(height: 20,),
+                      CustomTextFormField(hint: 'الاسم التجاري',controller: tradeName,),
+
+                      const SizedBox(height: 10,),
+                      CustomTextFormField(hint: 'رقم الهاتف', controller: phoneNumber,),
+
+                      const SizedBox(height: 10,),
+                      ChoiceButton(type: countriesConst),
+
+                      const SizedBox(height: 10,),
+                      ChoiceButton(type: provincesConst),
+                      
+                      const SizedBox(height: 24,),
                       CustomButton(
-                        text: 'إنشاء حساب',
+                        text: 'التالي',
                         onTap: () 
                         {
                           if(formKey.currentState!.validate())
                           {
-                            BlocProvider.of<SignUpCubit>(context).createAccount
+                            cubit.createDistributorAccount
                             (
-                              email: email.text, 
-                              password: password.text,
+                              tradeName: tradeName.text,
+                              phone: phoneNumber.text,
+                              country: cubit.selectedCountry,
+                              province: cubit.selectedProvince,
                             );
                           }
                         },
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'هل لديك حساب بالفعل؟',
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          InkWell(
-                            child: Text('تسجيل الدخول',
-                                style: TextStyle(color: Colors.orange[700]!)),
-                            onTap: () {
-                              navigateTo(context, LoginPage());
-                            },
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 32,
                       ),
                     ],
                   ),

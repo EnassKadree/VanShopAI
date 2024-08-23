@@ -16,7 +16,7 @@ class CustomTextFormField extends StatelessWidget
       controller: controller,
       obscureText: hint == 'كلمة السر' ? true : false,
       keyboardType: hint == 'رقم الهاتف' ? TextInputType.phone : hint == 'البريد الإلكتروني' ? TextInputType.emailAddress : TextInputType.name,
-      style: TextStyle(color: Colors.grey[600]!),
+      style: TextStyle(color: Colors.blue[900]!),
       validator: (data)
       {
         if(data!.isEmpty)

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vanshopai/Cubits/Auth/Categories%20Cubit/categories_cubit.dart';
 import 'package:vanshopai/Cubits/Auth/Login%20Cubit/login_cubit.dart';
+import 'package:vanshopai/Cubits/Auth/Signup%20Account%20Cubit/signup_account_cubit.dart';
 import 'package:vanshopai/Cubits/Auth/Signup%20Cubit/sign_up_cubit.dart';
+import 'package:vanshopai/Cubits/Auth/Subscription%20Plan%20Cubit/subscription_plan_cubit.dart';
 import 'package:vanshopai/View/Auth/Other/entry.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,6 +30,9 @@ class MyApp extends StatelessWidget
       [
         BlocProvider(create: (context) => SignUpCubit()),
         BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => SignUpAccountCubit()),
+        BlocProvider(create: (context) => CategoriesCubit()),
+        BlocProvider(create: (context) => PlanCubit()),
       ],
       child: Directionality
       (
