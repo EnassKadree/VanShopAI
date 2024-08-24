@@ -18,6 +18,7 @@ const provincesConst = 'provinces';
 const categoriesConst = 'Categories';
 const representativesNumberConst = 'number_of_representatives';
 const plansConst = 'subscription_plan';
+const productsConst = 'Products';
 
 List<Map<String,dynamic>> appCountries = 
 [

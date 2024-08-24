@@ -6,12 +6,12 @@ import 'package:vanshopai/Cubits/Auth/Login%20Cubit/login_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/View/Auth/Other/usertype.dart';
-import 'package:vanshopai/View/Company/companyhome.dart';
 import 'package:vanshopai/Widgets/custombutton.dart';
 import 'package:vanshopai/Widgets/customtextfield.dart';
 import 'package:vanshopai/Widgets/signupheader.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatelessWidget 
+{
   LoginPage({super.key});
 
   GlobalKey<FormState> formKey = GlobalKey();
@@ -26,11 +26,7 @@ class LoginPage extends StatelessWidget {
     (
       listener: (context, state) 
       {
-        if (state is LoginSuccess) 
-        {
-          navigateRemoveUntil(context, const CompanyHome());
-        } 
-        else if (state is LoginFailure) 
+        if (state is LoginFailure) 
         {
           ShowSnackBar(context, state.error);
         }
@@ -86,7 +82,7 @@ class LoginPage extends StatelessWidget {
                         {
                           if(formKey.currentState!.validate())
                           {
-                            cubit.singIn(email: email.text, password: password.text);
+                            cubit.singIn(email: email.text, password: password.text, context: context);
                           }
                         },
                       ),

@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:vanshopai/Widgets/companydrawer.dart';
+import 'package:vanshopai/Widgets/companyhomecard.dart';
+import 'package:vanshopai/Widgets/customappbar.dart';
+import 'package:vanshopai/Widgets/homeheader.dart';
 
 class CompanyHome extends StatelessWidget 
 {
@@ -7,9 +12,22 @@ class CompanyHome extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return const Scaffold
+    return Scaffold
     (
-      body: Center(child: Text('welcome buddy!'),)
+      appBar: MyAppBar.CustomAppBar(),
+      drawer: const CompanyDrawer(),
+      body: Column
+      (
+        children: 
+        [
+          const HomeHeader(),
+          const Spacer(),
+          CompanyHomeCard(text: 'منتجات الشركة',),
+          CompanyHomeCard(text: 'مندوبو الشركة',),
+          const Spacer(flex: 2,),
+        ],
+      )
     );
   }
+
 }

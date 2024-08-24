@@ -8,16 +8,18 @@ import 'package:vanshopai/Cubits/Auth/Subscription%20Plan%20Cubit/subscription_p
 import 'package:vanshopai/View/Auth/Other/entry.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:vanshopai/sharedprefsUtils.dart';
 import 'firebase_options.dart';
 
-void main() async {
+void main() async 
+{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await initSharedPreferences();
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget 
 {
   const MyApp({super.key});
@@ -44,7 +46,8 @@ class MyApp extends StatelessWidget
             fontFamily: 'Cairo',
             useMaterial3: true,
           ),
-          localizationsDelegates: const [
+          localizationsDelegates: const 
+          [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
@@ -53,7 +56,13 @@ class MyApp extends StatelessWidget
             Locale('ar', ''),
           ],
           locale: const Locale('ar', ''),
-          home: const EntryPage(),
+          home: 
+          prefs.getString('userID') != null ? 
+            getHomePage(prefs.getString('userType')!)
+          :
+            const EntryPage()
+          // : prefs.getString('userData') == null?
+
         ),
       ),
     );
