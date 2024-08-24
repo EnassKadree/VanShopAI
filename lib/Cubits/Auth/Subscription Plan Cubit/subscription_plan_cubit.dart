@@ -53,7 +53,7 @@ class PlanCubit extends Cubit<PlanState>
     {
       await FirebaseFirestore.instance.collection(type).doc(user.uid).update
       ({
-        'subscription_plan': companyPlan,
+        'subscription_plan': companyPlan(),
         'number_of_representatives': representativesNumber(),
       });
     }

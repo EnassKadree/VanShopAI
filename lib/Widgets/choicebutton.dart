@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Auth/Signup%20Account%20Cubit/signup_account_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
+import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/Widgets/custombutton.dart';
 import 'package:vanshopai/Widgets/radioListView.dart';
 import 'package:vanshopai/constants.dart';
@@ -23,18 +24,27 @@ class ChoiceButton extends StatelessWidget {
             : 'المحافظة';
     final cubit = BlocProvider.of<SignUpAccountCubit>(context);
     return InkWell(
-        onTap: () {
+        onTap: () 
+        {
           if (type == companiesConst) {
             cubit.getCompanies();
+            showBottomSheet(context, text);
           }
           if (type == countriesConst) {
             cubit.getCountries();
+            showBottomSheet(context, text);
           }
-          if (type == provincesConst) {
-            cubit.getProvinces(cubit.selectedCountry!);
+          if (type == provincesConst) 
+          {
+            try
+            {
+              cubit.getProvinces(cubit.selectedCountry!);
+              showBottomSheet(context, text);
+            }catch(e)
+            {
+              ShowSnackBar(context, 'يرجى اختيار بلد أولاً قبل اختيار المحافظة');
+            }
           }
-
-          showBottomSheet(context, text);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -106,34 +116,5 @@ class ChoiceButton extends StatelessWidget {
               },
             );
           });
-//  else {
-//       return showModalBottomSheet(
-//           context: context,
-//           builder: (context) {
-//             return SizedBox(
-//               height: 150,
-//               child: Center(
-//                 child: CircularProgressIndicator(
-//                   color: Colors.orange[700]!,
-//                 ),
-//               ),
-//             );
-//           });
-//     }
-    // return null;
-    // else
-    // {
-    //   return showModalBottomSheet
-    //   (
-    //     context: context, builder: (context)
-    //     {
-    //       return const SizedBox
-    //       (
-    //         height: 150,
-    //         child: Center(child: Text('فشل التحميل، يرجى التأكد من اتصالك بالإنترنت ثم إعادة المحاولة'),),
-    //       );
-    //     }
-    //   );
-    // }
   }
 }

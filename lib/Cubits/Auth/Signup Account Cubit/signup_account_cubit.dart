@@ -42,7 +42,7 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
     emit(GetCompaniesLoading());
     try
     {
-      QuerySnapshot querySnapshot = await fireStore.collection(companiesConst).get();
+      QuerySnapshot querySnapshot = await fireStore.collection(companiesConst).orderBy('trade_name').get();
       companies = querySnapshot.docs.map((snapshot) 
       {
         final data = snapshot.data() as Map<String, dynamic>;
@@ -61,7 +61,7 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
     CollectionReference countriesCollection = fireStore.collection(countriesConst);
     try 
     {
-      QuerySnapshot querySnapshot = await countriesCollection.get();
+      QuerySnapshot querySnapshot = await countriesCollection.orderBy('country').get();
       countries = querySnapshot.docs.map((snapshot) 
       {
         final data = snapshot.data() as Map<String, dynamic>;
@@ -86,11 +86,12 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
 
       if (querySnapshot.docs.isNotEmpty) 
       {
-          DocumentSnapshot<Map<String, dynamic>> countryDoc = querySnapshot.docs.first;
+        DocumentSnapshot<Map<String, dynamic>> countryDoc = querySnapshot.docs.first;
 
-          provinces = List<String>.from(countryDoc.data()?['provinces'] ?? []);
+        provinces = List<String>.from(countryDoc.data()?['provinces'] ?? []);
+        provinces.sort((a, b) => a.compareTo(b));
 
-          emit(GetProvincesSuccess());
+        emit(GetProvincesSuccess());
       } else 
       {
         emit(GetProvincesFailure('Country not found'));

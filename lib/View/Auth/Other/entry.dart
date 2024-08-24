@@ -58,7 +58,7 @@ class EntryPage extends StatelessWidget
           ),
           const Spacer(),
           const Text('Order', style: TextStyle(fontSize: 45, color: Colors.white),),
-          const Text('عالبكلة', style: TextStyle(fontSize: 40, color: Colors.white),),
+          const Text('عالبِكْلة_^', style: TextStyle(fontSize: 40, color: Colors.white),),
           const Spacer(flex: 2,),
           Padding
           (
@@ -67,7 +67,7 @@ class EntryPage extends StatelessWidget
             (
               onTap: () async
               {
-                navigateReplace(context, UserSignupPage());
+                navigateTo(context, UserSignupPage());
               },
               child: const Row
               (

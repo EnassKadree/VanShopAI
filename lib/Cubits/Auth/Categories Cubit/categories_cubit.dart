@@ -31,7 +31,7 @@ class CategoriesCubit extends Cubit<CategoriesState>
     emit(CategoriesLoading());
     try 
     {
-      QuerySnapshot querySnapshot = await fireStore.collection(categoriesConst).get();
+      QuerySnapshot querySnapshot = await fireStore.collection(categoriesConst).orderBy('name').get();
       categories = querySnapshot.docs.map((snapshot) 
       {
         final data = snapshot.data() as Map<String, dynamic>;

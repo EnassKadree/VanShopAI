@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Auth/Categories%20Cubit/categories_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
+import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/View/Auth/Check%20Plan/companyplan.dart';
 import 'package:vanshopai/Widgets/checkboxlistview.dart';
 import 'package:vanshopai/Widgets/custombutton.dart';
@@ -20,11 +21,22 @@ class CheckCompanyCategories extends StatelessWidget
     cubit.fetchCategories();
     return Scaffold
     (
-      body: BlocBuilder<CategoriesCubit, CategoriesState>
+      body: BlocConsumer<CategoriesCubit, CategoriesState>
       (
+        listener: (context,state)
+        {
+          if(state is SaveCategoriesFailure)
+          {
+            ShowSnackBar(context, state.error);
+          }
+          else if(state is SaveCategoriesSuccess)
+          {
+            navigateTo(context, const CheckCompanyPlan());
+          }
+        },
         builder: (context, state) 
         {
-          if(state is CategoriesLoading)
+          if(state is CategoriesLoading || state is SaveCategoriesLoading)
           {
             return  Center(child: CircularProgressIndicator(color: Colors.orange[700]!),);
           }
@@ -73,7 +85,6 @@ class CheckCompanyCategories extends StatelessWidget
                   onTap: () async
                   {
                     await cubit.saveUserCategories(companiesConst);
-                    navigateTo(context, const CheckCompanyPlan());
                   },
                 )
               ],

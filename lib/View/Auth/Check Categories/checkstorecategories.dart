@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Auth/Categories%20Cubit/categories_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
+import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/View/Auth/Login/login.dart';
 import 'package:vanshopai/Widgets/checkboxlistview.dart';
 import 'package:vanshopai/Widgets/custombutton.dart';
@@ -17,67 +18,80 @@ class CheckStoreCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<CategoriesCubit>(context);
     cubit.fetchCategories();
-    return Scaffold(body: BlocBuilder<CategoriesCubit, CategoriesState>
+    return Scaffold
     (
-      builder: (context, state) 
-      {
-        if(state is CategoriesLoading)
+      body: BlocConsumer<CategoriesCubit, CategoriesState>
+      (
+        listener: (context,state)
+        {
+          if(state is SaveCategoriesFailure)
           {
-            return  Center(child: CircularProgressIndicator(color: Colors.orange[700]!),);
+            ShowSnackBar(context, state.error);
           }
-          else if(state is CategoriesFailure)
+          else if(state is SaveCategoriesSuccess)
           {
-            return Center
-            (
-              child: Column
-              (
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: 
-                [
-                  const Text('تعذر تحميل الفئات!'),
-                  const SizedBox(height: 24,),
-                  TextButton
-                  (
-                    onPressed: () async
-                    {
-                      await cubit.fetchCategories();
-                    }, 
-                    child: Text('حاول مرة أخرى', style: TextStyle(color: Colors.orange[700]!),)
-                  )
-                ],
-              ),
-            );
+            navigateTo(context, LoginPage());
           }
-        return Padding
-        (
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'ما هي فئة منتجاتك؟',
-                style: TextStyle(
-                    color: Colors.orange[700]!,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              CheckBoxListView(),
-              CustomButton
+        },
+        builder: (context, state) 
+        {
+          if(state is CategoriesLoading || state is SaveCategoriesLoading)
+            {
+              return  Center(child: CircularProgressIndicator(color: Colors.orange[700]!),);
+            }
+            else if(state is CategoriesFailure)
+            {
+              return Center
               (
-                text: 'تم',
-                onTap: () async
-                {
-                  await cubit.saveUserCategories(storesConst);
-                  navigateTo(context, LoginPage());
-                },
-              )
-            ],
-          ),
-        );
-      },
+                child: Column
+                (
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: 
+                  [
+                    const Text('تعذر تحميل الفئات!'),
+                    const SizedBox(height: 24,),
+                    TextButton
+                    (
+                      onPressed: () async
+                      {
+                        await cubit.fetchCategories();
+                      }, 
+                      child: Text('حاول مرة أخرى', style: TextStyle(color: Colors.orange[700]!),)
+                    )
+                  ],
+                ),
+              );
+            }
+          return Padding
+          (
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'ما هي فئة منتجاتك؟',
+                  style: TextStyle(
+                      color: Colors.orange[700]!,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                CheckBoxListView(),
+                CustomButton
+                (
+                  text: 'تم',
+                  onTap: () async
+                  {
+                    await cubit.saveUserCategories(storesConst);
+                    
+                  },
+                )
+              ],
+            ),
+          );
+        },
     ));
   }
 }
