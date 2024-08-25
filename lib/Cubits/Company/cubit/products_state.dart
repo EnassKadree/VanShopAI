@@ -17,6 +17,7 @@ final class ProductsFailure extends ProductsState
 }
 
 final class AddProductLoading extends ProductsState {}
+final class AddProductSuccess extends ProductsState {}
 final class AddProductFailure extends ProductsState 
 {
   final String error;
@@ -24,6 +25,7 @@ final class AddProductFailure extends ProductsState
 }
 
 final class DeleteProductLoading extends ProductsState {}
+final class DeleteProductSuccess extends ProductsState {}
 final class DeleteProductFailure extends ProductsState 
 {
   final String error;
@@ -32,6 +34,7 @@ final class DeleteProductFailure extends ProductsState
 
 
 final class UpdateProductLoading extends ProductsState {}
+final class UpdateProductSuccess extends ProductsState {}
 final class UpdateProductFailure extends ProductsState 
 {
   final String error;

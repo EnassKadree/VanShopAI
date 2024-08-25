@@ -1,6 +1,6 @@
 class Product 
 {
-  late String id;
+  late String? id;
   late String? companyId;
   late String? distributorId;
   late String name;

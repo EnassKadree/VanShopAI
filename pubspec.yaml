@@ -37,6 +37,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_localization: ^0.2.1
   iconsax: ^0.0.8
+  libphonenumber: ^2.0.2
   shared_preferences: ^2.3.2
 
 dev_dependencies:

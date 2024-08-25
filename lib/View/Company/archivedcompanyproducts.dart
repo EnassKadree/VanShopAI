@@ -1,31 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Company/cubit/products_cubit.dart';
-import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/View/Company/addproduct.dart';
-import 'package:vanshopai/View/Company/archivedcompanyproducts.dart';
 import 'package:vanshopai/Widgets/productcard.dart';
 import 'package:vanshopai/Widgets/progressindicator.dart';
 
-class CompanyProducts extends StatelessWidget
+class ArchivedCompanyProducts extends StatelessWidget
 {
-  const CompanyProducts({super.key});
+  const ArchivedCompanyProducts({super.key});
 
   @override
   Widget build(BuildContext context) 
   {
     ProductsCubit cubit = BlocProvider.of<ProductsCubit>(context);
-    cubit.getProducts();
+    cubit.getArchivedProducts();
     return Scaffold
     (
-      floatingActionButton: FloatingActionButton
-      (
-        onPressed: ()
-        {
-          navigateTo(context, AddProductPage());
-        },
-        child: const Icon(Icons.add)
-      ),
       body: Padding
       (
         padding: const EdgeInsets.symmetric(vertical: 42, horizontal: 16),
@@ -34,28 +23,12 @@ class CompanyProducts extends StatelessWidget
           crossAxisAlignment: CrossAxisAlignment.start,
           children: 
           [
-            TextButton
-            (
-              onPressed: ()
-              {
-                navigateTo(context, const ArchivedCompanyProducts());
-              },
-              child: const Row
-              (
-                children: 
-                [
-                  Icon(Icons.archive, size: 16, color: Colors.grey,),
-                  SizedBox(width: 12,),
-                  Text('المنتجات المؤرشفة', style: TextStyle(fontSize: 16, color: Colors.grey),),
-                ],
-              ),
-            ),
             Text
             (
-              'منتجات الشركة',style: TextStyle
+              'منتجات الشركة المؤرشفة',style: TextStyle
               (
                 color: Colors.orange[700]!,
-                fontSize: 36,
+                fontSize: 32,
                 fontWeight: FontWeight.bold),
               ),
             BlocBuilder<ProductsCubit,ProductsState>
@@ -64,7 +37,8 @@ class CompanyProducts extends StatelessWidget
               {
                 if(state is ProductsLoading)
                 {
-                  return const Column(
+                  return const Column
+                  (
                     children: 
                     [
                       SizedBox(height: 16,),
@@ -82,12 +56,12 @@ class CompanyProducts extends StatelessWidget
                       children: 
                       [
                         const SizedBox(height: 16,),
-                        const Text('تعذر تحميل المنتجات!', style: TextStyle(fontSize: 18, color: Colors.grey)),
+                        const Text('تعذر تحميل المنتجات المؤشفة!', style: TextStyle(fontSize: 18, color: Colors.grey)),
                         const SizedBox(height: 32,),
                         TextButton
                         (
                           onPressed: ()
-                          { cubit.getProducts(); }, 
+                          { cubit.getArchivedProducts(); }, 
                           child: Text('حاول مرة أخرى', style: TextStyle(color: Colors.orange[700]!),)
                         )
                       ],
@@ -95,7 +69,7 @@ class CompanyProducts extends StatelessWidget
                 }
                 else
                 {
-                  if(cubit.products.isEmpty)
+                  if(cubit.archivedProducts.isEmpty)
                   {
                     return const Column
                     (
@@ -103,7 +77,7 @@ class CompanyProducts extends StatelessWidget
                       children: 
                       [
                         SizedBox(height: 16,),
-                        Center(child: Text('لا يوجد منتجات بعد!', style: TextStyle(fontSize: 18, color: Colors.grey),)),
+                        Center(child: Text('لا يوجد منتجات مؤرشفة بعد!', style: TextStyle(fontSize: 18, color: Colors.grey),)),
                       ],
                     );
                   }
@@ -113,7 +87,7 @@ class CompanyProducts extends StatelessWidget
                     (
                       child: GridView.builder
                       (
-                        itemCount: cubit.products.length,
+                        itemCount: cubit.archivedProducts.length,
                         clipBehavior: Clip.none,
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount
                         (
@@ -124,7 +98,7 @@ class CompanyProducts extends StatelessWidget
                         ),
                         itemBuilder: (context, index)
                         {
-                          return ProductCard(product: cubit.products[index]);
+                          return ProductCard(product: cubit.archivedProducts[index]);
                         }
                       ),
                     );

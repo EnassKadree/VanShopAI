@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:libphonenumber/libphonenumber.dart';
 
 class CustomTextFormField extends StatelessWidget 
 {
@@ -11,16 +12,34 @@ class CustomTextFormField extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
+    bool isValid = true;
     return TextFormField
     (
       controller: controller,
       obscureText: hint == 'كلمة السر' ? true : false,
-      keyboardType: hint == 'رقم الهاتف' ? TextInputType.phone : hint == 'البريد الإلكتروني' ? TextInputType.emailAddress : TextInputType.name,
+      keyboardType: 
+      hint == 'رقم الهاتف' ? 
+        TextInputType.phone 
+      : hint == 'البريد الإلكتروني' ? 
+        TextInputType.emailAddress 
+      : hint == 'السعر' ? 
+        const TextInputType.numberWithOptions(decimal: true)
+        : TextInputType.name,
       style: TextStyle(color: Colors.blue[900]!),
       validator: (data)
       {
         if(data!.isEmpty)
         {return 'الحقل مطلوب';}
+
+        if(hint == 'رقم الهاتف'  &&!isValid)
+        {return 'يرجى إدخال رقم هاتف صحيح مع الرمز الدولي';}
+
+        if(hint == 'السعر')
+        {
+          final price = num.tryParse(data);
+          if (price == null)
+          {return 'سعر المنتج يجب أن يكون رقماً';}
+        }
         return null;
       },
       decoration: InputDecoration
@@ -46,6 +65,30 @@ class CustomTextFormField extends StatelessWidget
           borderSide: BorderSide( color: Colors.red[800]!)
         ),
       ),
+      onChanged: (value) async
+      {
+        if(hint == 'رقم الهاتف')
+        {
+          isValid = await isValidPhoneNumber(value);
+        }
+      },
     );
+  }
+
+  Future<bool> isValidPhoneNumber(String phoneNumber) async 
+  {
+    try 
+    {
+      bool? isValid = await PhoneNumberUtil.isValidPhoneNumber
+      (
+        phoneNumber: phoneNumber,
+        isoCode: "",
+      );
+      return isValid ?? false;
+    } catch (e) 
+    {
+      print("Error validating phone number: $e");
+      return false;
+    }
   }
 }
