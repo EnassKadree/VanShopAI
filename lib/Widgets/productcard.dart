@@ -2,14 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vanshopai/Cubits/Company/cubit/products_cubit.dart';
+import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/Model/product.dart';
 import 'package:vanshopai/View/Company/updateproduct.dart';
 import 'package:vanshopai/constants.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatelessWidget 
+{
   ProductCard({
     required this.product,
     super.key,
@@ -17,7 +18,8 @@ class ProductCard extends StatelessWidget {
 
   Product product;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     ProductsCubit cubit = BlocProvider.of<ProductsCubit>(context);
     return GestureDetector
     (
@@ -30,44 +32,79 @@ class ProductCard extends StatelessWidget {
               return DeleteAlertDialog(cubit: cubit, product: product);
             });
       },
-      onTap: () {
+      onTap: () 
+      {
         navigateTo(context, UpdateProductPage(product: product));
       },
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(
-                blurRadius: 50,
-                color: Colors.grey.withOpacity(.1),
-                spreadRadius: 20,
-                offset: const Offset(10, 10),
-              ),
-            ]),
-            child: Card(
-              shape: RoundedRectangleBorder(
+      child: Column
+      (
+        children: 
+        [
+          Container
+          (
+            decoration: BoxDecoration
+            (
+              boxShadow: 
+              [
+                BoxShadow
+                (
+                  blurRadius: 50,
+                  color: Colors.grey.withOpacity(.1),
+                  spreadRadius: 20,
+                  offset: const Offset(10, 10),
+                ),
+              ]
+            ),
+            child: Card
+            (
+              shape: RoundedRectangleBorder
+              (
                 borderRadius: BorderRadius.circular(8),
               ),
-              elevation: 10,
-              child: Padding(
+              elevation: 3,
+              child: Padding
+              (
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Center(
-                            child: Image.asset(
-                          productImage,
-                          height: 120,
-                        )),
+                  children: 
+                  [
+                    Row
+                    (
+                      children: 
+                      [
+                        Expanded
+                        (
+                          child: Center
+                          (
+                            child: product.image != null?
+                              ClipRRect
+                              (
+                                borderRadius: BorderRadius.circular(5),
+                                child: Image.network
+                                (
+                                  product.image!,
+                                  fit: BoxFit.cover,
+                                  height: 135,
+                                  width: 135
+                                ),
+                              )
+                            :
+                              Image.asset
+                              (
+                                productImage,
+                                fit: BoxFit.cover,
+                              )
+                          ),
+                        ),
                       ],
                     ),
                     Text(
                       product.name,
-                      style: TextStyle(
+                      style: TextStyle
+                      (
                         color: Colors.orange[700],
                         fontSize: 16,
                       ),

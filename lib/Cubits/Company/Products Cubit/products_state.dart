@@ -41,3 +41,9 @@ final class UpdateProductFailure extends ProductsState
   UpdateProductFailure(this.error);
 }
 
+class ProductImageSelected extends ProductsState 
+{
+  final File image;
+  ProductImageSelected(this.image);
+}
+

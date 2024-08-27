@@ -28,8 +28,11 @@ class CustomTextFormField extends StatelessWidget
       style: TextStyle(color: Colors.blue[900]!),
       validator: (data)
       {
-        if(data!.isEmpty)
+        if(data == null)
         {return 'الحقل مطلوب';}
+
+        if(data.isEmpty)
+          {return 'الحقل مطلوب';}
 
         if(hint == 'رقم الهاتف'  &&!isValid)
         {return 'يرجى إدخال رقم هاتف صحيح مع الرمز الدولي';}

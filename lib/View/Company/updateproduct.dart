@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vanshopai/Cubits/Company/cubit/products_cubit.dart';
+import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/Model/product.dart';
@@ -14,6 +14,7 @@ class UpdateProductPage extends StatelessWidget
 {
   UpdateProductPage({super.key, required this.product});
   final Product product;
+  final GlobalKey<FormState> formKey = GlobalKey();
   final TextEditingController name = TextEditingController();
   final TextEditingController description = TextEditingController();
   final TextEditingController price = TextEditingController();
@@ -52,68 +53,113 @@ class UpdateProductPage extends StatelessWidget
           }
           else
           {
-            return ListView
+            return Form
             (
-              children: 
-              [
-                Text(
-                  'إضافة منتج جديد',
-                  style: TextStyle
-                  (
-                    color: Colors.orange[700]!,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                CircleAvatar(
-                  backgroundColor: Colors.grey[200],
-                  radius: 80,
-                  child: Image.asset(productImage),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                CustomTextFormField(
-                  hint: 'اسم المنتج',
-                  controller: name,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomTextFormField(
-                  hint: 'وصف المنتج',
-                  controller: description,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomTextFormField(
-                  hint: 'السعر',
-                  controller: price,
-                ),
-                const SizedBox(
-                  height: 42,
-                ),
-                CustomButton(
-                  text: 'تعديل المنتج',
-                  onTap: () 
-                  {
-                    Product newProduct = Product
+              key: formKey,
+              child: ListView
+              (
+                children: 
+                [
+                  Text(
+                    'تعديل المنتج',
+                    style: TextStyle
                     (
-                      id: product.id,
-                      name: name.text, 
-                      description: description.text, 
-                      price: double.parse(price.text),
-                      companyId: product.companyId,
-                      archived: product.archived,
-                    );
-                    cubit.updateProduct(newProduct);
-                  },
-                )
-              ],
+                      color: Colors.orange[700]!,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+
+                  GestureDetector
+                  (
+                    onTap: (){cubit.imageChanged = true; cubit.pickImage();},
+                    child: CircleAvatar
+                    (
+                      backgroundColor: Colors.grey[200],
+                      radius: 80,
+                      child: 
+                      cubit.selectedImage != null? 
+                        ClipOval
+                        (
+                          child: Image.file
+                          (
+                            cubit.selectedImage!,
+                            width: 160,
+                            height: 160,
+                            fit: BoxFit.cover, 
+                          ),
+                        )
+                      : product.image != null?
+                        ClipOval
+                        (
+                          child: Image.network
+                          (
+                            product.image!,
+                            width: 160,
+                            height: 160,
+                            fit: BoxFit.cover, 
+                          ),
+                        )
+                      :
+                        Image.asset
+                        (
+                          productImage,
+                          fit: BoxFit.cover,
+                          width: 160,
+                          height: 160,
+                        ),
+                      ),
+                    ),
+
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  CustomTextFormField(
+                    hint: 'اسم المنتج',
+                    controller: name,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextFormField(
+                    hint: 'وصف المنتج',
+                    controller: description,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextFormField(
+                    hint: 'السعر',
+                    controller: price,
+                  ),
+                  const SizedBox(
+                    height: 42,
+                  ),
+                  CustomButton(
+                    text: 'تعديل المنتج',
+                    onTap: () 
+                    {
+                      if(formKey.currentState!.validate())
+                      {
+                        Product newProduct = Product
+                        (
+                          id: product.id,
+                          name: name.text, 
+                          description: description.text, 
+                          price: double.parse(price.text),
+                          companyId: product.companyId,
+                          archived: product.archived,
+                          image: product.image
+                        );
+                      cubit.updateProduct(newProduct);
+                      }
+                    },
+                  )
+                ],
+              ),
             );
           }
         },

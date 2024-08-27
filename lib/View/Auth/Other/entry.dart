@@ -65,7 +65,7 @@ class EntryPage extends StatelessWidget
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: GestureDetector
             (
-              onTap: () async
+              onTap: () 
               {
                 navigateTo(context, UserSignupPage());
               },

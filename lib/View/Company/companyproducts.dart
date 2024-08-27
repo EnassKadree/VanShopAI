@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vanshopai/Cubits/Company/cubit/products_cubit.dart';
+import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/View/Company/addproduct.dart';
 import 'package:vanshopai/View/Company/archivedcompanyproducts.dart';
@@ -15,7 +15,7 @@ class CompanyProducts extends StatelessWidget
   Widget build(BuildContext context) 
   {
     ProductsCubit cubit = BlocProvider.of<ProductsCubit>(context);
-    cubit.getProducts();
+    cubit.getProducts(archived: false);
     return Scaffold
     (
       floatingActionButton: FloatingActionButton
@@ -28,7 +28,7 @@ class CompanyProducts extends StatelessWidget
       ),
       body: Padding
       (
-        padding: const EdgeInsets.symmetric(vertical: 42, horizontal: 16),
+        padding: const EdgeInsets.only(top: 42, left: 16, right: 16),
         child: Column
         (
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,79 +58,64 @@ class CompanyProducts extends StatelessWidget
                 fontSize: 36,
                 fontWeight: FontWeight.bold),
               ),
-            BlocBuilder<ProductsCubit,ProductsState>
+            Expanded
             (
-              builder: (context, state)
-              {
-                if(state is ProductsLoading)
+              child: BlocBuilder<ProductsCubit,ProductsState>
+              (
+                builder: (context, state)
                 {
-                  return const Column(
-                    children: 
-                    [
-                      SizedBox(height: 16,),
-                      MyProgressIndicator(),
-                    ],
-                  );
-                }
-                else if(state is ProductsFailure)
-                {
-                  return Center
-                  (
-                    child: Column
-                    (
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: 
-                      [
-                        const SizedBox(height: 16,),
-                        const Text('تعذر تحميل المنتجات!', style: TextStyle(fontSize: 18, color: Colors.grey)),
-                        const SizedBox(height: 32,),
-                        TextButton
-                        (
-                          onPressed: ()
-                          { cubit.getProducts(); }, 
-                          child: Text('حاول مرة أخرى', style: TextStyle(color: Colors.orange[700]!),)
-                        )
-                      ],
-                  ),);
-                }
-                else
-                {
-                  if(cubit.products.isEmpty)
+                  if(state is ProductsLoading)
                   {
-                    return const Column
+                    return const MyProgressIndicator();
+                  }
+                  else if(state is ProductsFailure)
+                  {
+                    return Center
                     (
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: 
-                      [
-                        SizedBox(height: 16,),
-                        Center(child: Text('لا يوجد منتجات بعد!', style: TextStyle(fontSize: 18, color: Colors.grey),)),
-                      ],
-                    );
+                      child: Column
+                      (
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: 
+                        [
+                          const Text('تعذر تحميل المنتجات!', style: TextStyle(fontSize: 18, color: Colors.grey)),
+                          const SizedBox(height: 32,),
+                          TextButton
+                          (
+                            onPressed: ()
+                            { cubit.getProducts(archived: false); }, 
+                            child: Text('حاول مرة أخرى', style: TextStyle(color: Colors.orange[700]!),)
+                          )
+                        ],
+                    ),);
                   }
                   else
                   {
-                    return Expanded
-                    (
-                      child: GridView.builder
+                    if(cubit.products.isEmpty)
+                    {
+                      return const Center(child: Text('لا يوجد منتجات بعد!', style: TextStyle(fontSize: 18, color: Colors.grey),));
+                    }
+                    else
+                    {
+                      return GridView.builder
                       (
-                        itemCount: cubit.products.length,
                         clipBehavior: Clip.none,
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount
+                        itemCount: cubit.products.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount
                         (
-                          crossAxisCount: 2,
-                          childAspectRatio: .5,
+                          crossAxisCount: MediaQuery.of(context).size.width > 600 ? 3 : 2,
+                          childAspectRatio: MediaQuery.of(context).size.width > 600 ? 0.85 : 0.75,
                           crossAxisSpacing: 10,
-                          mainAxisSpacing: 100,
+                          mainAxisSpacing: 5,
                         ),
                         itemBuilder: (context, index)
                         {
                           return ProductCard(product: cubit.products[index]);
                         }
-                      ),
-                    );
+                      );
+                    }
                   }
                 }
-              }
+              ),
             )
           ],
         ),

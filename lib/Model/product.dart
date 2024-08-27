@@ -9,7 +9,8 @@ class Product
   late double price;
   late bool archived;
 
-  Product({
+  Product
+  ({
     required this.id,
     this.companyId,
     this.distributorId,
@@ -20,7 +21,8 @@ class Product
     this.image,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) {
+  factory Product.fromJson(Map<String, dynamic> json) 
+  {
     return Product(
       id: json['id'],
       companyId: json['company_id'],

@@ -103,13 +103,17 @@ class UserSignupPage extends StatelessWidget
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const Text(
+                          const Text
+                          (
+                            overflow: TextOverflow.visible,
+                            softWrap: true,
                             'هل لديك حساب بالفعل؟',
                             style: TextStyle(color: Colors.grey),
                           ),
                           const SizedBox(width: 8,),
                           InkWell(
                             child: Text('تسجيل الدخول',
+                                overflow: TextOverflow.visible,
                                 style: TextStyle(color: Colors.orange[700]!)),
                             onTap: () {
                               navigateTo(context, LoginPage());

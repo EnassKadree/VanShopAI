@@ -97,11 +97,13 @@ class LoginPage extends StatelessWidget
                           const Text
                           (
                             'أليس لديك حساب بعد؟',
+                            overflow: TextOverflow.visible,
                             style: TextStyle(color: Colors.grey),
                           ),
                           const SizedBox(width: 8,),
                           InkWell(
                             child: Text('إنشاء حساب',
+                                overflow: TextOverflow.visible,
                                 style: TextStyle(color: Colors.orange[700]!)),
                             onTap: () {
                               navigateTo(context, const CheckUserType());
@@ -118,11 +120,13 @@ class LoginPage extends StatelessWidget
                           const Text
                           (
                             'هل نسيت كلمة السر؟',
+                            overflow: TextOverflow.visible,
                             style: TextStyle(color: Colors.grey),
                           ),
                           const SizedBox(width: 8,),
                           InkWell(
                             child: Text('إرسال رابط لإعادة التعيين',
+                                overflow: TextOverflow.visible,
                                 style: TextStyle(color: Colors.orange[700]!)),
                             onTap: () 
                             {
@@ -140,11 +144,13 @@ class LoginPage extends StatelessWidget
                           const Text
                           (
                             'ألم تقم بتأكيد حسابك بعد؟',
+                            overflow: TextOverflow.visible,
                             style: TextStyle(color: Colors.grey),
                           ),
                           const SizedBox(width: 8,),
                           InkWell(
                             child: Text('إرسال رابط لتأكيد الحساب',
+                            overflow: TextOverflow.visible,
                                 style: TextStyle(color: Colors.orange[700]!)),
                             onTap: () 
                             {
