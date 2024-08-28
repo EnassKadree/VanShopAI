@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vanshopai/Visuals/clipper.dart';
 import 'package:vanshopai/constants.dart';
 
-import '../sharedprefsUtils.dart';
+import '../../sharedprefsUtils.dart';
 
 class HomeHeader extends StatelessWidget 
 {

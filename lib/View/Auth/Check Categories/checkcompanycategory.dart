@@ -6,8 +6,8 @@ import 'package:vanshopai/Cubits/Auth/Categories%20Cubit/categories_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/View/Auth/Check%20Plan/companyplan.dart';
-import 'package:vanshopai/Widgets/checkboxlistview.dart';
-import 'package:vanshopai/Widgets/custombutton.dart';
+import 'package:vanshopai/View/Widgets/checkboxlistview.dart';
+import 'package:vanshopai/View/Widgets/custombutton.dart';
 import 'package:vanshopai/constants.dart';
 
 class CheckCompanyCategories extends StatelessWidget 

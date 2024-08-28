@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:vanshopai/Widgets/companydrawer.dart';
-import 'package:vanshopai/Widgets/companyhomecard.dart';
-import 'package:vanshopai/Widgets/customappbar.dart';
-import 'package:vanshopai/Widgets/homeheader.dart';
+import 'package:vanshopai/View/Widgets/companydrawer.dart';
+import 'package:vanshopai/View/Widgets/companyhomecard.dart';
+import 'package:vanshopai/View/Widgets/customappbar.dart';
+import 'package:vanshopai/View/Widgets/homeheader.dart';
 
 class CompanyHome extends StatelessWidget 
 {

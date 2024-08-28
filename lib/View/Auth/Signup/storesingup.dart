@@ -6,10 +6,10 @@ import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Cubits/Auth/Signup%20Account%20Cubit/signup_account_cubit.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/View/Auth/Check%20Categories/checkstorecategories.dart';
-import 'package:vanshopai/Widgets/choicebutton.dart';
-import 'package:vanshopai/Widgets/custombutton.dart';
-import 'package:vanshopai/Widgets/customtextfield.dart';
-import 'package:vanshopai/Widgets/signupheader.dart';
+import 'package:vanshopai/View/Widgets/choicebutton.dart';
+import 'package:vanshopai/View/Widgets/custombutton.dart';
+import 'package:vanshopai/View/Widgets/customtextfield.dart';
+import 'package:vanshopai/View/Widgets/signupheader.dart';
 import 'package:vanshopai/constants.dart';
 
 class StoreSignupPage extends StatelessWidget {

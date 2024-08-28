@@ -6,9 +6,9 @@ import 'package:vanshopai/Cubits/Auth/Login%20Cubit/login_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/View/Auth/Other/usertype.dart';
-import 'package:vanshopai/Widgets/custombutton.dart';
-import 'package:vanshopai/Widgets/customtextfield.dart';
-import 'package:vanshopai/Widgets/signupheader.dart';
+import 'package:vanshopai/View/Widgets/custombutton.dart';
+import 'package:vanshopai/View/Widgets/customtextfield.dart';
+import 'package:vanshopai/View/Widgets/signupheader.dart';
 
 class LoginPage extends StatelessWidget 
 {

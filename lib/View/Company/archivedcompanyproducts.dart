@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
-import 'package:vanshopai/Widgets/productcard.dart';
-import 'package:vanshopai/Widgets/progressindicator.dart';
+import 'package:vanshopai/View/Widgets/productcard.dart';
+import 'package:vanshopai/View/Widgets/progressindicator.dart';
 
 class ArchivedCompanyProducts extends StatelessWidget
 {
