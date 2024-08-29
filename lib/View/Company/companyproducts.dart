@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
+import 'package:vanshopai/View/Company/Widgets/productcard.dart';
 import 'package:vanshopai/View/Company/addproduct.dart';
 import 'package:vanshopai/View/Company/archivedcompanyproducts.dart';
-import 'package:vanshopai/View/Widgets/productcard.dart';
 import 'package:vanshopai/View/Widgets/progressindicator.dart';
 
 class CompanyProducts extends StatelessWidget

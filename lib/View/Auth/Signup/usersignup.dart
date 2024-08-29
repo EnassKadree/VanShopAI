@@ -6,9 +6,9 @@ import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/View/Auth/Login/login.dart';
 import 'package:vanshopai/View/Auth/Other/usertype.dart';
+import 'package:vanshopai/View/Auth/Widgets/signupheader.dart';
 import 'package:vanshopai/View/Widgets/custombutton.dart';
 import 'package:vanshopai/View/Widgets/customtextfield.dart';
-import 'package:vanshopai/View/Widgets/signupheader.dart';
 
 class UserSignupPage extends StatelessWidget 
 {

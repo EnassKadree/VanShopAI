@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vanshopai/View/Auth/Widgets/usertypecard.dart';
 import 'package:vanshopai/Visuals/clipper.dart';
-import 'package:vanshopai/View/Widgets/usertypecard.dart';
 import 'package:vanshopai/constants.dart';
 
 class CheckUserType extends StatelessWidget 

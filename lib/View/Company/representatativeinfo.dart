@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vanshopai/Model/Representative.dart';
-import 'package:vanshopai/View/Widgets/representativeinfocard.dart';
+import 'package:vanshopai/View/Company/Widgets/representativeinfocard.dart';
 
 class RepresentativeInfo extends StatelessWidget 
 {

@@ -6,10 +6,10 @@ import 'package:vanshopai/Cubits/Auth/Login%20Cubit/login_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/View/Auth/Signup/usersignup.dart';
+import 'package:vanshopai/View/Auth/Widgets/signupheader.dart';
 import 'package:vanshopai/View/Company/companyhome.dart';
 import 'package:vanshopai/View/Widgets/custombutton.dart';
 import 'package:vanshopai/View/Widgets/customtextfield.dart';
-import 'package:vanshopai/View/Widgets/signupheader.dart';
 
 import '../../../sharedprefsUtils.dart';
 
