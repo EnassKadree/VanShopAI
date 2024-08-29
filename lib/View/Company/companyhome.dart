@@ -16,15 +16,15 @@ class CompanyHome extends StatelessWidget
     (
       appBar: MyAppBar.CustomAppBar(),
       drawer: const CompanyDrawer(),
-      body: Column
+      body: const Column
       (
         children: 
         [
-          const HomeHeader(),
-          const Spacer(),
+          HomeHeader(),
+          Spacer(),
           CompanyHomeCard(text: 'منتجات الشركة',),
           CompanyHomeCard(text: 'مندوبو الشركة',),
-          const Spacer(flex: 2,),
+          Spacer(flex: 2,),
         ],
       )
     );

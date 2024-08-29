@@ -37,10 +37,12 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.6
   flutter_localization: ^0.2.1
+  flutter_phone_direct_caller: ^2.1.1
   iconsax: ^0.0.8
   image_picker: ^1.1.2
   libphonenumber: ^2.0.2
   shared_preferences: ^2.3.2
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_lints: ^4.0.0

@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/View/Company/companyproducts.dart';
+import 'package:vanshopai/View/Company/companyrepresentatives.dart';
 
 class CompanyHomeCard extends StatelessWidget 
 {
@@ -20,6 +21,10 @@ class CompanyHomeCard extends StatelessWidget
       {
         if (text == 'منتجات الشركة') {
           navigateTo(context, const CompanyProducts());
+        }
+        else
+        {
+          navigateTo(context, const CompanyRepresentatives());
         }
       },
       child: Card

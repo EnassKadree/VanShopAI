@@ -51,8 +51,6 @@ class LoginCubit extends Cubit<LoginState>
     }
     catch(e)
     {
-      print('====================================');
-      print(e.toString());
       emit(LoginFailure('حصل خطأ ما! يرجى إعادة المحاولة'));
     }
   }
@@ -119,5 +117,4 @@ Future<String> _getUserType(String uid) async
     print(doc.data().toString());
     return doc.data() as Map<String, dynamic>;
   }
-
 }

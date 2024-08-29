@@ -57,7 +57,7 @@ class ProductsCubit extends Cubit<ProductsState>
         }).toList();
       }
 
-      emit(ProductsSuccess(products));
+      emit(ProductsSuccess());
     } catch (e) 
     {
       emit(ProductsFailure(e.toString()));

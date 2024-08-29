@@ -5,10 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Auth/Login%20Cubit/login_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
-import 'package:vanshopai/View/Auth/Other/usertype.dart';
+import 'package:vanshopai/View/Auth/Signup/usersignup.dart';
+import 'package:vanshopai/View/Company/companyhome.dart';
 import 'package:vanshopai/View/Widgets/custombutton.dart';
 import 'package:vanshopai/View/Widgets/customtextfield.dart';
 import 'package:vanshopai/View/Widgets/signupheader.dart';
+
+import '../../../sharedprefsUtils.dart';
 
 class LoginPage extends StatelessWidget 
 {
@@ -29,6 +32,17 @@ class LoginPage extends StatelessWidget
         if (state is LoginFailure) 
         {
           ShowSnackBar(context, state.error);
+        }
+        else if(state is LoginSuccess)
+        {
+          String? userType = prefs.getString('userType');
+          if(userType != null)
+          {
+            if(userType == 'Company')
+            {
+              navigateTo(context, const CompanyHome());
+            }
+          }
         }
       },
       builder: (context, state) 
@@ -106,7 +120,7 @@ class LoginPage extends StatelessWidget
                                 overflow: TextOverflow.visible,
                                 style: TextStyle(color: Colors.orange[700]!)),
                             onTap: () {
-                              navigateTo(context, const CheckUserType());
+                              navigateTo(context, UserSignupPage());
                             },
                           )
                         ],

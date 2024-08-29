@@ -179,6 +179,7 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
           'country' : country,
           'province' : province,
           'company_id': querySnapshot.docs.first.id,
+          'submitted': false,
           'createdAt': FieldValue.serverTimestamp(),
         });
         emit(SignUpAccountSuccess());
