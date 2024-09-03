@@ -9,9 +9,11 @@ import 'productslistview.dart';
 productsBuilder(context, state, selectedProducts) 
 {
   final cubit = BlocProvider.of<GetProductsCubit>(context);
-  if (state is GetProductsLoading) {
+  if (state is GetProductsLoading) 
+  {
     return const MyProgressIndicator();
-  } else if (state is GetProductsFailure) {
+  } else if (state is GetProductsFailure) 
+  {
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

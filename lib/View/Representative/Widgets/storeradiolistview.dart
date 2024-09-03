@@ -32,9 +32,10 @@ class StoreRadioListView extends StatelessWidget
                     title: Text
                     (
                       cubit.stores[index].tradeName,
-                      style: const TextStyle
+                      style: TextStyle
                       (
                         fontSize: 18,
+                        color: Colors.blue[900]
                       ),
                     ),
                     value: cubit.stores[index],

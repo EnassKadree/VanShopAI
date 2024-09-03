@@ -17,24 +17,24 @@ class GetProductsCubit extends Cubit<GetProductsState>
 
 
     Future<void> getProducts() async
-  {
-    emit(GetProductsLoading());
-    try
     {
-      QuerySnapshot querySnapshot = await firestore.collection(productsConst)
-      .where('company_id', isEqualTo: prefs.getString('companyID')).where('archived', isEqualTo: false)
-      .get();
-
-      products = querySnapshot.docs.map((doc) 
+      emit(GetProductsLoading());
+      try
       {
-        return Product.fromJson
-        ({
-          ...doc.data() as Map<String, dynamic>, 
-          'id': doc.id, 
-        });
-    }).toList();
+        QuerySnapshot querySnapshot = await firestore.collection(productsConst)
+        .where('company_id', isEqualTo: prefs.getString('companyID')).where('archived', isEqualTo: false)
+        .get();
 
-    emit(GetProductsSuccess());
+        products = querySnapshot.docs.map((doc) 
+        {
+          return Product.fromJson
+          ({
+            ...doc.data() as Map<String, dynamic>, 
+            'id': doc.id, 
+          });
+      }).toList();
+
+      emit(GetProductsSuccess());
 
     }catch(e)
     {
@@ -42,4 +42,15 @@ class GetProductsCubit extends Cubit<GetProductsState>
     }
   }
 
+  String getProductNameById(String productId) 
+  {
+    final product = products.firstWhere((prod) => prod.id == productId);
+    return product.name;
+  }
+
+  double getProductPriceById(String productId) 
+  {
+    final product = products.firstWhere((prod) => prod.id == productId);
+    return product.price;
+  }
 }

@@ -2,10 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
 import 'package:vanshopai/Model/store.dart';
-
 import '../../../constants.dart';
 import '../../../sharedprefsUtils.dart';
-
 part 'get_stores_state.dart';
 
 class GetStoresCubit extends Cubit<GetStoresState> 
@@ -47,5 +45,4 @@ class GetStoresCubit extends Cubit<GetStoresState>
       emit(GetStoresFailure(e.toString()));
     }
   }
-
 }
