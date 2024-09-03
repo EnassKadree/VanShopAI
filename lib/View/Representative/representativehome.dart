@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:vanshopai/View/Company/Widgets/companydrawer.dart';
 import 'package:vanshopai/View/Representative/addorder.dart';
 import 'package:vanshopai/View/Representative/repunsubmittedpage.dart';
-import 'package:vanshopai/View/Widgets/homecard.dart';
+import 'package:vanshopai/View/General%20Widgets/homecard.dart';
 import 'package:vanshopai/View/Company/Widgets/customappbar.dart';
 import 'package:vanshopai/View/Company/companyrepresentatives.dart';
-import 'package:vanshopai/View/Widgets/homeheader.dart';
+import 'package:vanshopai/View/General%20Widgets/homeheader.dart';
 import 'package:vanshopai/sharedprefsUtils.dart';
 
 class RepresentativeHome extends StatelessWidget 

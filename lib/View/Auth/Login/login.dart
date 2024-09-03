@@ -8,8 +8,8 @@ import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/View/Auth/Signup/usersignup.dart';
 import 'package:vanshopai/View/Auth/Widgets/signupheader.dart';
 import 'package:vanshopai/View/Company/companyhome.dart';
-import 'package:vanshopai/View/Widgets/custombutton.dart';
-import 'package:vanshopai/View/Widgets/customtextfield.dart';
+import 'package:vanshopai/View/General%20Widgets/custombutton.dart';
+import 'package:vanshopai/View/General%20Widgets/customtextfield.dart';
 
 import '../../../sharedprefsUtils.dart';
 

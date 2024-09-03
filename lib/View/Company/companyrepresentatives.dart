@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Company/Represntatives%20Cubit/representatives_cubit.dart';
 import 'package:vanshopai/View/Company/Widgets/companyrepresentativelistview.dart';
-import 'package:vanshopai/View/Widgets/progressindicator.dart';
+import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
 
 class CompanyRepresentatives extends StatelessWidget 
 {

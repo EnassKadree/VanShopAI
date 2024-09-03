@@ -4,8 +4,8 @@ import 'package:vanshopai/View/Company/Widgets/companydrawer.dart';
 import 'package:vanshopai/View/Company/Widgets/customappbar.dart';
 import 'package:vanshopai/View/Company/companyproducts.dart';
 import 'package:vanshopai/View/Company/companyrepresentatives.dart';
-import 'package:vanshopai/View/Widgets/homecard.dart';
-import 'package:vanshopai/View/Widgets/homeheader.dart';
+import 'package:vanshopai/View/General%20Widgets/homecard.dart';
+import 'package:vanshopai/View/General%20Widgets/homeheader.dart';
 
 
 class CompanyHome extends StatelessWidget 

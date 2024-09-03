@@ -8,7 +8,7 @@ import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/View/Auth/Login/login.dart';
 import 'package:vanshopai/View/Auth/Widgets/checkboxlistview.dart';
-import 'package:vanshopai/View/Widgets/custombutton.dart';
+import 'package:vanshopai/View/General%20Widgets/custombutton.dart';
 import 'package:vanshopai/constants.dart';
 
 class CheckStoreCategories extends StatelessWidget {

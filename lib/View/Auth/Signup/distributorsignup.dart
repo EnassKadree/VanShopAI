@@ -8,8 +8,8 @@ import 'package:vanshopai/View/Auth/Check%20Categories/checkdistributorcategory.
 import 'package:vanshopai/Cubits/Auth/Signup%20Account%20Cubit/signup_account_cubit.dart';
 import 'package:vanshopai/View/Auth/Widgets/choicebutton.dart';
 import 'package:vanshopai/View/Auth/Widgets/signupheader.dart';
-import 'package:vanshopai/View/Widgets/custombutton.dart';
-import 'package:vanshopai/View/Widgets/customtextfield.dart';
+import 'package:vanshopai/View/General%20Widgets/custombutton.dart';
+import 'package:vanshopai/View/General%20Widgets/customtextfield.dart';
 import 'package:vanshopai/constants.dart';
 
 class DistributorSignupPage extends StatelessWidget {

@@ -22,7 +22,7 @@ class QuantitySelector extends StatelessWidget
           onPressed: () 
           { 
             context.read<QuantityCubit>().decrement();
-            onQuantityChanged(context.read<QuantityCubit>().state); // I'm trying to notify the parent here
+            onQuantityChanged(context.read<QuantityCubit>().state); //* I'm trying to notify the parent here
           },
         ),
         BlocBuilder<QuantityCubit, int>
@@ -37,7 +37,7 @@ class QuantitySelector extends StatelessWidget
           onPressed: () 
           { 
             context.read<QuantityCubit>().increment();
-            onQuantityChanged(context.read<QuantityCubit>().state); // I'm trying to notify the parent here
+            onQuantityChanged(context.read<QuantityCubit>().state); //* I'm trying to notify the parent here
           },
         ),
       ],

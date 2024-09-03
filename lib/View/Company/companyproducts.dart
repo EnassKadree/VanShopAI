@@ -5,7 +5,7 @@ import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/View/Company/Widgets/productcard.dart';
 import 'package:vanshopai/View/Company/addproduct.dart';
 import 'package:vanshopai/View/Company/archivedcompanyproducts.dart';
-import 'package:vanshopai/View/Widgets/progressindicator.dart';
+import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
 
 class CompanyProducts extends StatelessWidget
 {

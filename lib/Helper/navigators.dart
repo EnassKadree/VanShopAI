@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vanshopai/Visuals/animationrouts.dart';
+import 'package:vanshopai/Extensions/animationrouts.dart';
 
 void navigateTo(BuildContext context, Widget page) 
 {
