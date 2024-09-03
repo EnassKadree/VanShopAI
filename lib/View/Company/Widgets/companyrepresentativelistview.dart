@@ -19,19 +19,20 @@ class CompanyRepresentativesListView extends StatelessWidget
     RepresentativesCubit cubit =   BlocProvider.of<RepresentativesCubit>(context);
     return ListView.builder
     (
-    shrinkWrap: true,
-    physics: const NeverScrollableScrollPhysics(),
-    itemCount: submitted? 
-      cubit.representatives.length 
-    :
-      cubit.representativesRequests.length,
-    itemBuilder: (context, index) 
-    {
-      return RepresentativeCard
-      (
-        submitted: submitted, 
-        representative: submitted? cubit.representatives[index] : cubit.representativesRequests[index]
-      );
-    });
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: submitted? 
+        cubit.representatives.length 
+      :
+        cubit.representativesRequests.length,
+      itemBuilder: (context, index) 
+      {
+        return RepresentativeCard
+        (
+          submitted: submitted, 
+          representative: submitted? cubit.representatives[index] : cubit.representativesRequests[index]
+        );
+      }
+    );
   }
 }

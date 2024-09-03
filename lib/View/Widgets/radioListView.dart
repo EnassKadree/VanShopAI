@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Auth/Signup%20Account%20Cubit/signup_account_cubit.dart';
@@ -9,8 +11,8 @@ class RadioListView extends StatelessWidget
       {super.key,
       required this.items,
       required this.type});
-      final List<String> items;
-      final String type;
+      List<String> items;
+      String type;
 
   @override
   Widget build(BuildContext context) 

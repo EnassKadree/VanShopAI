@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vanshopai/View/Company/Widgets/companydrawer.dart';
-import 'package:vanshopai/View/Company/Widgets/companyhomecard.dart';
 import 'package:vanshopai/View/Company/Widgets/customappbar.dart';
-import 'package:vanshopai/View/Company/Widgets/homeheader.dart';
+import 'package:vanshopai/View/Company/companyproducts.dart';
+import 'package:vanshopai/View/Company/companyrepresentatives.dart';
+import 'package:vanshopai/View/Widgets/homecard.dart';
+import 'package:vanshopai/View/Widgets/homeheader.dart';
 
 
 class CompanyHome extends StatelessWidget 
@@ -23,8 +25,8 @@ class CompanyHome extends StatelessWidget
         [
           HomeHeader(),
           Spacer(),
-          CompanyHomeCard(text: 'منتجات الشركة',),
-          CompanyHomeCard(text: 'مندوبو الشركة',),
+          HomeCard(text: 'منتجات الشركة', page: CompanyProducts()),
+          HomeCard(text: 'مندوبو الشركة',page: CompanyRepresentatives()),
           Spacer(flex: 2,),
         ],
       )

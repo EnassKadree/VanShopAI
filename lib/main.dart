@@ -7,6 +7,10 @@ import 'package:vanshopai/Cubits/Auth/Signup%20Cubit/sign_up_cubit.dart';
 import 'package:vanshopai/Cubits/Auth/Subscription%20Plan%20Cubit/subscription_plan_cubit.dart';
 import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
 import 'package:vanshopai/Cubits/Company/Represntatives%20Cubit/representatives_cubit.dart';
+import 'package:vanshopai/Cubits/Representative/Add%20Order%20Cubit/add_order_cubit.dart';
+import 'package:vanshopai/Cubits/Representative/Get%20Products%20Cubit/get_products_cubit.dart';
+import 'package:vanshopai/Cubits/Representative/Get%20Stores%20Cubit/get_stores_cubit.dart';
+import 'package:vanshopai/Cubits/Representative/Quantity%20Cubit/quantity_cubit.dart';
 import 'package:vanshopai/View/Auth/Other/entry.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -39,6 +43,10 @@ class MyApp extends StatelessWidget
         BlocProvider(create: (context) => PlanCubit()),
         BlocProvider(create: (context) => ProductsCubit()),
         BlocProvider(create: (context) => RepresentativesCubit()),
+        BlocProvider(create: (context) => AddOrderCubit()),
+        BlocProvider(create: (context) => GetStoresCubit()),
+        BlocProvider(create: (context) => GetProductsCubit()),
+        BlocProvider(create: (context) => QuantityCubit()),
       ],
       child: Directionality
       (
@@ -56,7 +64,8 @@ class MyApp extends StatelessWidget
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: const [
+          supportedLocales: const 
+          [
             Locale('ar', ''),
           ],
           locale: const Locale('ar', ''),

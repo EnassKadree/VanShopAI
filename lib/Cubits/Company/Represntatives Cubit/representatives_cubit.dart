@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
-import 'package:vanshopai/Model/Representative.dart';
+import 'package:vanshopai/Model/representative.dart';
 import 'package:vanshopai/constants.dart';
 
 import '../../../sharedprefsUtils.dart';

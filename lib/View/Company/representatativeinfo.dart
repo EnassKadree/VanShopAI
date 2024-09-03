@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vanshopai/Model/Representative.dart';
+import 'package:vanshopai/Model/representative.dart';
 import 'package:vanshopai/View/Company/Widgets/representativeinfocard.dart';
 
 class RepresentativeInfo extends StatelessWidget 
@@ -21,8 +21,8 @@ class RepresentativeInfo extends StatelessWidget
           [
             Center(child: Text(rep.tradeName, style: TextStyle(color: Colors.orange[600], fontSize: 50),)),
             const SizedBox(height: 6,),
-            RepresentativeInfoCard(data: rep.email!, type: 'email'),
-            RepresentativeInfoCard(data: rep.phone!, type: 'phone'),
+            RepresentativeInfoCard(data: rep.email, type: 'email'),
+            RepresentativeInfoCard(data: rep.phone, type: 'phone'),
             RepresentativeInfoCard(data: rep.country, type: 'country'),
             RepresentativeInfoCard(data: rep.province, type: 'province'),
           ],

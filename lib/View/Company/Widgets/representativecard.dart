@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Company/Represntatives%20Cubit/representatives_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/Model/Representative.dart';
+import 'package:vanshopai/Model/representative.dart';
 import 'package:vanshopai/View/Company/representatativeinfo.dart';
 
 class RepresentativeCard extends StatelessWidget
@@ -31,7 +31,6 @@ class RepresentativeCard extends StatelessWidget
         },
         child: Card
         (
-        
           shadowColor: Colors.grey[100]!.withOpacity(.5),
           color: Colors.white,
           child: ListTile
@@ -50,7 +49,7 @@ class RepresentativeCard extends StatelessWidget
                   InkWell
                   (
                     onTap: ()
-                    { BlocProvider.of<RepresentativesCubit>(context).updateRepresentativeSubmitted(representative.id!);},
+                    { BlocProvider.of<RepresentativesCubit>(context).updateRepresentativeSubmitted(representative.id);},
                     child: const Card(shape: CircleBorder(), color: Colors.white, child: Icon(Icons.check_circle, color: Color.fromARGB(255, 8, 87, 206), size: 32,)),
                   ),
         

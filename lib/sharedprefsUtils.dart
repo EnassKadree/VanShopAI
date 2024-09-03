@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vanshopai/View/Auth/Login/login.dart';
 import 'package:vanshopai/View/Company/companyhome.dart';
+import 'package:vanshopai/View/Representative/representativehome.dart';
 
 late SharedPreferences prefs;
 //late Map<String, dynamic> userData;
@@ -34,7 +35,7 @@ Widget getHomePage(String userType)
   } 
   else if (userType == 'Representative') 
   {
-
+    return const RepresentativeHome();
   } 
   else if (userType == 'Distributor') 
   {

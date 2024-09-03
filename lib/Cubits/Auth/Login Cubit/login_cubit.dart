@@ -80,6 +80,28 @@ class LoginCubit extends Cubit<LoginState>
       await prefs.setString('userID', user.uid);
       await prefs.setString('name', userData['trade_name']);
       await prefs.setString('email', userData['email']);
+      await prefs.setString('phone', userData['phone']);
+
+      if(userType == 'Company')
+      {
+        await prefs.setString('plan', userData['subscription_plan']);
+      }
+      else if(userType == 'Representative')
+      {
+        await prefs.setString('province', userData['province']);
+        await prefs.setString('companyID', userData['company_id']);
+        await prefs.setBool('submitted', userData['submitted']);
+      }
+      else if(userType == 'Distributor')
+      {
+        await prefs.setString('plan', userData['subscription_plan']);
+        await prefs.setString('province', userData['province']);
+      }
+      else if(userType == 'Store')
+      {
+        await prefs.setString('province', userData['province']);
+        await prefs.setString('address', userData['address']);
+      }
 
       navigateRemoveUntil(context, getHomePage(userType));
     }catch(e)

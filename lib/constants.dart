@@ -20,6 +20,7 @@ const categoriesConst = 'Categories';
 const representativesNumberConst = 'number_of_representatives';
 const plansConst = 'subscription_plan';
 const productsConst = 'Products';
+const ordersConst = 'Orders';
 
 List<Map<String,dynamic>> appCountries = 
 [

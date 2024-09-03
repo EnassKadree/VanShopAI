@@ -123,7 +123,7 @@ class CompanyRepresentatives extends StatelessWidget
         }
         else
         {
-          return const CompanyRepresentativesListView(submitted: true);
+          return const CompanyRepresentativesListView(submitted: false);
         }
       }
   }

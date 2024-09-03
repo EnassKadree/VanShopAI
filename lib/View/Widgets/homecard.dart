@@ -3,29 +3,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/View/Company/companyproducts.dart';
-import 'package:vanshopai/View/Company/companyrepresentatives.dart';
 
-class CompanyHomeCard extends StatelessWidget 
+class HomeCard extends StatelessWidget 
 {
-  const CompanyHomeCard({
-    super.key, required this.text
+  const HomeCard({
+    super.key, required this.text, required this.page
   });
   final String text;
+  final Widget page;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     return InkWell
     (
       onTap: ()
       {
-        if (text == 'منتجات الشركة') {
-          navigateTo(context, const CompanyProducts());
-        }
-        else
-        {
-          navigateTo(context, const CompanyRepresentatives());
-        }
+        navigateTo(context, page);
       },
       child: Card
       (
