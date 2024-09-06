@@ -25,13 +25,13 @@ class GetProductsCubit extends Cubit<GetProductsState>
         .where('company_id', isEqualTo: prefs.getString('companyID')).where('archived', isEqualTo: false)
         .get();
 
-        products = querySnapshot.docs.map((doc) 
-        {
-          return Product.fromJson
-          ({
-            ...doc.data() as Map<String, dynamic>, 
-            'id': doc.id, 
-          });
+      products = querySnapshot.docs.map((doc) 
+      {
+        return Product.fromJson
+        ({
+          ...doc.data() as Map<String, dynamic>, 
+          'id': doc.id, 
+        });
       }).toList();
 
       emit(GetProductsSuccess());

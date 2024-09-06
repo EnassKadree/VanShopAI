@@ -1,13 +1,12 @@
-// ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:libphonenumber/libphonenumber.dart';
 
 class CustomTextFormField extends StatelessWidget 
 {
-  CustomTextFormField({super.key, required this.hint, this.controller});
-  String? hint;
-  TextEditingController? controller;
+  const CustomTextFormField({super.key, required this.hint, this.controller});
+  final String? hint;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) 
@@ -32,7 +31,7 @@ class CustomTextFormField extends StatelessWidget
         {return 'الحقل مطلوب';}
 
         if(data.isEmpty)
-          {return 'الحقل مطلوب';}
+        {return 'الحقل مطلوب';}
 
         if(hint == 'رقم الهاتف'  &&!isValid)
         {return 'يرجى إدخال رقم هاتف صحيح مع الرمز الدولي';}

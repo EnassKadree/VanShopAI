@@ -105,7 +105,7 @@ List<Map<String, dynamic>> filterSelectedProducts(Map<String, int> selectedProdu
   {
     final order = OrderModel
     (
-      distributorId: prefs.getString('userID'),
+      representativeId: prefs.getString('userID'),
       storeId: storesCubit.selectedStore!.id,
       products: filterSelectedProducts(selectedProducts, context),
       status: 'قيد التجهيز',

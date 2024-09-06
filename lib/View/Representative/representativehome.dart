@@ -8,6 +8,8 @@ import 'package:vanshopai/View/Company/companyrepresentatives.dart';
 import 'package:vanshopai/View/General%20Widgets/homeheader.dart';
 import 'package:vanshopai/sharedprefsUtils.dart';
 
+import 'incomingorders.dart';
+
 class RepresentativeHome extends StatelessWidget 
 {
   const RepresentativeHome({super.key});
@@ -34,7 +36,7 @@ class RepresentativeHome extends StatelessWidget
             ),
             HomeCard(
               text: 'الطلبيات الواردة',
-              page: CompanyRepresentatives(),
+              page: IncomingOrdersPage(),
             ),
             HomeCard(
               text: 'الطلبيات المنتهية',

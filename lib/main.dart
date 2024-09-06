@@ -8,6 +8,7 @@ import 'package:vanshopai/Cubits/Auth/Subscription%20Plan%20Cubit/subscription_p
 import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
 import 'package:vanshopai/Cubits/Company/Represntatives%20Cubit/representatives_cubit.dart';
 import 'package:vanshopai/Cubits/Representative/Add%20Order%20Cubit/add_order_cubit.dart';
+import 'package:vanshopai/Cubits/Representative/Generate%20PDF%20Cubit/generate_pdf_cubit.dart';
 import 'package:vanshopai/Cubits/Representative/Get%20Products%20Cubit/get_products_cubit.dart';
 import 'package:vanshopai/Cubits/Representative/Get%20Stores%20Cubit/get_stores_cubit.dart';
 import 'package:vanshopai/Cubits/Representative/Quantity%20Cubit/quantity_cubit.dart';
@@ -15,6 +16,8 @@ import 'package:vanshopai/View/Auth/Other/entry.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:vanshopai/sharedprefsUtils.dart';
+import 'Cubits/Representative/Get Order Details Cubit/get_order_details_cubit.dart';
+import 'Cubits/Representative/Get Orders Cubit/get_incoming_orders_cubit.dart';
 import 'firebase_options.dart';
 
 void main() async 
@@ -47,6 +50,9 @@ class MyApp extends StatelessWidget
         BlocProvider(create: (context) => GetStoresCubit()),
         BlocProvider(create: (context) => GetProductsCubit()),
         BlocProvider(create: (context) => QuantityCubit()),
+        BlocProvider(create: (context) => GetIncomingOrdersCubit()),
+        BlocProvider(create: (context) => GetOrderDetailsCubit()),
+        BlocProvider(create: (context) => GeneratePdfCubit()),
       ],
       child: Directionality
       (

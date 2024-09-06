@@ -8,6 +8,7 @@ class OrderModel
   late String storeId;
   late List<Map<String, dynamic>> products;
   late String status;
+  DateTime? createdAt;
 
   OrderModel
   ({
@@ -16,7 +17,8 @@ class OrderModel
     this.distributorId,
     required this.storeId,
     required this.products,
-    required this.status
+    required this.status,
+    this.createdAt
   });
 
   factory OrderModel.fromJson(Map<String, dynamic> json) 
@@ -28,7 +30,8 @@ class OrderModel
       representativeId: json['representative_id'],
       storeId: json['store_id'],
       products: List<Map<String, dynamic>>.from(json['products']),
-      status:  json['status']
+      status:  json['status'],
+      createdAt: json['created_at'].toDate()
     );
   }
 

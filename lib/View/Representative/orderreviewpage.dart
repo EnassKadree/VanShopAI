@@ -28,7 +28,8 @@ class OrderReviewPage extends StatelessWidget
   Widget build(BuildContext context) 
   {
     return Scaffold(
-        bottomNavigationBar: Padding(
+        bottomNavigationBar: Padding
+        (
           padding: const EdgeInsets.all(16.0),
           child: CustomButton
           (
@@ -59,20 +60,25 @@ class OrderReviewPage extends StatelessWidget
             return Padding
             (
               padding: const EdgeInsets.all(24),
-              child: ListView(
-                children: [
+              child: ListView
+              (
+                children:
+                [
                   Center(child: TitleText('مراجعة الطلبية', fontSize: 32)),
                   const SizedBox(
                     height: 24,
                   ),
-                  Row(
+                  Row
+                  (
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: 
+                    [
                       TitleText('الزبون:'),
                       const SizedBox(
                         width: 8,
                       ),
-                      Text(
+                      Text
+                      (
                         storeName,
                         softWrap: true,
                         style:
@@ -80,7 +86,8 @@ class OrderReviewPage extends StatelessWidget
                       ),
                     ],
                   ),
-                  const SizedBox(
+                  const SizedBox
+                  (
                     height: 8,
                   ),
                   TitleText('المنتجات:'),

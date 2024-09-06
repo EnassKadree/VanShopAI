@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+// import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 
@@ -21,8 +21,8 @@ class RepresentativeInfoCard extends StatelessWidget
         {
           if(type == 'email')
           {await openMail(context);}
-          else if(type == 'phone')
-          {await FlutterPhoneDirectCaller.callNumber(data);}
+          // else if(type == 'phone')
+          // {await FlutterPhoneDirectCaller.callNumber(data);}
         },
         child: Card
         (
