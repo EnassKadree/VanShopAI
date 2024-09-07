@@ -1,3 +1,5 @@
+import 'store.dart';
+
 class Representative 
 {
   late String id;
@@ -8,6 +10,7 @@ class Representative
   late bool submitted;
   late String email;
   late String phone;
+  late List<Store>? stores;
 
   Representative
   ({
@@ -18,7 +21,8 @@ class Representative
     required this.province,
     required this.submitted,
     required this.email, 
-    required this.phone
+    required this.phone,
+    this.stores
   });
 
   factory Representative.fromJson(Map<String, dynamic> json) 
@@ -33,6 +37,7 @@ class Representative
       submitted: json['submitted'] ,
       email: json['email'] ,
       phone: json['phone'],
+      stores: json['stores']
     );
   }
 }

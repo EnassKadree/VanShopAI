@@ -7,9 +7,9 @@ import 'package:vanshopai/View/Representative/Widgets/orderslistview.dart';
 
 import '../../Helper/text.dart';
 
-class IncomingOrdersPage extends StatelessWidget 
+class DoneOrdersPage extends StatelessWidget 
 {
-  const IncomingOrdersPage({super.key});
+  const DoneOrdersPage({super.key});
 
   @override
   Widget build(BuildContext context) 
@@ -25,7 +25,7 @@ class IncomingOrdersPage extends StatelessWidget
         (
           children: 
           [
-            TitleText('الطلبيات الواردة', fontSize: 32),
+            TitleText('الطلبيات المنتهية', fontSize: 32),
             const SizedBox(height: 16),
             BlocBuilder<GetOrdersCubit, GetOrdersState>
             (
@@ -68,27 +68,18 @@ class IncomingOrdersPage extends StatelessWidget
                     ),
                   );
                 }
-                if(cubit.incomingOrders.isEmpty)
+                if(cubit.doneOrders.isEmpty)
                 {
-                  return Column
+                  return const Column
                   (
                     children:
                     [
-                      const SizedBox(height: 32,),
-                      Row
-                      (
-                        mainAxisSize: MainAxisSize.min,
-                        children: 
-                        [
-                          Icon(Icons.done_all, color: Colors.blue[600],size: 24,),
-                          const SizedBox(width: 6,),
-                          const Text('لا يوجد أي طلبات واردة!', style: TextStyle(fontSize: 18, color: Colors.grey),),
-                        ],
-                      )
+                      SizedBox(height: 32,),
+                      Text('لا يوجد أي طلبات منتهية!', style: TextStyle(fontSize: 18, color: Colors.grey),)
                     ]
                   );
                 }
-                return OrdersListView(orders: cubit.incomingOrders);
+                return OrdersListView(orders: cubit.doneOrders);
               },
             )
           ],

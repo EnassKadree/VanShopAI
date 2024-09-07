@@ -1,12 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vanshopai/View/Representative/Widgets/repstoreselistview.dart';
 
 import '../../../Cubits/Representative/Get Stores Cubit/get_stores_cubit.dart';
 import '../../General Widgets/progressindicator.dart';
-import 'storeradiolistview.dart';
 
-storesBuilder(context, state) 
+recommendedStoresBuilder(context, state) 
 {
   final cubit = BlocProvider.of<GetStoresCubit>(context);
   if (state is GetStoresLoading) 
@@ -25,7 +25,7 @@ storesBuilder(context, state)
           ),
           TextButton(
               onPressed: () {
-                cubit.getStores();
+                cubit.getRecommendedStores();
               },
               child: Text(
                 'حاول مرة أخرى',
@@ -35,7 +35,7 @@ storesBuilder(context, state)
       ),
     );
   } else {
-    if (cubit.stores.isEmpty) {
+    if (cubit.recommendedStores.isEmpty) {
       return const Center
       (
           child: Column
@@ -44,13 +44,14 @@ storesBuilder(context, state)
             [
               SizedBox(height: 32,),
               Text(
-                'لا يوجد أي متاجر في قائمة زبائنك!',
+                'لا يوجد أي متاجر متاحة لك!',
                 style: TextStyle(fontSize: 18, color: Colors.grey),
               ),
             ],
           ));
-    } else {
-      return const StoreRadioListView();
+    } else 
+    {
+      return Expanded(child: RepStoresListView(stores: cubit.recommendedStores, recommended: true,));
     }
   }
 }

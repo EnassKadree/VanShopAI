@@ -83,17 +83,6 @@ List<Map<String, dynamic>> filterSelectedProducts(Map<String, int> selectedProdu
       .toList();
 }
 
-  OrderModel createOrder(GetStoresCubit storesCubit, List<Map<String, dynamic>> orderProducts) 
-  {
-    return OrderModel(
-      distributorId: prefs.getString('userID'),
-      storeId: storesCubit.selectedStore!.id,
-      products: orderProducts,
-      status: 'قيد التجهيز',
-    );
-  }
-
-
   double calculateTotalPrice(List<Map<String, dynamic>> orderProducts) 
   {
     return orderProducts.fold(0.0, (total, product) {
@@ -109,6 +98,7 @@ List<Map<String, dynamic>> filterSelectedProducts(Map<String, int> selectedProdu
       storeId: storesCubit.selectedStore!.id,
       products: filterSelectedProducts(selectedProducts, context),
       status: 'قيد التجهيز',
+      storeName: storesCubit.selectedStore!.tradeName
     );
 
     addOrderCubit.addOrder(order);

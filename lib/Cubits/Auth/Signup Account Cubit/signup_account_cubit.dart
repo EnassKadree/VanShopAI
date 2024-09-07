@@ -149,6 +149,8 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
           'country' : country,
           'province' : province,
           'createdAt': FieldValue.serverTimestamp(),
+          'stores' : [],
+          'categories' : []
         }, SetOptions(merge: true));
         emit(SignUpAccountSuccess());
       }catch(e)
@@ -181,6 +183,8 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
           'company_id': querySnapshot.docs.first.id,
           'submitted': false,
           'createdAt': FieldValue.serverTimestamp(),
+          'stores' : [],
+          'categories': []
         });
         emit(SignUpAccountSuccess());
       }catch(e)
@@ -212,6 +216,7 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
           'province' : province,
           'address': address,
           'createdAt': FieldValue.serverTimestamp(),
+          'categories' : []
         });
         emit(SignUpAccountSuccess());
       }catch(e)

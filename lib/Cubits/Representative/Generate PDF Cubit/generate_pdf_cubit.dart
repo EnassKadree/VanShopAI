@@ -18,10 +18,10 @@ class GeneratePdfCubit extends Cubit<GeneratePdfState>
 {
   GeneratePdfCubit() : super(GeneratePdfInitial());
 
-  Future<void> shareOrder(OrderModel order, String storeName,) async 
+  Future<void> shareOrder(OrderModel order) async 
   {
       emit(GeneratePDFLoading());
-    final pdfData = await generateOrderPdf(order , storeName);
+    final pdfData = await generateOrderPdf(order);
     final tempDir = await getTemporaryDirectory();
     final file = File('${tempDir.path}/order_${order.id}.pdf');
     await file.writeAsBytes(pdfData);
@@ -43,7 +43,7 @@ class GeneratePdfCubit extends Cubit<GeneratePdfState>
   }
 
   
-  Future<Uint8List> generateOrderPdf(OrderModel order, String storeName) async 
+  Future<Uint8List> generateOrderPdf(OrderModel order) async 
   {
 
     final ttf = await loadFont();
@@ -74,7 +74,7 @@ class GeneratePdfCubit extends Cubit<GeneratePdfState>
                 children: 
                 [
                   pw.Text
-                  (storeName, style: pw.TextStyle(fontSize: 20,font: ttf, color: PdfColor.fromHex('#8B4513')),textDirection: pw.TextDirection.rtl),
+                  (order.storeName, style: pw.TextStyle(fontSize: 20,font: ttf, color: PdfColor.fromHex('#8B4513')),textDirection: pw.TextDirection.rtl),
                   pw.Text
                   ('متجر:   ', style: pw.TextStyle(fontSize: 20,font: ttf, color: PdfColor.fromHex('#FFA07A')),textDirection: pw.TextDirection.rtl),
                 ]

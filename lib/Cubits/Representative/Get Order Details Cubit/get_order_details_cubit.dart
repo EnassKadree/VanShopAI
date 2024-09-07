@@ -18,6 +18,15 @@ class GetOrderDetailsCubit extends Cubit<GetOrderDetailsState>
     try
     {
       emit(GetOrderDetailsLoading());
+
+      if (order.originalProducts == null) 
+      {
+      order.originalProducts = List.from(order.products); 
+      } else 
+      {
+        order.products = List.from(order.originalProducts!);
+      }
+
       List<Map<String,dynamic>> orderProductsTemp = [];
       for (var product in order.products) 
       {
@@ -37,7 +46,6 @@ class GetOrderDetailsCubit extends Cubit<GetOrderDetailsState>
       emit(GetOrderDetailsSuccess());
     }catch(e)
     {
-      print(e.toString());
       emit(GetOrderDetailsFailure());
     }
   }

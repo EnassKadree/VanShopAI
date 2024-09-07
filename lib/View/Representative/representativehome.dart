@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:vanshopai/View/Company/Widgets/companydrawer.dart';
 import 'package:vanshopai/View/Representative/addorderpage.dart';
+import 'package:vanshopai/View/Representative/doneorders.dart';
 import 'package:vanshopai/View/Representative/repunsubmittedpage.dart';
 import 'package:vanshopai/View/General%20Widgets/homecard.dart';
 import 'package:vanshopai/View/Company/Widgets/customappbar.dart';
-import 'package:vanshopai/View/Company/companyrepresentatives.dart';
 import 'package:vanshopai/View/General%20Widgets/homeheader.dart';
 import 'package:vanshopai/sharedprefsUtils.dart';
 
 import 'incomingorders.dart';
+import 'representativestores.dart';
 
 class RepresentativeHome extends StatelessWidget 
 {
@@ -40,11 +41,11 @@ class RepresentativeHome extends StatelessWidget
             ),
             HomeCard(
               text: 'الطلبيات المنتهية',
-              page: CompanyRepresentatives(),
+              page: DoneOrdersPage(),
             ),
             HomeCard(
               text: 'زبائني',
-              page: CompanyRepresentatives(),
+              page: RepresentativeStores(),
             ),
           ],
       ));

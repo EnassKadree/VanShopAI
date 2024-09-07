@@ -9,6 +9,10 @@ class OrderModel
   late List<Map<String, dynamic>> products;
   late String status;
   DateTime? createdAt;
+  late String storeName;
+
+  // this list is just used to make sure not to lose data when refetching order data
+  List<Map<String, dynamic>>? originalProducts;
 
   OrderModel
   ({
@@ -18,7 +22,10 @@ class OrderModel
     required this.storeId,
     required this.products,
     required this.status,
-    this.createdAt
+    this.createdAt,
+    required this.storeName,
+
+    this.originalProducts
   });
 
   factory OrderModel.fromJson(Map<String, dynamic> json) 
@@ -31,7 +38,8 @@ class OrderModel
       storeId: json['store_id'],
       products: List<Map<String, dynamic>>.from(json['products']),
       status:  json['status'],
-      createdAt: json['created_at'].toDate()
+      createdAt: json['created_at'].toDate(),
+      storeName: json['store_name']
     );
   }
 
@@ -45,6 +53,7 @@ class OrderModel
       'store_id' : storeId,
       'status' : status,
       'created_at': FieldValue.serverTimestamp(),
+      'store_name': storeName
     };
   }
 }

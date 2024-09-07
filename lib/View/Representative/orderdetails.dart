@@ -8,14 +8,15 @@ import 'package:vanshopai/Model/order.dart';
 import '../../Helper/text.dart';
 import '../General Widgets/progressindicator.dart';
 
-class OrderDetailsPage extends StatelessWidget {
-  const OrderDetailsPage(
-      {super.key, required this.order, required this.storeName});
+class OrderDetailsPage extends StatelessWidget 
+{
+  const OrderDetailsPage
+  ({super.key, required this.order});
   final OrderModel order;
-  final String storeName;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     final cubit = BlocProvider.of<GetOrderDetailsCubit>(context);
     final pdfCubit = BlocProvider.of<GeneratePdfCubit>(context);
     cubit.getProductDetails(order);
@@ -49,7 +50,7 @@ class OrderDetailsPage extends StatelessWidget {
                   label: const Text('مشاركة', style: TextStyle(color: Colors.white)),
                   onPressed: () async 
                   {
-                    await pdfCubit.shareOrder(order, storeName);
+                    await pdfCubit.shareOrder(order);
                   }
               );
             }
@@ -57,26 +58,30 @@ class OrderDetailsPage extends StatelessWidget {
     ), 
     body: BlocBuilder<GetOrderDetailsCubit, GetOrderDetailsState>(
       builder: (context, state) {
-        if (state is GetOrderDetailsLoading) {
+        if (state is GetOrderDetailsLoading) 
+        {
           return const MyProgressIndicator();
-        } else if (state is GetOrderDetailsFailure) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text('تعذر تحميل تفاصيل الطلب!'),
-              const SizedBox(
-                height: 16,
-              ),
-              TextButton(
-                  onPressed: () async {
-                    await cubit.getProductDetails(order);
-                  },
-                  child: Text(
-                    'حاول مرة أخرى',
-                    style: TextStyle(color: Colors.orange[700]!),
-                  ))
-            ],
+        } else if (state is GetOrderDetailsFailure) 
+        {
+          return Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('تعذر تحميل تفاصيل الطلب!'),
+                const SizedBox(
+                  height: 16,
+                ),
+                TextButton(
+                    onPressed: () async {
+                      await cubit.getProductDetails(order);
+                    },
+                    child: Text(
+                      'حاول مرة أخرى',
+                      style: TextStyle(color: Colors.orange[700]!),
+                    ))
+              ],
+            ),
           );
         }
         return Padding(
@@ -95,7 +100,7 @@ class OrderDetailsPage extends StatelessWidget {
                     width: 8,
                   ),
                   Text(
-                    storeName,
+                    order.storeName,
                     softWrap: true,
                     style: const TextStyle(fontSize: 22, color: Colors.brown),
                   ),
