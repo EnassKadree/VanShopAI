@@ -29,7 +29,10 @@ class RepStoresListView extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return ListView.builder(
+        return ListView.builder
+        (
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
           itemCount: stores.length,
           itemBuilder: ((context, index) 
           {

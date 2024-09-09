@@ -21,18 +21,19 @@ class RepresentativeStores extends StatelessWidget
     (
       floatingActionButton: FloatingActionButton
       (
+        heroTag: 'fab_rep_stores', 
         child: const Icon(Icons.add),
         onPressed: (){navigateTo(context, const AddRepStorePage());}
       ),
       body: Padding
       (
         padding: const EdgeInsets.all(16.0),
-        child: Column
+        child: ListView
         (
           children: 
           [
-            const SizedBox(height: 24,),
             TitleText('زبائني', fontSize: 32),
+            const SizedBox(height: 16),
             BlocBuilder<GetStoresCubit, GetStoresState>
             (
               builder: (context, state) 
@@ -90,10 +91,7 @@ class RepresentativeStores extends StatelessWidget
                     );
                   } else 
                   {
-                    return Expanded
-                    (
-                      child: RepStoresListView(stores: cubit.stores, recommended: false,),
-                    );
+                    return RepStoresListView(stores: cubit.stores, recommended: false,);
                   }
                 }
               }

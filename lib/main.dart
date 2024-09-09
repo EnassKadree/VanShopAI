@@ -18,6 +18,7 @@ import 'package:vanshopai/View/Auth/Other/entry.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:vanshopai/sharedprefsUtils.dart';
+import 'Cubits/Bottom Nav Cubit/bottom_nav_cubit.dart';
 import 'Cubits/Representative/Get Order Details Cubit/get_order_details_cubit.dart';
 import 'Cubits/Representative/Get Orders Cubit/get_orders_cubit.dart';
 import 'firebase_options.dart';
@@ -57,16 +58,25 @@ class MyApp extends StatelessWidget
         BlocProvider(create: (context) => GeneratePdfCubit()),
         BlocProvider(create: (context) => UpdateOrderCubit()),
         BlocProvider(create: (context) => AddRepStoreCubit()),
+        BlocProvider(create: (context) => BottomNavCubit()),
       ],
       child: Directionality
       (
         textDirection: TextDirection.rtl,
-        child: MaterialApp(
+        child: MaterialApp
+        (
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
+          theme: ThemeData
+          (
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
             fontFamily: 'Cairo',
             useMaterial3: true,
+            bottomNavigationBarTheme: BottomNavigationBarThemeData
+            (
+              selectedItemColor: Colors.orangeAccent,  
+              unselectedItemColor: Colors.brown[300], 
+              showUnselectedLabels: true
+            ),
           ),
           localizationsDelegates: const 
           [
@@ -84,8 +94,6 @@ class MyApp extends StatelessWidget
             getHomePage(prefs.getString('userType')!)
           :
             const EntryPage()
-          // : prefs.getString('userData') == null?
-
         ),
       ),
     );

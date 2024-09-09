@@ -81,6 +81,7 @@ class LoginCubit extends Cubit<LoginState>
       await prefs.setString('name', userData['trade_name']);
       await prefs.setString('email', userData['email']);
       await prefs.setString('phone', userData['phone']);
+      await prefs.setString('country', userData['country']);
 
       if(userType == 'Company')
       {
@@ -88,9 +89,11 @@ class LoginCubit extends Cubit<LoginState>
       }
       else if(userType == 'Representative')
       {
+        String? company = await getCompanyName(userData);
         await prefs.setString('province', userData['province']);
         await prefs.setString('companyID', userData['company_id']);
         await prefs.setBool('submitted', userData['submitted']);
+        await prefs.setString('companyName', company ?? '');
       }
       else if(userType == 'Distributor')
       {
@@ -136,7 +139,20 @@ Future<String> _getUserType(String uid) async
   {
     CollectionReference collection = fireStore.collection(userType == 'Company'? 'Companies' : '${userType}s');
     DocumentSnapshot doc = await collection.doc(uid).get();
-    print(doc.data().toString());
     return doc.data() as Map<String, dynamic>;
+  }
+
+  Future<String?> getCompanyName(doc) async
+  {
+    try
+    {
+      DocumentSnapshot documentSnapshot = await fireStore.collection('Companies').doc(doc['company_id']).get();
+      print(doc['company_id']);
+      print(documentSnapshot.toString());
+      return documentSnapshot['trade_name'];
+    }catch(e)
+    {
+      return null;
+    }
   }
 }

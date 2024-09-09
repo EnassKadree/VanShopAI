@@ -30,7 +30,7 @@ class AddOrderButton extends StatelessWidget
   {
     return Padding
     (
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
       child: CustomButton(
         text: 'تم',
         onTap: () 
