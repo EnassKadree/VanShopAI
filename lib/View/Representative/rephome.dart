@@ -9,7 +9,7 @@ import 'package:vanshopai/sharedprefsUtils.dart';
 
 import '../../Cubits/Bottom Nav Cubit/bottom_nav_cubit.dart';
 import 'incomingorders.dart';
-import 'representativestores.dart';
+import 'repstores.dart';
 
 class RepresentativeHome extends StatelessWidget {
   const RepresentativeHome({super.key});

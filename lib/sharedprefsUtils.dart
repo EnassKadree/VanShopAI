@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vanshopai/View/Auth/Login/login.dart';
 import 'package:vanshopai/View/Company/companyhome.dart';
-import 'package:vanshopai/View/Representative/representativehome.dart';
+import 'package:vanshopai/View/Representative/rephome.dart';
 
 late SharedPreferences prefs;
 //late Map<String, dynamic> userData;
