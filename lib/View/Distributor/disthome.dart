@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:vanshopai/View/Distributor/distdoneorders.dart';
+import 'package:vanshopai/View/Distributor/distincomingorders.dart';
 import 'package:vanshopai/View/Distributor/distproducts.dart';
 import 'package:vanshopai/View/Distributor/distprofile.dart';
+import 'package:vanshopai/View/Distributor/diststores.dart';
 
 import '../../Cubits/Bottom Nav Cubit/bottom_nav_cubit.dart';
 
@@ -13,10 +16,9 @@ class DistributorHome extends StatelessWidget {
   [
     DistProfile(),
     DistProducts(),
-    DistProfile(),
-    DistProfile(),
-    DistProfile(),
-    DistProfile(),
+    DistIncomingOrdersPage(),
+    DistDoneOrdersPage(),
+    DistStores(),
   ];
 
   @override

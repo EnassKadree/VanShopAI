@@ -58,6 +58,7 @@ class AddOrderButton extends StatelessWidget
             orderProducts: orderProducts, 
             totalPrice: totalPrice, 
             onConfirmOrder:  () => confirmOrder(context, storesCubit, sender),
+            sender: sender
           ));
         },
       ),
@@ -101,6 +102,8 @@ List<Map<String, dynamic>> filterSelectedProducts(Map<String, int> selectedProdu
     }
     else if(sender == distributorsConst)
     {
+      print('<<<<<<<<<<<<<<<<<<<<<<<<................');
+      print(storesCubit.selectedStore.toString());
       final order = OrderModel
       (
         distributorId: prefs.getString('userID'),

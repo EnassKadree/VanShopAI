@@ -14,7 +14,6 @@ class CheckBoxListView extends StatelessWidget
     (
       builder: (context, state) 
       {
-        print(state.toString());
         return ListView.builder
         (
           itemCount: cubit.categories.length,

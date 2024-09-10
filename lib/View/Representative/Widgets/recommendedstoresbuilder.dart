@@ -1,13 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vanshopai/View/Representative/Widgets/repstoreselistview.dart';
-import 'package:vanshopai/constants.dart';
+import 'package:vanshopai/View/Representative/Widgets/storeselistview.dart';
 
 import '../../../Cubits/Representative/Get Stores Cubit/get_stores_cubit.dart';
 import '../../General Widgets/progressindicator.dart';
 
-recommendedStoresBuilder(context, state) 
+recommendedStoresBuilder(context, state, sender) 
 {
   final cubit = BlocProvider.of<GetStoresCubit>(context);
   if (state is GetStoresLoading) 
@@ -26,7 +25,7 @@ recommendedStoresBuilder(context, state)
           ),
           TextButton(
               onPressed: () {
-                cubit.getRecommendedStores(representativeConst);
+                cubit.getRecommendedStores(sender);
               },
               child: Text(
                 'حاول مرة أخرى',
@@ -52,7 +51,7 @@ recommendedStoresBuilder(context, state)
           ));
     } else 
     {
-      return Expanded(child: RepStoresListView(stores: cubit.recommendedStores, recommended: true,));
+      return Expanded(child: StoresListView(stores: cubit.recommendedStores, recommended: true,sender: sender,));
     }
   }
 }

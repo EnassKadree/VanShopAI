@@ -47,6 +47,7 @@ class GetStoresCubit extends Cubit<GetStoresState>
           });
         }).toList();
       }
+      if(stores.isNotEmpty) {selectedStore = stores.first;}
 
     emit(GetStoresSuccess());
 

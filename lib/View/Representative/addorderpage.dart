@@ -44,7 +44,7 @@ class AddRepOrderPage extends StatelessWidget
               (
                 builder: (context, state) 
                 {
-                return storesBuilder(context, state);
+                return storesBuilder(context, state, representativeConst);
                 }
               ),
               const SizedBox(height: 16,),

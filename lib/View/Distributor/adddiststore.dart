@@ -4,17 +4,18 @@ import 'package:vanshopai/Cubits/Representative/Get%20Stores%20Cubit/get_stores_
 import 'package:vanshopai/Helper/text.dart';
 import 'package:vanshopai/constants.dart';
 
-import 'Widgets/recommendedstoresbuilder.dart';
+import '../Representative/Widgets/recommendedstoresbuilder.dart';
 
-class AddRepStorePage extends StatelessWidget 
+class AddDistStorePage extends StatelessWidget 
 {
-  const AddRepStorePage({super.key});
+  const AddDistStorePage({super.key});
 
   @override
   Widget build(BuildContext context) 
   {
     final cubit = BlocProvider.of<GetStoresCubit>(context);
-    cubit.getRecommendedStores(representativeConst);
+    cubit.getRecommendedStores(distributorsConst);
+
     return Scaffold
     (
       body: Padding
@@ -30,7 +31,7 @@ class AddRepStorePage extends StatelessWidget
             (
               builder: (context, state)
               {
-                return recommendedStoresBuilder(context, state, representativeConst);
+                return recommendedStoresBuilder(context, state, distributorsConst);
               }
             )
           ],

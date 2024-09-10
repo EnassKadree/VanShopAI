@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
-import 'package:vanshopai/constants.dart';
+import 'package:vanshopai/Cubits/Representative/Get%20Stores%20Cubit/get_stores_cubit.dart';
 import 'package:vanshopai/sharedprefsUtils.dart';
 
 import '../../../Model/store.dart';
@@ -13,7 +13,7 @@ class AddRepStoreCubit extends Cubit<AddRepStoreState>
   AddRepStoreCubit() : super(AddRepStoreInitial());
   FirebaseFirestore fireStore = FirebaseFirestore.instance; 
 
-  Future<void> addRepStore(Store store, cubit) async
+  Future<void> addUserStore(Store store, GetStoresCubit cubit, sender) async
   {
     emit(AddRepStoreLoading());
 
@@ -22,7 +22,7 @@ class AddRepStoreCubit extends Cubit<AddRepStoreState>
       cubit.stores.add(store);
       cubit.recommendedStores.remove(store);
 
-      await fireStore.collection(representativeConst)
+      await fireStore.collection(sender)
         .doc(prefs.getString('userID'))
         .update
         ({
@@ -31,11 +31,10 @@ class AddRepStoreCubit extends Cubit<AddRepStoreState>
 
       emit(AddRepStoreSuccess());
 
-      cubit.getRecommendedStores();
-      cubit.getStores();
+      cubit.getRecommendedStores(sender);
+      cubit.getStores(sender);
     }catch(e)
     {
-
       emit(AddRepStoreFailure());
     }
   }

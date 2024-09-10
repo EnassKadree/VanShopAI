@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/View/General%20Widgets/customfloatingactionbutton.dart';
 import 'package:vanshopai/View/Representative/addorderpage.dart';
-import 'package:vanshopai/View/Representative/doneorders.dart';
+import 'package:vanshopai/View/Representative/repdoneorders.dart';
 import 'package:vanshopai/View/Representative/repprofile.dart';
 import 'package:vanshopai/View/Representative/repunsubmittedpage.dart';
 import 'package:vanshopai/sharedprefsUtils.dart';
 
 import '../../Cubits/Bottom Nav Cubit/bottom_nav_cubit.dart';
-import 'incomingorders.dart';
+import 'repincomingorders.dart';
 import 'repstores.dart';
 
 class RepresentativeHome extends StatelessWidget {
@@ -17,10 +17,10 @@ class RepresentativeHome extends StatelessWidget {
 
   final List<Widget> _pages = const [
     RepProfile(),
-    IncomingOrdersPage(),
+    RepIncomingOrdersPage(),
     AddRepOrderPage(),
-    DoneOrdersPage(),
-    RepresentativeStores(),
+    RepDoneOrdersPage(),
+    RepStores(),
   ];
 
   @override

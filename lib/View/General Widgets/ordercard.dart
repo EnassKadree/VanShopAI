@@ -6,19 +6,20 @@ import 'package:vanshopai/Cubits/Representative/Get%20Orders%20Cubit/get_orders_
 import 'package:vanshopai/Cubits/Representative/Update%20Order/update_order_cubit.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 
-import '../../../Helper/navigators.dart';
-import '../../../Helper/orderfunctions.dart';
-import '../../../Model/order.dart';
-import '../orderdetails.dart';
+import '../../Helper/navigators.dart';
+import '../../Helper/orderfunctions.dart';
+import '../../Model/order.dart';
+import '../Representative/orderdetails.dart';
 
 class OrderCard extends StatelessWidget 
 {
   const OrderCard({
     super.key,
-    required this.order,
+    required this.order, required this.sender
   });
 
   final OrderModel order;
+  final String sender;
 
   @override
   Widget build(BuildContext context) 
@@ -89,7 +90,7 @@ class OrderCard extends StatelessWidget
                               onPressed: ()
                               {
                                 BlocProvider.of<UpdateOrderCubit>(context).updateOrderStatus(order);
-                                BlocProvider.of<GetOrdersCubit>(context).getOrders();
+                                BlocProvider.of<GetOrdersCubit>(context).getOrders(sender);
                                 pop(context);
                               }, 
                               child: Text('تسليم', style: TextStyle(color: Colors.orange[700]),)

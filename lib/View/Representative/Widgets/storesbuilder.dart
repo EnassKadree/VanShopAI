@@ -1,13 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vanshopai/constants.dart';
 
 import '../../../Cubits/Representative/Get Stores Cubit/get_stores_cubit.dart';
 import '../../General Widgets/progressindicator.dart';
-import 'storeradiolistview.dart';
+import '../../General Widgets/storeradiolistview.dart';
 
-storesBuilder(context, state) 
+storesBuilder(context, state, sender) 
 {
   final cubit = BlocProvider.of<GetStoresCubit>(context);
   if (state is GetStoresLoading) 
@@ -26,7 +25,7 @@ storesBuilder(context, state)
           ),
           TextButton(
               onPressed: () {
-                cubit.getStores(representativeConst);
+                cubit.getStores(sender);
               },
               child: Text(
                 'حاول مرة أخرى',

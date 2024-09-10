@@ -18,12 +18,10 @@ class UpdateOrderCubit extends Cubit<UpdateOrderState>
     try
     {
       await firestore.collection(ordersConst).doc(order.id).update({'status' : 'تم التسليم'});
-      print(order.toString());
       emit(UpdateOrderSuccess());
     }
     catch(e)
     {
-      print(e.toString());
       emit(UpdateOrderFailure());
     }
   }

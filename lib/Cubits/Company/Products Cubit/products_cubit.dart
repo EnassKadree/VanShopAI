@@ -37,7 +37,6 @@ class ProductsCubit extends Cubit<ProductsState>
         .where('archived', isEqualTo: archived)
         .get();
       
-      print(querySnapshot.docs.length);
       if(archived)
       {
         archivedProducts = querySnapshot.docs.map((doc) 

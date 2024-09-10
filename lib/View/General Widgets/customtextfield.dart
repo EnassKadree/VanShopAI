@@ -89,7 +89,6 @@ class CustomTextFormField extends StatelessWidget
       return isValid! ;
     } catch (e) 
     {
-      print("Error validating phone number: $e");
       return false;
     }
   }

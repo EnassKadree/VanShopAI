@@ -3,19 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Representative/Get%20Orders%20Cubit/get_orders_cubit.dart';
 import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
-import 'package:vanshopai/View/Representative/Widgets/orderslistview.dart';
+import 'package:vanshopai/View/General%20Widgets/orderslistview.dart';
+import 'package:vanshopai/constants.dart';
 
 import '../../Helper/text.dart';
 
-class DoneOrdersPage extends StatelessWidget 
+class RepDoneOrdersPage extends StatelessWidget 
 {
-  const DoneOrdersPage({super.key});
+  const RepDoneOrdersPage({super.key});
 
   @override
   Widget build(BuildContext context) 
   {
     final cubit = BlocProvider.of<GetOrdersCubit>(context);
-    cubit.getOrders();
+    cubit.getOrders(representativeConst);
     return Scaffold
     (
       body: Padding
@@ -57,7 +58,7 @@ class DoneOrdersPage extends StatelessWidget
                         ),
                         TextButton(
                             onPressed: () async {
-                              await cubit.getOrders();
+                              await cubit.getOrders(representativeConst);
                             },
                             child: Text
                             (
@@ -79,7 +80,7 @@ class DoneOrdersPage extends StatelessWidget
                     ]
                   );
                 }
-                return OrdersListView(orders: cubit.doneOrders);
+                return OrdersListView(orders: cubit.doneOrders, sender: representativeConst,);
               },
             )
           ],

@@ -6,20 +6,22 @@ import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Representative/Add%20Rep%20Store%20Cubit/add_rep_store_cubit.dart';
 import 'package:vanshopai/Cubits/Representative/Get%20Stores%20Cubit/get_stores_cubit.dart';
 
-import '../../../Helper/navigators.dart';
-import '../../../Model/store.dart';
+import '../../Helper/navigators.dart';
+import '../../Model/store.dart';
 
-class RepStoreCard extends StatelessWidget 
+class StoreCard extends StatelessWidget 
 {
-  const RepStoreCard
+  const StoreCard
   ({
     super.key,
     required this.store,
-    required this.recommended
+    required this.recommended, 
+    required this.sender
   });
 
   final Store store;
   final bool recommended;
+  final String sender;
 
   @override
   Widget build(BuildContext context) 
@@ -98,7 +100,7 @@ class RepStoreCard extends StatelessWidget
                             onPressed: () async
                             {
                               
-                              await BlocProvider.of<AddRepStoreCubit>(context).addRepStore(store, cubit);
+                              await BlocProvider.of<AddRepStoreCubit>(context).addUserStore(store, cubit, sender);
                               pop(context);
                             }, 
                             child: Text('نعم', style: TextStyle(color:Colors.blue[900]))

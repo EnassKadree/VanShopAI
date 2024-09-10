@@ -44,7 +44,7 @@ class AddDistOrderPage extends StatelessWidget
               (
                 builder: (context, state) 
                 {
-                return storesBuilder(context, state);
+                return storesBuilder(context, state, distributorsConst);
                 }
               ),
               const SizedBox(height: 16,),

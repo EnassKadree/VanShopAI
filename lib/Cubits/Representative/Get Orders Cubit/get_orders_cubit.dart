@@ -14,18 +14,19 @@ class GetOrdersCubit extends Cubit<GetOrdersState>
   List<OrderModel> doneOrders = [];
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future<void> getOrders() async 
+  Future<void> getOrders(String sender) async 
   {
     emit(GetOrdersLoading());
     
     try 
     {
       final String? userId = prefs.getString('userID');
+      String owner = sender == representativeConst? 'representative_id' : 'distributor_id';
 
       QuerySnapshot querySnapshot = await firestore
-          .collection(ordersConst)
-          .where('representative_id', isEqualTo: userId)
-          .get();
+        .collection(ordersConst)
+        .where(owner, isEqualTo: userId)
+        .get();
 
 
       List<OrderModel> incomingOrdersTemp = [];

@@ -17,7 +17,6 @@ Future<void> initSharedPreferences() async
 Map<String, dynamic>? getUserData()  
 {
   String? userDataString = prefs.getString('userData');
-  print(userDataString);
 
   if (userDataString != null) 
   {

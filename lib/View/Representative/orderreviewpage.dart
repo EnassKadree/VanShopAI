@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Representative/Add%20Order%20Cubit/add_order_cubit.dart';
+import 'package:vanshopai/Cubits/Representative/Get%20Orders%20Cubit/get_orders_cubit.dart';
 import 'package:vanshopai/Helper/text.dart';
+import 'package:vanshopai/View/Distributor/disthome.dart';
 import 'package:vanshopai/View/General%20Widgets/custombutton.dart';
 import 'package:vanshopai/View/Representative/rephome.dart';
+import 'package:vanshopai/constants.dart';
 
 import '../../Helper/navigators.dart';
 import '../../Helper/snackbar.dart';
@@ -17,12 +20,14 @@ class OrderReviewPage extends StatelessWidget
     required this.orderProducts,
     required this.totalPrice,
     required this.onConfirmOrder,
+    required this.sender
   });
 
   final String storeName;
   final List<Map<String, dynamic>> orderProducts;
   final double totalPrice;
   final VoidCallback onConfirmOrder;
+  final String sender;
 
   @override
   Widget build(BuildContext context) 
@@ -44,7 +49,15 @@ class OrderReviewPage extends StatelessWidget
             if(state is AddOrderSuccess)
             {
               ShowSnackBar(context, 'تم إضافة الطلب بنجاح');
-              navigateRemoveUntil(context, const RepresentativeHome());
+              BlocProvider.of<GetOrdersCubit>(context).getOrders(sender);
+              if(sender == representativeConst)
+              {
+                navigateRemoveUntil(context, const RepresentativeHome());
+              }
+              else if(sender == distributorsConst)
+              {
+                navigateRemoveUntil(context, const DistributorHome());
+              }
             }
             if(state is AddOrderFailure)
             {

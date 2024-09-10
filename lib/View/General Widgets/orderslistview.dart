@@ -5,8 +5,9 @@ import 'ordercard.dart';
 
 class OrdersListView extends StatelessWidget 
 {
-  const OrdersListView({super.key, required this.orders});
+  const OrdersListView({super.key, required this.orders, required this.sender});
   final List<OrderModel> orders;
+  final String sender;
 
   @override
   Widget build(BuildContext context) 
@@ -23,7 +24,7 @@ class OrdersListView extends StatelessWidget
         (
           children: 
           [
-            OrderCard(order: order),
+            OrderCard(order: order, sender: sender,),
           ],
         );
       }

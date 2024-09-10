@@ -3,22 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Representative/Get%20Orders%20Cubit/get_orders_cubit.dart';
+import 'package:vanshopai/View/Distributor/distaddorderpage.dart';
+import 'package:vanshopai/View/General%20Widgets/customfloatingactionbuttonadd.dart';
 import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
-import 'package:vanshopai/View/Representative/Widgets/orderslistview.dart';
+import 'package:vanshopai/View/General%20Widgets/orderslistview.dart';
+import 'package:vanshopai/constants.dart';
 
 import '../../Helper/text.dart';
 
-class IncomingOrdersPage extends StatelessWidget 
+class DistIncomingOrdersPage extends StatelessWidget 
 {
-  const IncomingOrdersPage({super.key});
+  const DistIncomingOrdersPage({super.key});
 
   @override
   Widget build(BuildContext context) 
   {
     final cubit = BlocProvider.of<GetOrdersCubit>(context);
-    cubit.getOrders();
+    cubit.getOrders(distributorsConst);
     return Scaffold
     (
+      floatingActionButton: const CustomFloatingActionButtonAdd
+      (
+        label: 'إضافة طلب', 
+        rout: AddDistOrderPage()
+      ),
       body: Padding
       (
         padding: const EdgeInsets.all(16.0),
@@ -57,8 +65,9 @@ class IncomingOrdersPage extends StatelessWidget
                           height: 16,
                         ),
                         TextButton(
-                            onPressed: () async {
-                              await cubit.getOrders();
+                            onPressed: () async 
+                            {
+                              await cubit.getOrders(distributorsConst);
                             },
                             child: Text
                             (
@@ -89,7 +98,7 @@ class IncomingOrdersPage extends StatelessWidget
                     ]
                   );
                 }
-                return OrdersListView(orders: cubit.incomingOrders);
+                return OrdersListView(orders: cubit.incomingOrders, sender: distributorsConst,);
               },
             )
           ],

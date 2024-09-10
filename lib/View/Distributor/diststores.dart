@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Helper/text.dart';
+import 'package:vanshopai/View/Distributor/adddiststore.dart';
 import 'package:vanshopai/View/General%20Widgets/customfloatingactionbuttonadd.dart';
+import 'package:vanshopai/View/Representative/Widgets/storeselistview.dart';
 import 'package:vanshopai/constants.dart';
 
 import '../../Cubits/Representative/Get Stores Cubit/get_stores_cubit.dart';
 import '../General Widgets/progressindicator.dart';
-import 'Widgets/storeselistview.dart';
-import 'addrepstore.dart';
 
-class RepStores extends StatelessWidget 
+class DistStores extends StatelessWidget 
 {
-  const RepStores({super.key});
+  const DistStores({super.key});
 
   @override
   Widget build(BuildContext context) 
   {
     final cubit = BlocProvider.of<GetStoresCubit>(context);
-    cubit.getStores(representativeConst);
+    cubit.getStores(distributorsConst);
     return Scaffold
     (
       floatingActionButton: const CustomFloatingActionButtonAdd
       (
         heroTag: 'fab_rep_stores', 
         label: 'إضافة زبون',
-        rout: AddRepStorePage()
+        rout: AddDistStorePage()
       ),
       body: Padding
       (
@@ -62,7 +62,7 @@ class RepStores extends StatelessWidget
                         ),
                         TextButton(
                             onPressed: () {
-                              cubit.getStores(representativeConst);
+                              cubit.getStores(distributorsConst);
                             },
                             child: Text(
                               'حاول مرة أخرى',
@@ -92,7 +92,7 @@ class RepStores extends StatelessWidget
                     );
                   } else 
                   {
-                    return StoresListView(stores: cubit.stores, recommended: false,sender: representativeConst,);
+                    return StoresListView(stores: cubit.stores, recommended: false,sender: distributorsConst,);
                   }
                 }
               }
