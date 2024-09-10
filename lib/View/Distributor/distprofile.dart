@@ -7,9 +7,9 @@ import '../General Widgets/logutbuttton.dart';
 import '../General Widgets/profilecard.dart';
 
 
-class CompanyProfile extends StatelessWidget 
+class DistProfile extends StatelessWidget 
 {
-  const CompanyProfile({super.key});
+  const DistProfile({super.key});
 
 
   @override
@@ -53,7 +53,12 @@ class CompanyProfile extends StatelessWidget
             (
               title: 'البلد:', 
               subtitle: prefs.getString('country') ?? 'لا يوجد', 
-            ),
+            ),     
+            ProfileCard
+            (
+              title: 'المحافظة:', 
+              subtitle: prefs.getString('province') ?? 'لا يوجد', 
+            ),      
           ]
         )
       ),

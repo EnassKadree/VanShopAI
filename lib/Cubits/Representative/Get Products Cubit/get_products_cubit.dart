@@ -16,23 +16,27 @@ class GetProductsCubit extends Cubit<GetProductsState>
   List<Product> products = [];
 
 
-    Future<void> getProducts() async
+    Future<void> getProducts(String sender) async
     {
       emit(GetProductsLoading());
       try
       {
+        String owner = sender == representativeConst? 'company_id' : 'distributor_id';
+        String ownerId = sender == representativeConst? prefs.getString('companyID')! : prefs.getString('userID')!;
+        
         QuerySnapshot querySnapshot = await firestore.collection(productsConst)
-        .where('company_id', isEqualTo: prefs.getString('companyID')).where('archived', isEqualTo: false)
+        .where(owner, isEqualTo: ownerId)
+        .where('archived', isEqualTo: false)
         .get();
 
-      products = querySnapshot.docs.map((doc) 
-      {
-        return Product.fromJson
-        ({
-          ...doc.data() as Map<String, dynamic>, 
-          'id': doc.id, 
-        });
-      }).toList();
+        products = querySnapshot.docs.map((doc) 
+        {
+          return Product.fromJson
+          ({
+            ...doc.data() as Map<String, dynamic>, 
+            'id': doc.id, 
+          });
+        }).toList();
 
       emit(GetProductsSuccess());
 

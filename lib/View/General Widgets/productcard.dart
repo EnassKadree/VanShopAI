@@ -12,10 +12,12 @@ class ProductCard extends StatelessWidget
 {
   const ProductCard({
     required this.product,
+    required this.sender,
     super.key,
   });
 
   final Product product;
+  final String sender;
   @override
   Widget build(BuildContext context) 
   {
@@ -28,12 +30,12 @@ class ProductCard extends StatelessWidget
             context: context,
             builder: (context) 
             {
-              return DeleteAlertDialog(cubit: cubit, product: product);
+              return DeleteAlertDialog(product: product, sender: sender);
             });
       },
       onTap: () 
       {
-        navigateTo(context, UpdateProductPage(product: product));
+        navigateTo(context, UpdateProductPage(product: product, sender: sender,));
       },
       child: Column
       (
@@ -110,7 +112,7 @@ class ProductCard extends StatelessWidget
                       ),
                       InkWell(
                         onTap: () {
-                          cubit.archiveProduct(product, context);
+                          cubit.archiveProduct(product, context, sender);
                         },
                         child: Icon(
                           product.archived ? Iconsax.archive_minus : Iconsax.archive_add,
@@ -133,15 +135,17 @@ class DeleteAlertDialog extends StatelessWidget
 {
   const DeleteAlertDialog({
     super.key,
-    required this.cubit,
     required this.product,
+    required this.sender,
   });
 
-  final ProductsCubit cubit;
   final Product product;
+  final String sender;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
+    final cubit = BlocProvider.of<ProductsCubit>(context);
     return BlocConsumer<ProductsCubit, ProductsState>
     (
       listener: (context, state)
@@ -181,7 +185,7 @@ class DeleteAlertDialog extends StatelessWidget
               ),
               onPressed: () async 
               {
-                cubit.deleteProduct(product.id!);
+                cubit.deleteProduct(product.id!, sender);
               },
             ),
           ],

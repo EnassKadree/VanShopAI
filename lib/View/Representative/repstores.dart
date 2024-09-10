@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Helper/text.dart';
+import 'package:vanshopai/View/General%20Widgets/customfloatingactionbuttonadd.dart';
+import 'package:vanshopai/constants.dart';
 
 import '../../Cubits/Representative/Get Stores Cubit/get_stores_cubit.dart';
-import '../../Helper/navigators.dart';
 import '../General Widgets/progressindicator.dart';
 import 'Widgets/repstoreselistview.dart';
 import 'addrepstore.dart';
@@ -17,14 +17,14 @@ class RepresentativeStores extends StatelessWidget
   Widget build(BuildContext context) 
   {
     final cubit = BlocProvider.of<GetStoresCubit>(context);
-    cubit.getStores();
+    cubit.getStores(representativeConst);
     return Scaffold
     (
-      floatingActionButton: FloatingActionButton
+      floatingActionButton: const CustomFloatingActionButtonAdd
       (
         heroTag: 'fab_rep_stores', 
-        child: const Icon(Iconsax.add),
-        onPressed: (){navigateTo(context, const AddRepStorePage());}
+        label: 'إضافة زبون',
+        rout: AddRepStorePage()
       ),
       body: Padding
       (
@@ -62,7 +62,7 @@ class RepresentativeStores extends StatelessWidget
                         ),
                         TextButton(
                             onPressed: () {
-                              cubit.getStores();
+                              cubit.getStores(representativeConst);
                             },
                             child: Text(
                               'حاول مرة أخرى',

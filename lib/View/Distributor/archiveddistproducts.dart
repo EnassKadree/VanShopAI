@@ -6,15 +6,15 @@ import 'package:vanshopai/View/General%20Widgets/productcard.dart';
 import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
 import 'package:vanshopai/constants.dart';
 
-class ArchivedCompanyProducts extends StatelessWidget
+class ArchivedDistProducts extends StatelessWidget
 {
-  const ArchivedCompanyProducts({super.key});
+  const ArchivedDistProducts({super.key});
 
   @override
   Widget build(BuildContext context) 
   {
     ProductsCubit cubit = BlocProvider.of<ProductsCubit>(context);
-    cubit.getProducts(archived: true, sender: companiesConst);
+    cubit.getProducts(archived: true, sender: distributorsConst);
     return Scaffold
     (
       body: Padding
@@ -27,9 +27,9 @@ class ArchivedCompanyProducts extends StatelessWidget
           [
             TitleText
             (
-              'منتجات الشركة المؤرشفة',
+              'المنتجات المؤرشفة',
               fontSize: 32
-              ),
+            ),
             Expanded
             (
               child: BlocBuilder<ProductsCubit,ProductsState>
@@ -54,7 +54,7 @@ class ArchivedCompanyProducts extends StatelessWidget
                           TextButton
                           (
                             onPressed: ()
-                            { cubit.getProducts(archived: true, sender: companiesConst); }, 
+                            { cubit.getProducts(archived: true, sender: distributorsConst); }, 
                             child: Text('حاول مرة أخرى', style: TextStyle(color: Colors.orange[700]!),)
                           )
                         ],
@@ -81,7 +81,7 @@ class ArchivedCompanyProducts extends StatelessWidget
                         ),
                         itemBuilder: (context, index)
                         {
-                          return ProductCard(product: cubit.archivedProducts[index], sender: companiesConst,);
+                          return ProductCard(product: cubit.archivedProducts[index], sender: distributorsConst,);
                         }
                       );
                     }

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vanshopai/constants.dart';
 
 import '../../../Cubits/Representative/Get Stores Cubit/get_stores_cubit.dart';
 import '../../General Widgets/progressindicator.dart';
@@ -25,7 +26,7 @@ storesBuilder(context, state)
           ),
           TextButton(
               onPressed: () {
-                cubit.getStores();
+                cubit.getStores(representativeConst);
               },
               child: Text(
                 'حاول مرة أخرى',

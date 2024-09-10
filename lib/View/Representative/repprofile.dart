@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../Helper/text.dart';
 import '../../sharedprefsUtils.dart';
 import '../General Widgets/logutbuttton.dart';
-import 'Widgets/profilecard.dart';
+import '../General Widgets/profilecard.dart';
 
 
 class RepProfile extends StatelessWidget 

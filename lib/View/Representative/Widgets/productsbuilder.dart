@@ -6,7 +6,7 @@ import '../../../Cubits/Representative/Get Products Cubit/get_products_cubit.dar
 import '../../General Widgets/progressindicator.dart';
 import 'productslistview.dart';
 
-productsBuilder(context, state, selectedProducts) 
+productsBuilder(context, state, selectedProducts, sender) 
 {
   final cubit = BlocProvider.of<GetProductsCubit>(context);
   if (state is GetProductsLoading) 
@@ -25,7 +25,7 @@ productsBuilder(context, state, selectedProducts)
           ),
           TextButton(
               onPressed: () {
-                cubit.getProducts();
+                cubit.getProducts(sender);
               },
               child: Text(
                 'حاول مرة أخرى',

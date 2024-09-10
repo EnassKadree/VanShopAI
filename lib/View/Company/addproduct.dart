@@ -11,6 +11,7 @@ import 'package:vanshopai/Model/product.dart';
 import 'package:vanshopai/View/General%20Widgets/custombutton.dart';
 import 'package:vanshopai/View/General%20Widgets/customtextfield.dart';
 import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
+import 'package:vanshopai/constants.dart';
 
 import '../../sharedprefsUtils.dart';
 
@@ -134,7 +135,7 @@ class AddProductPage extends StatelessWidget
                           price: double.parse(price.text),
                           companyId: prefs.getString('userID')
                         );
-                        cubit.addProduct(product);
+                        cubit.addProduct(product, companiesConst);
                         formKey.currentState!.reset();
                       }
                     },

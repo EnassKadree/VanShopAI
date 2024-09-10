@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
+import 'package:vanshopai/Helper/text.dart';
 import 'package:vanshopai/Model/product.dart';
 import 'package:vanshopai/View/General%20Widgets/custombutton.dart';
 import 'package:vanshopai/View/General%20Widgets/customtextfield.dart';
 import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
+import 'package:vanshopai/constants.dart';
+
+import '../../sharedprefsUtils.dart';
 
 
-class UpdateProductPage extends StatelessWidget 
+class AddDistProductPage extends StatelessWidget 
 {
-  const UpdateProductPage({super.key, required this.product, required this.sender});
-  final Product product;
-  final String sender;
+  const AddDistProductPage({super.key});
 
   @override
   Widget build(BuildContext context) 
@@ -23,41 +27,30 @@ class UpdateProductPage extends StatelessWidget
     final TextEditingController name = TextEditingController();
     final TextEditingController description = TextEditingController();
     final TextEditingController price = TextEditingController();
-
     ProductsCubit cubit = BlocProvider.of<ProductsCubit>(context);
-    name.text = product.name;
-    description.text = product.description;
-    price.text = product.price.toString();
     return Scaffold
     (
       body: Padding
       (
-      padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+      padding: const EdgeInsets.all(16),
       child: BlocConsumer<ProductsCubit, ProductsState>
       (
         listener: (context, state) 
         {
-          if(state is UpdateProductFailure)
+          if(state is AddProductFailure)
           {
             ShowSnackBar(context, 'حصل خطأ ما! حاول مرة أخرى');
           }
-          else if(state is UpdateProductSuccess)
+          else if(state is AddProductSuccess)
           {
-            ShowSnackBar(context, 'تم تعديل معلومات المنتج بنجاح');
-            if(product.archived)
-            {
-              cubit.getProducts(archived: true, sender: sender);
-            }
-            else
-            {
-              cubit.getProducts(archived: false, sender: sender);
-            }
+            ShowSnackBar(context, 'تمت إضافة المنتج بنجاح');
+            cubit.getProducts(archived: false, sender: distributorsConst);
             pop(context);
           }
         },
         builder: (context, state) 
         {
-          if(state is UpdateProductLoading)
+          if(state is AddProductLoading)
           {
             return const MyProgressIndicator();
           }
@@ -70,14 +63,9 @@ class UpdateProductPage extends StatelessWidget
               (
                 children: 
                 [
-                  Text(
-                    'تعديل المنتج',
-                    style: TextStyle
-                    (
-                      color: Colors.orange[700]!,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold
-                    ),
+                  TitleText(
+                    'إضافة منتج جديد',
+                    fontSize: 32
                   ),
                   const SizedBox(
                     height: 24,
@@ -85,14 +73,13 @@ class UpdateProductPage extends StatelessWidget
 
                   GestureDetector
                   (
-                    onTap: (){cubit.imageChanged = true; cubit.pickImage();},
+                    onTap: cubit.pickImage,
                     child: CircleAvatar
                     (
                       backgroundColor: Colors.grey[200],
                       radius: 80,
-                      child: 
-                      cubit.selectedImage != null? 
-                        ClipOval
+                      child:cubit.selectedImage != null
+                        ? ClipOval
                         (
                           child: Image.file
                           (
@@ -102,19 +89,7 @@ class UpdateProductPage extends StatelessWidget
                             fit: BoxFit.cover, 
                           ),
                         )
-                      : product.image != null?
-                        ClipOval
-                        (
-                          child: Image.network
-                          (
-                            product.image!,
-                            width: 160,
-                            height: 160,
-                            fit: BoxFit.cover, 
-                          ),
-                        )
-                      :
-                        SizedBox
+                        : SizedBox
                         (
                           height: 160,
                           width: 160,
@@ -148,23 +123,21 @@ class UpdateProductPage extends StatelessWidget
                     height: 42,
                   ),
                   CustomButton(
-                    text: 'تعديل المنتج',
+                    text: 'إضافة المنتج',
                     onTap: () 
                     {
                       if(formKey.currentState!.validate())
                       {
-                        Product newProduct = Product
+                        Product product = Product
                         (
-                          id: product.id,
+                          id: '',
                           name: name.text, 
                           description: description.text, 
                           price: double.parse(price.text),
-                          companyId: product.companyId,
-                          distributorId: product.distributorId,
-                          archived: product.archived,
-                          image: product.image
+                          distributorId: prefs.getString('userID')
                         );
-                      cubit.updateProduct(newProduct, sender);
+                        cubit.addProduct(product, companiesConst);
+                        formKey.currentState!.reset();
                       }
                     },
                   )

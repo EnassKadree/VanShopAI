@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Representative/Get%20Stores%20Cubit/get_stores_cubit.dart';
 import 'package:vanshopai/Helper/text.dart';
+import 'package:vanshopai/constants.dart';
 
 import 'Widgets/recommendedstoresbuilder.dart';
 
@@ -13,7 +14,7 @@ class AddRepStorePage extends StatelessWidget
   Widget build(BuildContext context) 
   {
     final cubit = BlocProvider.of<GetStoresCubit>(context);
-    cubit.getRecommendedStores();
+    cubit.getRecommendedStores(representativeConst);
     return Scaffold
     (
       body: Padding

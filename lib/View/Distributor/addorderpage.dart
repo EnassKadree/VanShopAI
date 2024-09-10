@@ -4,27 +4,27 @@ import 'package:vanshopai/Cubits/Representative/Get%20Products%20Cubit/get_produ
 import 'package:vanshopai/Cubits/Representative/Get%20Stores%20Cubit/get_stores_cubit.dart';
 import 'package:vanshopai/constants.dart';
 import '../../Helper/text.dart';
-import 'Widgets/addorderbutton.dart';
-import 'Widgets/productsbuilder.dart';
-import 'Widgets/storesbuilder.dart';
+import '../Representative/Widgets/addorderbutton.dart';
+import '../Representative/Widgets/productsbuilder.dart';
+import '../Representative/Widgets/storesbuilder.dart';
 
-class AddRepOrderPage extends StatelessWidget 
+class AddDistOrderPage extends StatelessWidget 
 {
-  const AddRepOrderPage({super.key});
+  const AddDistOrderPage({super.key});
   @override
   Widget build(BuildContext context) 
   {
     final productsCubit = BlocProvider.of<GetProductsCubit>(context);
     final storesCubit = BlocProvider.of<GetStoresCubit>(context);
-    productsCubit.getProducts(representativeConst);
-    storesCubit.getStores(representativeConst);
+    productsCubit.getProducts(distributorsConst);
+    storesCubit.getStores(distributorsConst);
 
     final Map<String, int> selectedProducts = {};
 
     return Scaffold
     (
       bottomNavigationBar: AddOrderButton
-        (selectedProducts: selectedProducts, sender: representativeConst,),
+        (selectedProducts: selectedProducts, sender: distributorsConst,),
 
       body: SingleChildScrollView
       (
@@ -53,7 +53,7 @@ class AddRepOrderPage extends StatelessWidget
               (
                 builder: (context, state) 
                 {
-                  return productsBuilder(context, state, selectedProducts, representativeConst);
+                  return productsBuilder(context, state, selectedProducts, distributorsConst);
                 },
               )
             ],

@@ -25,16 +25,19 @@ class ProductsCubit extends Cubit<ProductsState>
 
 
 
-  Future<void> getProducts({required archived}) async
+  Future<void> getProducts({required archived, required String sender}) async
   {
     emit(ProductsLoading());
     try 
     {
+      String owner = sender == companiesConst ? 'company_id' : 'distributor_id';
+
       QuerySnapshot querySnapshot = await fireStore.collection(productsConst)
-        .where('company_id', isEqualTo: prefs.getString('userID'))
+        .where(owner, isEqualTo: prefs.getString('userID'))
         .where('archived', isEqualTo: archived)
         .get();
       
+      print(querySnapshot.docs.length);
       if(archived)
       {
         archivedProducts = querySnapshot.docs.map((doc) 
@@ -64,7 +67,7 @@ class ProductsCubit extends Cubit<ProductsState>
     }
   }
 
-  Future<void> addProduct(Product product) async 
+  Future<void> addProduct(Product product, String sender) async 
   {
     try 
     {
@@ -94,7 +97,6 @@ class ProductsCubit extends Cubit<ProductsState>
       }
       emit(AddProductSuccess());
 
-      getProducts(archived: false);
     } catch (e) 
     {
       emit(AddProductFailure("Failed to add product: ${e.toString()}"));
@@ -102,7 +104,7 @@ class ProductsCubit extends Cubit<ProductsState>
   }
 
 
-  Future<void> updateProduct(Product product) async 
+  Future<void> updateProduct(Product product, String sender) async 
   {
     try 
     {
@@ -136,21 +138,13 @@ class ProductsCubit extends Cubit<ProductsState>
 
       emit(UpdateProductSuccess());
 
-    if(product.archived)
-    {
-      getProducts(archived: true);
-    }
-    else
-    {
-      getProducts(archived: false);
-    }
     } catch (e) 
     {
       emit(UpdateProductFailure("Failed to update product: ${e.toString()}"));
     }
   }
 
-  Future<void> deleteProduct(String productId) async 
+  Future<void> deleteProduct(String productId, String sender) async 
   {
     try 
     {
@@ -166,7 +160,7 @@ class ProductsCubit extends Cubit<ProductsState>
       await fireStore.collection(productsConst).doc(productId).delete();
 
       emit(DeleteProductSuccess());
-      getProducts(archived: archived);
+      getProducts(archived: archived, sender: sender);
     } catch (e) 
     {
       emit(DeleteProductFailure("Failed to delete product: ${e.toString()}"));
@@ -218,7 +212,7 @@ class ProductsCubit extends Cubit<ProductsState>
     }
   }
 
-  void archiveProduct(Product product, BuildContext context) 
+  void archiveProduct(Product product, BuildContext context, String sender) 
   {
     Product newProduct = Product
     (
@@ -227,19 +221,21 @@ class ProductsCubit extends Cubit<ProductsState>
       description: product.description, 
       price: product.price,
       companyId: product.companyId,
+      distributorId: product.distributorId,
       image: product.image,
       archived: product.archived? false : true,
     );
-    updateProduct(newProduct).then((value) 
+    updateProduct(newProduct, sender).then((value) 
     { 
       if(product.archived) 
       {
         ShowSnackBar(context, 'تم إلغاء أرشفة المنتج');
-        getProducts(archived: true);
+        getProducts(archived: true, sender: sender);
+        getProducts(archived: false, sender: sender);
       } else 
       {
         ShowSnackBar(context, 'تمت أرشفة المنتج');
-        getProducts(archived: false);
+        getProducts(archived: false, sender: sender);
       }
     });
   }

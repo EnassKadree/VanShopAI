@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vanshopai/View/Auth/Login/login.dart';
 import 'package:vanshopai/View/Company/companyhome.dart';
+import 'package:vanshopai/View/Distributor/disthome.dart';
 import 'package:vanshopai/View/Representative/rephome.dart';
 
 late SharedPreferences prefs;
@@ -38,7 +39,7 @@ Widget getHomePage(String userType)
   } 
   else if (userType == 'Distributor') 
   {
-
+    return const DistributorHome();
   } 
   else if (userType == 'Store') 
   {

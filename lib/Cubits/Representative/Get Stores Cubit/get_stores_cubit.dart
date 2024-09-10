@@ -21,12 +21,12 @@ class GetStoresCubit extends Cubit<GetStoresState>
     emit(StoreChanged());
   }
 
-  Future<void> getStores() async
+  Future<void> getStores(String sender) async
   {
     emit(GetStoresLoading());
     try
     {
-      DocumentSnapshot documentSnapshot = await firestore.collection(representativeConst)
+      DocumentSnapshot documentSnapshot = await firestore.collection(sender)
         .doc(prefs.getString('userID'))
         .get();
 
@@ -56,17 +56,19 @@ class GetStoresCubit extends Cubit<GetStoresState>
     }
   }
 
-  Future<void> getRecommendedStores() async
+  Future<void> getRecommendedStores(String sender) async
   {
     emit(GetStoresLoading());
     try
     {
+      String ownerCollection = sender == representativeConst? companiesConst : distributorsConst;
+      String ownerId = sender == representativeConst? prefs.getString('companyID')! : prefs.getString('userID')!;
       DocumentSnapshot documentSnapshot = await firestore
-      .collection(companiesConst)
-      .doc(prefs.getString('companyID'))
+      .collection(ownerCollection)
+      .doc(ownerId)
       .get();
 
-      List? companyCategories = documentSnapshot['categories'];
+      List? categories = documentSnapshot['categories'];
 
 
       List? storesIds = stores.map((doc) => doc.id).toList();
@@ -82,12 +84,12 @@ class GetStoresCubit extends Cubit<GetStoresState>
         List? storeCategories = doc['categories'];
         String storeId = doc.id;
 
-        bool notInRepresentativeStores = !storesIds.contains(storeId);
+        bool notInUserStores = !storesIds.contains(storeId);
         bool hasCommonCategory = storeCategories != null &&
             storeCategories.isNotEmpty &&
-            storeCategories.any((category) => companyCategories!.contains(category));
+            storeCategories.any((category) => categories!.contains(category));
 
-        return notInRepresentativeStores && hasCommonCategory;
+        return notInUserStores && hasCommonCategory;
       }).map((doc) 
       {
         return Store.fromJson

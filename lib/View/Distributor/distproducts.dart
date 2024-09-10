@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
-import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/Helper/text.dart';
-import 'package:vanshopai/View/General%20Widgets/productcard.dart';
-import 'package:vanshopai/View/Company/archivedcompanyproducts.dart';
-import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
-import 'package:vanshopai/constants.dart';
+import 'package:vanshopai/View/Distributor/adddistproduct.dart';
+import 'package:vanshopai/View/Distributor/archiveddistproducts.dart';
 
-class CompanyProducts extends StatelessWidget
+import '../../Cubits/Company/Products Cubit/products_cubit.dart';
+import '../../Helper/navigators.dart';
+import '../../Helper/text.dart';
+import '../../constants.dart';
+import '../General Widgets/customfloatingactionbuttonadd.dart';
+import '../General Widgets/productcard.dart';
+import '../General Widgets/progressindicator.dart';
+
+
+class DistProducts extends StatelessWidget
 {
-  const CompanyProducts({super.key});
+  const DistProducts({super.key});
 
   @override
   Widget build(BuildContext context) 
   {
     ProductsCubit cubit = BlocProvider.of<ProductsCubit>(context);
-    cubit.getProducts(archived: false, sender: companiesConst);
+    cubit.getProducts(archived: false, sender: distributorsConst);
     return Scaffold
     (
+      floatingActionButton: const CustomFloatingActionButtonAdd
+      (
+        label: 'إضافة منتج',
+        rout: AddDistProductPage()
+      ),
       body: Padding
       (
         padding: const EdgeInsets.all(16),
@@ -29,7 +38,7 @@ class CompanyProducts extends StatelessWidget
           [
             TitleText
             (
-              'منتجات الشركة', 
+              'المنتجات', 
               fontSize: 32
             ),
             const SizedBox(height: 16,),
@@ -55,7 +64,7 @@ class CompanyProducts extends StatelessWidget
                         TextButton
                         (
                           onPressed: ()
-                          { cubit.getProducts(archived: false, sender: companiesConst); }, 
+                          { cubit.getProducts(archived: false, sender: distributorsConst); }, 
                           child: Text('حاول مرة أخرى', style: TextStyle(color: Colors.orange[700]!),)
                         )
                       ],
@@ -82,7 +91,7 @@ class CompanyProducts extends StatelessWidget
                       ),
                       itemBuilder: (context, index)
                       {
-                        return ProductCard(product: cubit.products[index], sender: companiesConst,);
+                        return ProductCard(product: cubit.products[index], sender: distributorsConst,);
                       }
                     );
                   }
@@ -93,7 +102,7 @@ class CompanyProducts extends StatelessWidget
             (
               onPressed: ()
               {
-                navigateTo(context, const ArchivedCompanyProducts());
+                navigateTo(context, const ArchivedDistProducts());
               },
               child: const Row
               (
