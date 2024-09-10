@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
+import 'package:vanshopai/Helper/text.dart';
 import 'package:vanshopai/View/Company/Widgets/productcard.dart';
 import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
 
@@ -23,13 +24,10 @@ class ArchivedCompanyProducts extends StatelessWidget
           crossAxisAlignment: CrossAxisAlignment.start,
           children: 
           [
-            Text
+            TitleText
             (
-              'منتجات الشركة المؤرشفة',style: TextStyle
-              (
-                color: Colors.orange[700]!,
-                fontSize: 32,
-                fontWeight: FontWeight.bold),
+              'منتجات الشركة المؤرشفة',
+              fontSize: 32
               ),
             Expanded
             (

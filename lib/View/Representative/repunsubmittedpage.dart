@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/View/Auth/Login/login.dart';
 
@@ -52,7 +53,7 @@ class RepUnSubmittedPage extends StatelessWidget
                 [
                   Text('تسجيل الخروج', style: TextStyle(color: Colors.orange[700]),),
                   const SizedBox(width: 8,),
-                  Icon(Icons.logout, color: Colors.orange[700],)
+                  Icon(Iconsax.logout, color: Colors.orange[700],)
                 ],
               ),
             )

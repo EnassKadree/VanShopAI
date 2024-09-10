@@ -31,7 +31,8 @@ class ProductsCubit extends Cubit<ProductsState>
     try 
     {
       QuerySnapshot querySnapshot = await fireStore.collection(productsConst)
-        .where('company_id', isEqualTo: prefs.getString('userID')).where('archived', isEqualTo: archived)
+        .where('company_id', isEqualTo: prefs.getString('userID'))
+        .where('archived', isEqualTo: archived)
         .get();
       
       if(archived)

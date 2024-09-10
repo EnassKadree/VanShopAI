@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 
@@ -27,7 +28,7 @@ class RepresentativeInfoCard extends StatelessWidget
         child: Card
         (
           color: Colors.white,
-          elevation: .5,
+          shadowColor: Colors.grey[100]!.withOpacity(.5),
           child: ListTile
           (
             title: Text
@@ -40,15 +41,15 @@ class RepresentativeInfoCard extends StatelessWidget
                 'البلد'
               :
                 'المحافظة', 
-              style: TextStyle(fontSize: 12, color: Colors.blue[600]),
+              style: TextStyle(fontSize: 12, color: Colors.blue[900]),
             ),
-            subtitle: Text(data, style: const TextStyle(fontSize: 18),),
+            subtitle: Text(data, style: const TextStyle(fontSize: 18, color: Colors.brown),),
             trailing: Icon
             (
               type == 'email' ?
-                Icons.mail_outline_outlined
+                Iconsax.sms
               : type == 'phone' ?
-                Icons.call_outlined 
+                Iconsax.call 
               :
                 null, 
               color: Colors.blue[600],size: 28,

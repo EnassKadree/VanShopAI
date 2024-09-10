@@ -5,22 +5,23 @@ import 'package:vanshopai/Cubits/Auth/Signup%20Cubit/sign_up_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/View/Auth/Login/login.dart';
-import 'package:vanshopai/View/Auth/Other/usertype.dart';
+import 'package:vanshopai/View/Auth/Other/authhome.dart';
 import 'package:vanshopai/View/Auth/Widgets/signupheader.dart';
 import 'package:vanshopai/View/General%20Widgets/custombutton.dart';
 import 'package:vanshopai/View/General%20Widgets/customtextfield.dart';
+import 'package:vanshopai/sharedprefsUtils.dart';
 
 class UserSignupPage extends StatelessWidget 
 {
-  UserSignupPage({super.key});
+  const UserSignupPage({super.key});
 
-  GlobalKey<FormState> formKey = GlobalKey();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) 
   {
+    final GlobalKey<FormState> formKey = GlobalKey();
+    final TextEditingController email = TextEditingController();
+    final TextEditingController password = TextEditingController();
     return BlocConsumer<SignUpCubit, SignUpState>
     (
       listener: (context, state) 
@@ -28,7 +29,7 @@ class UserSignupPage extends StatelessWidget
         if (state is SignUpSuccess) 
         {
           ShowSnackBar(context, 'لقد أرسلنا رابط تحقق لبريدك الإلكتروني، يرجى فتحه لاستكمال إجراءات تسجيل الدخول ');
-          navigateTo(context, const CheckUserType());
+          navigateTo(context, const AuthHomePage());
         } 
         else if (state is SignUpFailure) 
         {
@@ -89,12 +90,13 @@ class UserSignupPage extends StatelessWidget
                         {
                           if(formKey.currentState!.validate())
                           {
-                            BlocProvider.of<SignUpCubit>(context).createAccount
+                            await BlocProvider.of<SignUpCubit>(context).createAccount
                             (
                               email: email.text, 
                               password: password.text,
                             );
                           }
+                          await prefs.setBool('signedUp', true);
                         },
                       ),
                       const SizedBox(

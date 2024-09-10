@@ -147,8 +147,6 @@ Future<String> _getUserType(String uid) async
     try
     {
       DocumentSnapshot documentSnapshot = await fireStore.collection('Companies').doc(doc['company_id']).get();
-      print(doc['company_id']);
-      print(documentSnapshot.toString());
       return documentSnapshot['trade_name'];
     }catch(e)
     {

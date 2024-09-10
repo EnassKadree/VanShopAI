@@ -1,22 +1,21 @@
-// ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
 import 'package:vanshopai/Model/product.dart';
 import 'package:vanshopai/View/Company/updateproduct.dart';
-import 'package:vanshopai/constants.dart';
 
 class ProductCard extends StatelessWidget 
 {
-  ProductCard({
+  const ProductCard({
     required this.product,
     super.key,
   });
 
-  Product product;
+  final Product product;
   @override
   Widget build(BuildContext context) 
   {
@@ -40,100 +39,87 @@ class ProductCard extends StatelessWidget
       (
         children: 
         [
-          Container
+          Card
           (
-            decoration: BoxDecoration
+            color:  const Color.fromARGB(255, 255, 251, 251),
+            shape: RoundedRectangleBorder
             (
-              boxShadow: 
-              [
-                BoxShadow
-                (
-                  blurRadius: 50,
-                  color: Colors.grey.withOpacity(.1),
-                  spreadRadius: 20,
-                  offset: const Offset(10, 10),
-                ),
-              ]
+              borderRadius: BorderRadius.circular(8),
             ),
-            child: Card
+            child: Padding
             (
-              shape: RoundedRectangleBorder
-              (
-                borderRadius: BorderRadius.circular(8),
-              ),
-              elevation: 3,
-              child: Padding
-              (
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: 
-                  [
-                    Row
-                    (
-                      children: 
-                      [
-                        Expanded
-                        (
-                          child: Center
-                          (
-                            child: product.image != null?
-                              ClipRRect
-                              (
-                                borderRadius: BorderRadius.circular(5),
-                                child: Image.network
-                                (
-                                  product.image!,
-                                  fit: BoxFit.cover,
-                                  height: 135,
-                                  width: 135
-                                ),
-                              )
-                            :
-                              Image.asset
-                              (
-                                productImage,
-                                fit: BoxFit.cover,
-                              )
-                          ),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      product.name,
-                      style: TextStyle
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: 
+                [
+                  Row
+                  (
+                    children: 
+                    [
+                      Expanded
                       (
-                        color: Colors.orange[700],
-                        fontSize: 16,
+                        child: Center
+                        (
+                          child: product.image != null?
+                            ClipRRect
+                            (
+                              borderRadius: BorderRadius.circular(5),
+                              child: Image.network
+                              (
+                                product.image!,
+                                fit: BoxFit.cover,
+                                height: 135,
+                                width: 135
+                              ),
+                            )
+                          :
+                            SizedBox
+                            (
+                              height: 135,
+                              width: 135,
+                              child: Icon(Iconsax.gallery, size: 100,color: Colors.brown[300],)
+                            )
+                        ),
                       ),
+                    ],
+                  ),
+                  Text(
+                    product.name,
+                    style: TextStyle
+                    (
+                      color: Colors.orange[700],
+                      fontSize: 16,
                     ),
-                    const SizedBox(
-                      height: 3,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          r'$' '${product.price.toString()}',
-                          style: const TextStyle(
-                            fontSize: 16,
-                          ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                  const SizedBox(
+                    height: 3,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        r'$' '${product.price.toString()}',
+                        style: const TextStyle(
+                          fontSize: 16, color: Colors.brown
                         ),
-                        InkWell(
-                          onTap: () {
-                            cubit.archiveProduct(product, context);
-                          },
-                          child: Icon(
-                            product.archived ? Icons.unarchive : Icons.archive,
-                            color: Colors.grey,
-                          ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          cubit.archiveProduct(product, context);
+                        },
+                        child: Icon(
+                          product.archived ? Iconsax.archive_minus : Iconsax.archive_add,
+                          color: Colors.grey,
                         ),
-                      ],
-                    )
-                  ],
-                ),
+                      ),
+                    ],
+                  )
+                ],
               ),
             ),
           ),

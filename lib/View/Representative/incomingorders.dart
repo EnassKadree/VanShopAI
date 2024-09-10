@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Representative/Get%20Orders%20Cubit/get_orders_cubit.dart';
 import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
 import 'package:vanshopai/View/Representative/Widgets/orderslistview.dart';
@@ -80,7 +81,7 @@ class IncomingOrdersPage extends StatelessWidget
                         mainAxisSize: MainAxisSize.min,
                         children: 
                         [
-                          Icon(Icons.done_all, color: Colors.blue[600],size: 24,),
+                          Icon(Iconsax.tick_circle, color: Colors.blue[600],size: 24,),
                           const SizedBox(width: 6,),
                           const Text('لا يوجد أي طلبات واردة!', style: TextStyle(fontSize: 18, color: Colors.grey),),
                         ],

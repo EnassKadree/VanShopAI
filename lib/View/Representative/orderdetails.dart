@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Representative/Generate%20PDF%20Cubit/generate_pdf_cubit.dart';
 import 'package:vanshopai/Cubits/Representative/Get%20Order%20Details%20Cubit/get_order_details_cubit.dart';
 import 'package:vanshopai/Helper/orderfunctions.dart';
@@ -31,7 +32,7 @@ class OrderDetailsPage extends StatelessWidget
               (
                   backgroundColor: Colors.blue[900],
                   icon: const Icon(
-                    Icons.drag_indicator,
+                    Iconsax.menu,
                     color: Colors.white,
                   ),
                   label: const Text('جارٍ التحميل...', style: TextStyle(color: Colors.white)),
@@ -44,7 +45,7 @@ class OrderDetailsPage extends StatelessWidget
               (
                   backgroundColor: Colors.blue[900],
                   icon: const Icon(
-                    Icons.share_outlined,
+                    Iconsax.share,
                     color: Colors.white,
                   ),
                   label: const Text('مشاركة', style: TextStyle(color: Colors.white)),

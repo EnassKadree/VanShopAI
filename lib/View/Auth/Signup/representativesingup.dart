@@ -14,15 +14,15 @@ import 'package:vanshopai/constants.dart';
 
 class RepresentativeSignupPage extends StatelessWidget 
 {
-  RepresentativeSignupPage({super.key});
+  const RepresentativeSignupPage({super.key});
 
-  GlobalKey<FormState> formKey = GlobalKey();
-  TextEditingController tradeName = TextEditingController();
-  TextEditingController phoneNumber = TextEditingController();
 
   @override
   Widget build(BuildContext context) 
   {
+    final GlobalKey<FormState> formKey = GlobalKey();
+    final TextEditingController tradeName = TextEditingController();
+    final TextEditingController phoneNumber = TextEditingController();
     SignUpAccountCubit cubit = BlocProvider.of<SignUpAccountCubit>(context);
     return BlocConsumer<SignUpAccountCubit, SignUpAccountState>(
       listener: (context, state) 

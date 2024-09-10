@@ -5,7 +5,7 @@ import 'package:vanshopai/constants.dart';
 
 class RadioListView extends StatelessWidget 
 {
-  RadioListView(
+  const RadioListView(
       {super.key,
       required this.items,
       required this.type});

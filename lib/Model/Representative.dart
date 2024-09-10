@@ -7,6 +7,7 @@ class Representative
   late String country;
   late String province;
   late bool submitted;
+  late bool rejected;
   late String email;
   late String phone;
   // late List<Store>? stores;
@@ -19,6 +20,7 @@ class Representative
     required this.country,
     required this.province,
     required this.submitted,
+    required this.rejected,
     required this.email, 
     required this.phone,
     // this.stores
@@ -36,6 +38,7 @@ class Representative
       submitted: json['submitted'] ,
       email: json['email'] ,
       phone: json['phone'],
+      rejected: json['rejected']
       // stores: json['stores']
     );
   }

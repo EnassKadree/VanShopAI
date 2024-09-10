@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Representative/Get%20Orders%20Cubit/get_orders_cubit.dart';
 import 'package:vanshopai/Cubits/Representative/Update%20Order/update_order_cubit.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
@@ -97,7 +98,7 @@ class OrderCard extends StatelessWidget
                         );
                       }
                     );
-                  }, icon: const Icon(Icons.done_outline_rounded)
+                  }, icon: const Icon(Iconsax.tick_circle)
                 ),
               );
             },

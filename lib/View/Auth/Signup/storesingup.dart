@@ -13,16 +13,16 @@ import 'package:vanshopai/View/General%20Widgets/customtextfield.dart';
 import 'package:vanshopai/constants.dart';
 
 class StoreSignupPage extends StatelessWidget {
-  StoreSignupPage({super.key});
+  const StoreSignupPage({super.key});
 
-  GlobalKey<FormState> formKey = GlobalKey();
-  TextEditingController tradeName = TextEditingController();
-  TextEditingController phoneNumber = TextEditingController();
-  TextEditingController address = TextEditingController();
 
   @override
   Widget build(BuildContext context) 
   {
+    final GlobalKey<FormState> formKey = GlobalKey();
+    final TextEditingController tradeName = TextEditingController();
+    final TextEditingController phoneNumber = TextEditingController();
+    final TextEditingController address = TextEditingController();
     SignUpAccountCubit cubit = BlocProvider.of<SignUpAccountCubit>(context);
     return BlocConsumer<SignUpAccountCubit, SignUpAccountState>
     (

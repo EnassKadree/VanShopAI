@@ -14,35 +14,41 @@ class RepresentativesCubit extends Cubit<RepresentativesState>
   FirebaseFirestore fireStore = FirebaseFirestore.instance;
   List<Representative> representatives = [];
   List<Representative> representativesRequests = [];
-
-  Future<void> getRepresentatives() async 
+ 
+  Future<void> getRepresentatives({required submitted}) async 
   {
     emit(RepresentativesLoading());
     try 
     {
       QuerySnapshot querySnapshot = await fireStore.collection(representativeConst)
         .where('company_id', isEqualTo: prefs.getString('userID'))
+        .where('submitted', isEqualTo: submitted)
+        .where('rejected', isEqualTo: false)
         .get();
 
-      List<Representative> submittedRepresentatives = [];
-      List<Representative> nonSubmittedRepresentatives = [];
+        if(submitted)
+        {
+          representatives = querySnapshot.docs.map((doc) 
+          {
+            return Representative.fromJson
+            ({
+              ...doc.data() as Map<String, dynamic>, 
+              'id': doc.id, 
+            });
+          }).toList();
+        }
 
-      for (var doc in querySnapshot.docs) 
-      {
-        Representative representative = Representative.fromJson
-        ({
-          ...doc.data() as Map<String, dynamic>,
-          'id': doc.id,
-        });
-
-        if (representative.submitted) 
-        {  submittedRepresentatives.add(representative); } 
-        else 
-        { nonSubmittedRepresentatives.add(representative); }
-      }
-
-    representativesRequests = nonSubmittedRepresentatives;
-    representatives = submittedRepresentatives;
+        else
+        {
+          representativesRequests = querySnapshot.docs.map((doc) 
+          {
+            return Representative.fromJson
+            ({
+              ...doc.data() as Map<String, dynamic>, 
+              'id': doc.id, 
+            });
+          }).toList();
+        }
 
       emit(RepresentativesSuccess());
     } catch (e) 
@@ -60,7 +66,23 @@ class RepresentativesCubit extends Cubit<RepresentativesState>
       await representativeDoc.update({'submitted': true});
 
       emit(RepresentativesUpdateSuccess());
-      getRepresentatives();
+      getRepresentatives(submitted: false);
+    } catch (e) 
+    {
+      emit(RepresentativesUpdateFailure(e.toString()));
+    }
+  }
+
+  Future<void> updateRepresentativeRejected(String representativeId) async 
+  {
+    try 
+    {
+      DocumentReference representativeDoc = fireStore.collection(representativeConst).doc(representativeId);
+
+      await representativeDoc.update({'rejected': true});
+
+      emit(RepresentativesUpdateSuccess());
+      getRepresentatives(submitted: false); 
     } catch (e) 
     {
       emit(RepresentativesUpdateFailure(e.toString()));

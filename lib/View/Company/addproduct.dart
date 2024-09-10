@@ -2,33 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
+import 'package:vanshopai/Helper/text.dart';
 import 'package:vanshopai/Model/product.dart';
 import 'package:vanshopai/View/General%20Widgets/custombutton.dart';
 import 'package:vanshopai/View/General%20Widgets/customtextfield.dart';
 import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
-import 'package:vanshopai/constants.dart';
 
 import '../../sharedprefsUtils.dart';
 
 
 class AddProductPage extends StatelessWidget 
 {
-  AddProductPage({super.key});
-  final GlobalKey<FormState> formKey = GlobalKey();
-  final TextEditingController name = TextEditingController();
-  final TextEditingController description = TextEditingController();
-  final TextEditingController price = TextEditingController();
+  const AddProductPage({super.key});
 
   @override
   Widget build(BuildContext context) 
   {
+    final GlobalKey<FormState> formKey = GlobalKey();
+    final TextEditingController name = TextEditingController();
+    final TextEditingController description = TextEditingController();
+    final TextEditingController price = TextEditingController();
     ProductsCubit cubit = BlocProvider.of<ProductsCubit>(context);
-    return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+    return Scaffold
+    (
+      body: Padding
+      (
+      padding: const EdgeInsets.all(16),
       child: BlocConsumer<ProductsCubit, ProductsState>
       (
         listener: (context, state) 
@@ -58,14 +61,9 @@ class AddProductPage extends StatelessWidget
               (
                 children: 
                 [
-                  Text(
+                  TitleText(
                     'إضافة منتج جديد',
-                    style: TextStyle
-                    (
-                      color: Colors.orange[700]!,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold
-                    ),
+                    fontSize: 32
                   ),
                   const SizedBox(
                     height: 24,
@@ -89,13 +87,12 @@ class AddProductPage extends StatelessWidget
                                 fit: BoxFit.cover, 
                               ),
                             )
-                            : Image.asset
+                            : SizedBox
                             (
-                              productImage,
-                              fit: BoxFit.cover,
-                              width: 160,
                               height: 160,
-                            ),
+                              width: 160,
+                              child: Icon(Iconsax.gallery, size: 100,color: Colors.brown[300],)
+                            )
                       ),
                     ),
 
@@ -138,6 +135,7 @@ class AddProductPage extends StatelessWidget
                           companyId: prefs.getString('userID')
                         );
                         cubit.addProduct(product);
+                        formKey.currentState!.reset();
                       }
                     },
                   )

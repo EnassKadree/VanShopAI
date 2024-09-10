@@ -110,6 +110,8 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
     { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً'));}
     else
     {
+      if(country == null)
+      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً'));}
       try
       {
         await fireStore.collection(companiesConst).doc(user.uid).set
@@ -124,7 +126,7 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
         emit(SignUpAccountSuccess());
       }catch(e)
       {
-        emit(SignUpAccountFailure(e.toString()));
+        emit(SignUpAccountFailure('حصل خطأ ما، يرجى إعادة المحاولة'));
       }
     }
   }
@@ -138,6 +140,10 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
     { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً'));}
     else
     {
+      if(country == null)
+      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً'));}
+      if(province == null)
+      { emit(SignUpAccountFailure('يرجى تحديد محافظة أولاً'));}
       try
       {
         await fireStore.collection(distributorsConst).doc(user.uid).set
@@ -155,7 +161,7 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
         emit(SignUpAccountSuccess());
       }catch(e)
       {
-        emit(SignUpAccountFailure(e.toString()));
+        emit(SignUpAccountFailure('حصل خطأ ما، يرجى إعادة المحاولة'));
       }
     }
   }
@@ -167,8 +173,15 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
 
     if(user == null)
     { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً'));}
+    
     else
     {
+      if(company == null)
+      { emit(SignUpAccountFailure('يرجى تحديد شركة أولاً'));}
+      if(country == null)
+      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً'));}
+      if(province == null)
+      { emit(SignUpAccountFailure('يرجى تحديد محافظة أولاً'));}
       try
       {
         QuerySnapshot querySnapshot = await fireStore.collection(companiesConst).where('trade_name', isEqualTo: company).get();
@@ -182,14 +195,15 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
           'province' : province,
           'company_id': querySnapshot.docs.first.id,
           'submitted': false,
+          'rejected' : false,
           'createdAt': FieldValue.serverTimestamp(),
           'stores' : [],
-          'categories': []
+          'categories': [],
         });
         emit(SignUpAccountSuccess());
       }catch(e)
       {
-        emit(SignUpAccountFailure(e.toString()));
+        emit(SignUpAccountFailure('حصل خطأ ما، يرجى إعادة المحاولة'));
       }
     }
   }
@@ -204,6 +218,10 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
     { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً'));}
     else
     {
+      if(country == null)
+      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً'));}
+      if(province == null)
+      { emit(SignUpAccountFailure('يرجى تحديد محافظة أولاً'));}
       try
       {
         await fireStore.collection(storesConst).doc(user.uid).set
@@ -221,7 +239,7 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
         emit(SignUpAccountSuccess());
       }catch(e)
       {
-        emit(SignUpAccountFailure(e.toString()));
+        emit(SignUpAccountFailure('حصل خطأ ما، يرجى إعادة المحاولة'));
       }
     }
   }

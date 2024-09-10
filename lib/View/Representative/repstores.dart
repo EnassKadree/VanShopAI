@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Helper/text.dart';
 
 import '../../Cubits/Representative/Get Stores Cubit/get_stores_cubit.dart';
@@ -22,7 +23,7 @@ class RepresentativeStores extends StatelessWidget
       floatingActionButton: FloatingActionButton
       (
         heroTag: 'fab_rep_stores', 
-        child: const Icon(Icons.add),
+        child: const Icon(Iconsax.add),
         onPressed: (){navigateTo(context, const AddRepStorePage());}
       ),
       body: Padding

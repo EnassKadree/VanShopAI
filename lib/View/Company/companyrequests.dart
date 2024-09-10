@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Company/Represntatives%20Cubit/representatives_cubit.dart';
 import 'package:vanshopai/Helper/text.dart';
 import 'package:vanshopai/View/Company/Widgets/companyrepresentativelistview.dart';
 import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
 
-class CompanyRepresentatives extends StatelessWidget 
+class CompanyRequests extends StatelessWidget 
 {
-  const CompanyRepresentatives({super.key});
+  const CompanyRequests({super.key});
 
   @override
   Widget build(BuildContext context) 
   {
     RepresentativesCubit cubit = BlocProvider.of<RepresentativesCubit>(context);
-    cubit.getRepresentatives(submitted: true);
+    cubit.getRepresentatives(submitted: false);
     return Scaffold
     (
       body: Padding
@@ -25,24 +26,26 @@ class CompanyRepresentatives extends StatelessWidget
           [
             TitleText
             (
-              'مندوبو الشركة',
+              'طلبات المصادقة',
               fontSize: 32
             ),
             const SizedBox(height: 12,),
+
             BlocBuilder<RepresentativesCubit, RepresentativesState>
             (
               builder: (context, state) 
               {
-                return repBuilder(state, cubit);
+                return repRequestBuilder(state, cubit);
               },
-            )
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget repBuilder(RepresentativesState state, RepresentativesCubit cubit) 
+
+  Widget repRequestBuilder(RepresentativesState state, RepresentativesCubit cubit) 
   {
     if(state is RepresentativesLoading)
       {
@@ -57,12 +60,12 @@ class CompanyRepresentatives extends StatelessWidget
             crossAxisAlignment: CrossAxisAlignment.center,
             children: 
             [
-              const Text('تعذر تحميل المندوبين!', style: TextStyle(fontSize: 18, color: Colors.grey)),
+              const Text('تعذر تحميل طلبات المصادقة!', style: TextStyle(fontSize: 18, color: Colors.grey)),
               const SizedBox(height: 32,),
               TextButton
               (
                 onPressed: ()
-                { cubit.getRepresentatives(submitted: true); }, 
+                { cubit.getRepresentatives(submitted: false); }, 
                 child: Text('حاول مرة أخرى', style: TextStyle(color: Colors.orange[700]!),)
               )
             ],
@@ -70,13 +73,25 @@ class CompanyRepresentatives extends StatelessWidget
       }
       else
       {
-        if(cubit.representatives.isEmpty)
+        if(cubit.representativesRequests.isEmpty)
         {
-          return const Center(child: Text('لا يوجد مندوبين بعد!', style: TextStyle(fontSize: 18, color: Colors.grey),));
+          return Center
+          (
+            child: Row
+            (
+              mainAxisSize: MainAxisSize.min,
+              children: 
+              [
+                Icon(Iconsax.tick_circle, color: Colors.blue[600],size: 24,),
+                const SizedBox(width: 6,),
+                const Text('لا يوجد أي طلبات مصادقة!', style: TextStyle(fontSize: 18, color: Colors.grey),),
+              ],
+            )
+          );
         }
         else
         {
-          return const CompanyRepresentativesListView(submitted: true);
+          return const CompanyRepresentativesListView(submitted: false);
         }
       }
   }

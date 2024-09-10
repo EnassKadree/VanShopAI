@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../Cubits/Representative/Quantity Cubit/quantity_cubit.dart';
 
@@ -18,7 +19,7 @@ class QuantitySelector extends StatelessWidget
       [
         IconButton
         (
-          icon: const Icon(Icons.remove),
+          icon: const Icon(Iconsax.minus),
           onPressed: () 
           { 
             context.read<QuantityCubit>().decrement();
@@ -33,7 +34,7 @@ class QuantitySelector extends StatelessWidget
           },
         ),
         IconButton(
-          icon: const Icon(Icons.add),
+          icon: const Icon(Iconsax.add),
           onPressed: () 
           { 
             context.read<QuantityCubit>().increment();

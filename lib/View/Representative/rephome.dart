@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:vanshopai/View/General%20Widgets/customfloatingactionbutton.dart';
 import 'package:vanshopai/View/Representative/addorderpage.dart';
 import 'package:vanshopai/View/Representative/doneorders.dart';
 import 'package:vanshopai/View/Representative/repprofile.dart';
@@ -23,28 +24,14 @@ class RepresentativeHome extends StatelessWidget {
   ];
 
   @override
-  Widget build(BuildContext context) {
-    if (prefs.getBool('submitted')!) {
+  Widget build(BuildContext context) 
+  {
+    if (prefs.getBool('submitted')!) 
+    {
       return BlocProvider(
         create: (context) => BottomNavCubit(),
         child: Scaffold(
-          floatingActionButton: BlocBuilder<BottomNavCubit, int>
-          (
-            builder: (context, state) 
-            {
-              return FloatingActionButton
-              (
-                heroTag: 'fab_rep_home',
-                onPressed: () 
-                {
-                  context.read<BottomNavCubit>().updateTab(2);
-                },
-                backgroundColor: Colors.brown,
-                shape: const CircleBorder(),
-                child: Icon(Iconsax.add, color: Colors.grey[100], size: 28,),
-              );
-            },
-          ),
+          floatingActionButton: const CustomFloatingActionButton(),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
           body: BlocBuilder<BottomNavCubit, int>
@@ -57,7 +44,6 @@ class RepresentativeHome extends StatelessWidget {
           (
             builder: (context, state) {
               return BottomNavigationBar(
-                elevation: 5,
                 currentIndex: state,
                 onTap: (index) =>
                     context.read<BottomNavCubit>().updateTab(index),
@@ -72,7 +58,7 @@ class RepresentativeHome extends StatelessWidget {
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
-                      Icons.inbox,
+                      Iconsax.add,
                       color: Colors.white,
                     ),
                     label: '',

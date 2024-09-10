@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import '../../Helper/text.dart';
 import '../../sharedprefsUtils.dart';
 import '../General Widgets/logutbuttton.dart';
-import 'Widgets/profilecard.dart';
+import '../Representative/Widgets/profilecard.dart';
 
 
-class RepProfile extends StatelessWidget 
+class CompanyProfile extends StatelessWidget 
 {
-  const RepProfile({super.key});
+  const CompanyProfile({super.key});
 
 
   @override
@@ -51,19 +51,9 @@ class RepProfile extends StatelessWidget
             ),
             ProfileCard
             (
-              title: 'الشركة:', 
-              subtitle: prefs.getString('companyName') ?? 'لا يوجد', 
-            ),     
-            ProfileCard
-            (
               title: 'البلد:', 
               subtitle: prefs.getString('country') ?? 'لا يوجد', 
-            ),     
-            ProfileCard
-            (
-              title: 'المحافظة:', 
-              subtitle: prefs.getString('province') ?? 'لا يوجد', 
-            ),      
+            ),
           ]
         )
       ),

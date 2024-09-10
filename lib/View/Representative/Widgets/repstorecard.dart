@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Representative/Add%20Rep%20Store%20Cubit/add_rep_store_cubit.dart';
 import 'package:vanshopai/Cubits/Representative/Get%20Stores%20Cubit/get_stores_cubit.dart';
 
@@ -66,7 +67,7 @@ class RepStoreCard extends StatelessWidget
                   }
                 );
               },
-              icon: Icon(Icons.location_on_outlined ,color: Colors.blue[600],size: 28,)
+              icon: Icon(Iconsax.location ,color: Colors.blue[600],size: 28,)
             ),
             recommended? 
               IconButton
@@ -107,7 +108,7 @@ class RepStoreCard extends StatelessWidget
                     }
                   );
                 }, 
-                icon: Icon(Icons.add ,color: Colors.blue[600],size: 28,)
+                icon: Icon(Iconsax.add ,color: Colors.blue[600],size: 28,)
               )
             :
               IconButton
@@ -116,7 +117,7 @@ class RepStoreCard extends StatelessWidget
                 {
                   await FlutterPhoneDirectCaller.callNumber(store.phone);
                 },
-                icon: Icon(Icons.call_outlined ,color: Colors.blue[600],size: 28,)
+                icon: Icon(Iconsax.call ,color: Colors.blue[600],size: 28,)
               ),
           ]
         )

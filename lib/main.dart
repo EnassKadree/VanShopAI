@@ -14,6 +14,7 @@ import 'package:vanshopai/Cubits/Representative/Get%20Products%20Cubit/get_produ
 import 'package:vanshopai/Cubits/Representative/Get%20Stores%20Cubit/get_stores_cubit.dart';
 import 'package:vanshopai/Cubits/Representative/Quantity%20Cubit/quantity_cubit.dart';
 import 'package:vanshopai/Cubits/Representative/Update%20Order/update_order_cubit.dart';
+import 'package:vanshopai/View/Auth/Other/authhome.dart';
 import 'package:vanshopai/View/Auth/Other/entry.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -92,6 +93,8 @@ class MyApp extends StatelessWidget
           home: 
           prefs.getString('userID') != null ? 
             getHomePage(prefs.getString('userType')!)
+          : prefs.getBool('signedUp')?? false ?
+            const AuthHomePage()
           :
             const EntryPage()
         ),

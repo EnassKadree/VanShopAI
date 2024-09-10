@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Company/Represntatives%20Cubit/representatives_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Model/representative.dart';
@@ -20,6 +21,7 @@ class RepresentativeCard extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
+    final cubit = BlocProvider.of<RepresentativesCubit>(context);
     return Padding
     (
       padding: const EdgeInsets.symmetric(vertical: 2),
@@ -31,8 +33,8 @@ class RepresentativeCard extends StatelessWidget
         },
         child: Card
         (
-          shadowColor: Colors.grey[100]!.withOpacity(.5),
           color: Colors.white,
+          shadowColor: Colors.grey[100]!.withOpacity(.5),
           child: ListTile
           (
             title: Text(representative.tradeName, style: TextStyle(color: Colors.blue[900], fontSize: 20),),
@@ -48,15 +50,14 @@ class RepresentativeCard extends StatelessWidget
                 [
                   InkWell
                   (
-                    onTap: ()
-                    { BlocProvider.of<RepresentativesCubit>(context).updateRepresentativeSubmitted(representative.id);},
-                    child: const Card(shape: CircleBorder(), color: Colors.white, child: Icon(Icons.check_circle, color: Color.fromARGB(255, 8, 87, 206), size: 32,)),
+                    onTap: () => cubit.updateRepresentativeSubmitted(representative.id),
+                    child: const Card(shape: CircleBorder(), color: Colors.white, child: Icon(Iconsax.tick_circle, color: Color.fromARGB(255, 8, 87, 206), size: 32,)),
                   ),
         
-                  // ! in case of rejecting the request, we have to send notification to the 
-                  const InkWell
+                  InkWell
                   (
-                    child: Card(shape: CircleBorder(), color: Colors.white, child: Icon(Icons.cancel, color: Color.fromARGB(255, 204, 15, 15), size: 32,)),
+                    onTap: () => cubit.updateRepresentativeRejected(representative.id),
+                    child: const Card(shape: CircleBorder(), color: Colors.white, child: Icon(Iconsax.close_circle, color: Color.fromARGB(255, 204, 15, 15), size: 32,)),
                   )
                 ],
               ),

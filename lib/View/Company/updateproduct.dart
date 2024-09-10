@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Cubits/Company/Products%20Cubit/products_cubit.dart';
 import 'package:vanshopai/Helper/navigators.dart';
 import 'package:vanshopai/Helper/snackbar.dart';
@@ -7,7 +8,6 @@ import 'package:vanshopai/Model/product.dart';
 import 'package:vanshopai/View/General%20Widgets/custombutton.dart';
 import 'package:vanshopai/View/General%20Widgets/customtextfield.dart';
 import 'package:vanshopai/View/General%20Widgets/progressindicator.dart';
-import 'package:vanshopai/constants.dart';
 
 
 class UpdateProductPage extends StatelessWidget 
@@ -104,13 +104,12 @@ class UpdateProductPage extends StatelessWidget
                           ),
                         )
                       :
-                        Image.asset
+                        SizedBox
                         (
-                          productImage,
-                          fit: BoxFit.cover,
-                          width: 160,
                           height: 160,
-                        ),
+                          width: 160,
+                          child: Icon(Iconsax.gallery, size: 100,color: Colors.brown[300],)
+                        )
                       ),
                     ),
 
