@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vanshopai/Features/Representatives/Controller/representatives_cubit.dart';
+import 'package:vanshopai/Features/Representatives/Controller/Company%20Representatives/representatives_cubit.dart';
 import 'package:vanshopai/Features/Representatives/View/Components/representativecard.dart';
 
 class CompanyRepresentativesListView extends StatelessWidget 

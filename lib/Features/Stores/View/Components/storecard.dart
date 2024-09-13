@@ -6,8 +6,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Features/Stores/Controller/Add%20Store%20Cubit/add_store_cubit.dart';
 import 'package:vanshopai/Features/Stores/Controller/Get%20Stores%20Cubit/get_stores_cubit.dart';
 
-import '../../../../Helper/navigators.dart';
-import '../../../../Model/store.dart';
+import '../../../Core/Helper/navigators.dart';
+import '../../../Core/Model/store.dart';
 
 class StoreCard extends StatelessWidget 
 {

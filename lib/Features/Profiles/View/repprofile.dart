@@ -1,7 +1,6 @@
-// ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 
-import '../../../Helper/text.dart';
+import '../../Core/Helper/text.dart';
 import '../../../Extensions/sharedprefsUtils.dart';
 import 'Components/logutbuttton.dart';
 import 'Components/profilecard.dart';

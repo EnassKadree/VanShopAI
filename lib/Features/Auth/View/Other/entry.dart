@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:vanshopai/Helper/navigators.dart';
+import 'package:vanshopai/Features/Core/Helper/navigators.dart';
 import 'package:vanshopai/Features/Auth/View/Signup/usersignup.dart';
 import 'package:vanshopai/Extensions/clipper.dart';
-import 'package:vanshopai/Helper/constants.dart';
+import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 class EntryPage extends StatelessWidget 
 {

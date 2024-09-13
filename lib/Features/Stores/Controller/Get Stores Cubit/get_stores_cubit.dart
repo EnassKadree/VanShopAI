@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
-import 'package:vanshopai/Model/store.dart';
-import '../../../../Helper/constants.dart';
+import 'package:vanshopai/Features/Core/Model/store.dart';
+import '../../../Core/Helper/constants.dart';
 import '../../../../Extensions/sharedprefsUtils.dart';
 part 'get_stores_state.dart';
 

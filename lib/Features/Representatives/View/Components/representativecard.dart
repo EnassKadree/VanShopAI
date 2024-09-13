@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:vanshopai/Features/Representatives/Controller/representatives_cubit.dart';
-import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/Model/representative.dart';
+import 'package:vanshopai/Features/Representatives/Controller/Company%20Representatives/representatives_cubit.dart';
+import 'package:vanshopai/Features/Core/Helper/navigators.dart';
+import 'package:vanshopai/Features/Core/Model/representative.dart';
 import 'package:vanshopai/Features/Representatives/View/representatativeinfo.dart';
 
 class RepresentativeCard extends StatelessWidget

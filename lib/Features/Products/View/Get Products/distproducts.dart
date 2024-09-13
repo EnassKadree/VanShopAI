@@ -5,9 +5,9 @@ import 'package:vanshopai/Features/Products/View/Add%20&%20Update%20Product/addd
 import 'package:vanshopai/Features/Products/View/Get%20Products/archiveddistproducts.dart';
 
 import '../../Controller/Products Cubit/products_cubit.dart';
-import '../../../../Helper/navigators.dart';
-import '../../../../Helper/text.dart';
-import '../../../../Helper/constants.dart';
+import '../../../Core/Helper/navigators.dart';
+import '../../../Core/Helper/text.dart';
+import '../../../Core/Helper/constants.dart';
 import '../../../../Components/customfloatingactionbuttonadd.dart';
 import '../Components/productcard.dart';
 import '../../../../Components/progressindicator.dart';

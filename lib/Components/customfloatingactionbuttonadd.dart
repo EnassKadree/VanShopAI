@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../Helper/navigators.dart';
+import '../Features/Core/Helper/navigators.dart';
 
 class CustomFloatingActionButtonAdd extends StatelessWidget 
 {

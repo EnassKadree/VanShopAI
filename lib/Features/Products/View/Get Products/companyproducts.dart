@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Features/Products/Controller/Products%20Cubit/products_cubit.dart';
-import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/Helper/text.dart';
+import 'package:vanshopai/Features/Core/Helper/navigators.dart';
+import 'package:vanshopai/Features/Core/Helper/text.dart';
 import 'package:vanshopai/Features/Products/View/Components/productcard.dart';
 import 'package:vanshopai/Features/Products/View/Get%20Products/archivedcompanyproducts.dart';
 import 'package:vanshopai/Components/progressindicator.dart';
-import 'package:vanshopai/Helper/constants.dart';
+import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 class CompanyProducts extends StatelessWidget
 {

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vanshopai/Extensions/clipper.dart';
-import 'package:vanshopai/Helper/constants.dart';
+import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 class SignupHeader extends StatelessWidget {
   const SignupHeader({

@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:vanshopai/Features/Stores/Controller/Get%20Stores%20Cubit/get_stores_cubit.dart';
 import 'package:vanshopai/Extensions/sharedprefsUtils.dart';
 
-import '../../../../Model/store.dart';
+import '../../../Core/Model/store.dart';
 
 part 'add_store_state.dart';
 

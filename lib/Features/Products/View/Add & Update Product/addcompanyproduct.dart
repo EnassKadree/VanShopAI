@@ -4,14 +4,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Features/Products/Controller/Products%20Cubit/products_cubit.dart';
-import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/Helper/snackbar.dart';
-import 'package:vanshopai/Helper/text.dart';
-import 'package:vanshopai/Model/product.dart';
-import 'package:vanshopai/Features/Oders/View/Components/custombutton.dart';
+import 'package:vanshopai/Features/Core/Helper/navigators.dart';
+import 'package:vanshopai/Features/Core/Helper/snackbar.dart';
+import 'package:vanshopai/Features/Core/Helper/text.dart';
+import 'package:vanshopai/Features/Core/Model/product.dart';
+import 'package:vanshopai/Features/Orders/View/Components/custombutton.dart';
 import 'package:vanshopai/Components/customtextfield.dart';
 import 'package:vanshopai/Components/progressindicator.dart';
-import 'package:vanshopai/Helper/constants.dart';
+import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 import '../../../../Extensions/sharedprefsUtils.dart';
 

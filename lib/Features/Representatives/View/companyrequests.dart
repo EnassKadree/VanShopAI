@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:vanshopai/Features/Representatives/Controller/representatives_cubit.dart';
-import 'package:vanshopai/Helper/text.dart';
+import 'package:vanshopai/Features/Representatives/Controller/Company%20Representatives/representatives_cubit.dart';
+import 'package:vanshopai/Features/Core/Helper/text.dart';
 import 'package:vanshopai/Features/Representatives/View/Components/companyrepresentativelistview.dart';
 import 'package:vanshopai/Components/progressindicator.dart';
 

@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Auth/Controller/Categories%20Cubit/categories_cubit.dart';
-import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/Helper/snackbar.dart';
+import 'package:vanshopai/Features/Core/Helper/navigators.dart';
+import 'package:vanshopai/Features/Core/Helper/snackbar.dart';
 import 'package:vanshopai/Features/Auth/View/Login/login.dart';
 import 'package:vanshopai/Features/Auth/View/Components/checkboxlistview.dart';
-import 'package:vanshopai/Features/Oders/View/Components/custombutton.dart';
-import 'package:vanshopai/Helper/constants.dart';
+import 'package:vanshopai/Features/Orders/View/Components/custombutton.dart';
+import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 class CheckStoreCategories extends StatelessWidget {
   const CheckStoreCategories({super.key});

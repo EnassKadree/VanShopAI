@@ -2,12 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Auth/Controller/Signup%20Cubit/sign_up_cubit.dart';
-import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/Helper/snackbar.dart';
+import 'package:vanshopai/Features/Core/Helper/navigators.dart';
+import 'package:vanshopai/Features/Core/Helper/snackbar.dart';
 import 'package:vanshopai/Features/Auth/View/Login/login.dart';
 import 'package:vanshopai/Features/Auth/View/Other/authhome.dart';
 import 'package:vanshopai/Features/Auth/View/Components/signupheader.dart';
-import 'package:vanshopai/Features/Oders/View/Components/custombutton.dart';
+import 'package:vanshopai/Features/Orders/View/Components/custombutton.dart';
 import 'package:vanshopai/Components/customtextfield.dart';
 import 'package:vanshopai/Extensions/sharedprefsUtils.dart';
 

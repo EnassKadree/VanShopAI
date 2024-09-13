@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Stores/Controller/Get%20Stores%20Cubit/get_stores_cubit.dart';
-import 'package:vanshopai/Model/store.dart';
+import 'package:vanshopai/Features/Core/Model/store.dart';
 
 class StoreRadioListView extends StatelessWidget 
 {

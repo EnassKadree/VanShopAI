@@ -1,10 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
-import 'package:vanshopai/Model/product.dart';
+import 'package:vanshopai/Features/Core/Model/product.dart';
 
-import '../../../../Helper/constants.dart';
-import '../../../../Extensions/sharedprefsUtils.dart';
+import '../../../Core/Helper/constants.dart';
 
 part 'get_products_state.dart';
 
@@ -16,14 +15,11 @@ class GetProductsCubit extends Cubit<GetProductsState>
   List<Product> products = [];
 
 
-    Future<void> getProducts(String sender) async
+    Future<void> getProducts(String owner, String ownerId) async
     {
       emit(GetProductsLoading());
       try
       {
-        String owner = sender == representativeConst? 'company_id' : 'distributor_id';
-        String ownerId = sender == representativeConst? prefs.getString('companyID')! : prefs.getString('userID')!;
-        
         QuerySnapshot querySnapshot = await firestore.collection(productsConst)
         .where(owner, isEqualTo: ownerId)
         .where('archived', isEqualTo: false)

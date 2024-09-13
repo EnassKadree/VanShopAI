@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Components/customfloatingactionbutton.dart';
-import 'package:vanshopai/Features/Oders/View/Add%20Order/addreporderpage.dart';
-import 'package:vanshopai/Features/Oders/View/Get%20Orders/repdoneorders.dart';
+import 'package:vanshopai/Features/Orders/View/Add%20Order/addreporderpage.dart';
+import 'package:vanshopai/Features/Orders/View/Get%20Orders/repdoneorders.dart';
 import 'package:vanshopai/Features/Profiles/View/repprofile.dart';
 import 'package:vanshopai/Features/Home/View/repunsubmittedpage.dart';
 import 'package:vanshopai/Extensions/sharedprefsUtils.dart';
 
 import '../Controller/bottom_nav_cubit.dart';
-import '../../Oders/View/Get Orders/repincomingorders.dart';
+import '../../Orders/View/Get Orders/repincomingorders.dart';
 import '../../Stores/View/Get Stores/repstores.dart';
 
 class RepresentativeHome extends StatelessWidget {

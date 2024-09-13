@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Auth/Controller/Login%20Cubit/login_cubit.dart';
-import 'package:vanshopai/Helper/navigators.dart';
-import 'package:vanshopai/Helper/snackbar.dart';
+import 'package:vanshopai/Features/Core/Helper/navigators.dart';
+import 'package:vanshopai/Features/Core/Helper/snackbar.dart';
 import 'package:vanshopai/Features/Auth/View/Signup/usersignup.dart';
 import 'package:vanshopai/Features/Auth/View/Components/signupheader.dart';
 import 'package:vanshopai/Features/Home/View/companyhome.dart';
-import 'package:vanshopai/Features/Oders/View/Components/custombutton.dart';
+import 'package:vanshopai/Features/Orders/View/Components/custombutton.dart';
 import 'package:vanshopai/Components/customtextfield.dart';
 
 import '../../../../Extensions/sharedprefsUtils.dart';
@@ -120,7 +120,7 @@ class LoginPage extends StatelessWidget
                                 overflow: TextOverflow.visible,
                                 style: TextStyle(color: Colors.orange[700]!)),
                             onTap: () {
-                              navigateTo(context, UserSignupPage());
+                              navigateTo(context, const UserSignupPage());
                             },
                           )
                         ],
@@ -145,30 +145,6 @@ class LoginPage extends StatelessWidget
                             onTap: () 
                             {
                               cubit.resetPassword(email.text, context);
-                            },
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 10,),
-                      Row
-                      (
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: 
-                        [
-                          const Text
-                          (
-                            'ألم تقم بتأكيد حسابك بعد؟',
-                            overflow: TextOverflow.visible,
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                          const SizedBox(width: 8,),
-                          InkWell(
-                            child: Text('إرسال رابط لتأكيد الحساب',
-                            overflow: TextOverflow.visible,
-                                style: TextStyle(color: Colors.orange[700]!)),
-                            onTap: () 
-                            {
-                              cubit.sendVerification(context);
                             },
                           )
                         ],

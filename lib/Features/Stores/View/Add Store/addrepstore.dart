@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Stores/Controller/Get%20Stores%20Cubit/get_stores_cubit.dart';
-import 'package:vanshopai/Helper/text.dart';
-import 'package:vanshopai/Helper/constants.dart';
+import 'package:vanshopai/Features/Core/Helper/text.dart';
+import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 import '../Components/recommendedstoresbuilder.dart';
 

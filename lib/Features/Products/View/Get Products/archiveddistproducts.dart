@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Products/Controller/Products%20Cubit/products_cubit.dart';
-import 'package:vanshopai/Helper/text.dart';
+import 'package:vanshopai/Features/Core/Helper/text.dart';
 import 'package:vanshopai/Features/Products/View/Components/productcard.dart';
 import 'package:vanshopai/Components/progressindicator.dart';
-import 'package:vanshopai/Helper/constants.dart';
+import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 class ArchivedDistProducts extends StatelessWidget
 {

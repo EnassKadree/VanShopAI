@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vanshopai/Helper/constants.dart';
+import 'package:vanshopai/Features/Core/Helper/constants.dart';
 import 'package:vanshopai/Features/Auth/View/Other/authhome.dart';
 import 'package:vanshopai/Features/Auth/View/Other/entry.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -51,11 +51,9 @@ class MyApp extends StatelessWidget
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: const 
-          [
-            Locale('ar', ''),
-          ],
+          supportedLocales: const [ Locale('ar', ''), ],
           locale: const Locale('ar', ''),
+
           home: 
           prefs.getString('userID') != null ? 
             getHomePage(prefs.getString('userType')!)

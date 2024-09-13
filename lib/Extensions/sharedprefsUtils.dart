@@ -6,6 +6,7 @@ import 'package:vanshopai/Features/Auth/View/Login/login.dart';
 import 'package:vanshopai/Features/Home/View/companyhome.dart';
 import 'package:vanshopai/Features/Home/View/disthome.dart';
 import 'package:vanshopai/Features/Home/View/rephome.dart';
+import 'package:vanshopai/Features/Home/View/storehome.dart';
 
 late SharedPreferences prefs;
 
@@ -42,7 +43,7 @@ Widget getHomePage(String userType)
   } 
   else if (userType == 'Store') 
   {
-
+    return const StoreHome();
   }
   return LoginPage();
 }

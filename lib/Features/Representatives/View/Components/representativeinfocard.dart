@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:vanshopai/Helper/snackbar.dart';
+import 'package:vanshopai/Features/Core/Helper/snackbar.dart';
 
 class RepresentativeInfoCard extends StatelessWidget 
 {

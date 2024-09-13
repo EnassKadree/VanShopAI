@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vanshopai/Helper/text.dart';
+import 'package:vanshopai/Features/Core/Helper/text.dart';
 import 'package:vanshopai/Features/Stores/View/Add%20Store/adddiststore.dart';
 import 'package:vanshopai/Components/customfloatingactionbuttonadd.dart';
-import 'package:vanshopai/Features/Oders/View/Components/storeselistview.dart';
-import 'package:vanshopai/Helper/constants.dart';
+import 'package:vanshopai/Features/Orders/View/Components/storeselistview.dart';
+import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 import '../../Controller/Get Stores Cubit/get_stores_cubit.dart';
 import '../../../../Components/progressindicator.dart';

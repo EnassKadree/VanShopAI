@@ -5,9 +5,9 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
-import 'package:vanshopai/Helper/snackbar.dart';
-import 'package:vanshopai/Model/product.dart';
-import 'package:vanshopai/Helper/constants.dart';
+import 'package:vanshopai/Features/Core/Helper/snackbar.dart';
+import 'package:vanshopai/Features/Core/Model/product.dart';
+import 'package:vanshopai/Features/Core/Helper/constants.dart';
 import 'package:vanshopai/Extensions/sharedprefsUtils.dart';
 
 part 'products_state.dart';

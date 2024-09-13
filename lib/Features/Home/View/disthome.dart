@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:vanshopai/Features/Oders/View/Get%20Orders/distdoneorders.dart';
-import 'package:vanshopai/Features/Oders/View/Get%20Orders/distincomingorders.dart';
+import 'package:vanshopai/Features/Orders/View/Get%20Orders/distdoneorders.dart';
+import 'package:vanshopai/Features/Orders/View/Get%20Orders/distincomingorders.dart';
 import 'package:vanshopai/Features/Products/View/Get%20Products/distproducts.dart';
 import 'package:vanshopai/Features/Profiles/View/distprofile.dart';
 import 'package:vanshopai/Features/Stores/View/Get%20Stores/diststores.dart';
