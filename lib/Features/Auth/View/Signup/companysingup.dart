@@ -41,6 +41,25 @@ class CompanySignupPage extends StatelessWidget
         return Scaffold
         (
           backgroundColor: Colors.white,
+          bottomNavigationBar: Padding
+          (
+            padding: const EdgeInsets.all(16),
+            child: CustomButton(
+              text: 'التالي',
+              onTap: () async
+              {
+                if(formKey.currentState!.validate())
+                {
+                  cubit.createCompanyAccount
+                  (
+                    tradeName: tradeName.text, 
+                    phone: phoneNumber.text,
+                    country: cubit.selectedCountry,
+                  );
+                }
+              },
+            ),
+          ),
           body: Form(
             key: formKey,
             child: ListView
@@ -73,25 +92,6 @@ class CompanySignupPage extends StatelessWidget
                       
                       const SizedBox(height: 10,),
                       ChoiceButton(type: countriesConst),
-                      
-                      const SizedBox(height: 10,),
-
-                      const SizedBox(height: 24,),
-                      CustomButton(
-                        text: 'التالي',
-                        onTap: () async
-                        {
-                          if(formKey.currentState!.validate())
-                          {
-                            cubit.createCompanyAccount
-                            (
-                              tradeName: tradeName.text, 
-                              phone: phoneNumber.text,
-                              country: cubit.selectedCountry,
-                            );
-                          }
-                        },
-                      ),
                     ],
                   ),
                 )

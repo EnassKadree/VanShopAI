@@ -22,7 +22,7 @@ class EntryPage extends StatelessWidget
         [
           ClipPath
           (
-            clipper: MyCustomClipper(),
+            clipper: MyFirstCustomClipper(),
             child: Container
             (
               width: double.infinity,
@@ -67,7 +67,7 @@ class EntryPage extends StatelessWidget
             (
               onTap: () 
               {
-                navigateTo(context, UserSignupPage());
+                navigateTo(context, const UserSignupPage());
               },
               child: const Row
               (

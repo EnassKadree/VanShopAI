@@ -30,7 +30,7 @@ class StoreSignupPage extends StatelessWidget {
       {
         if (state is SignUpAccountSuccess) 
         {
-          navigateRemoveUntil(context, CheckStoreCategories());
+          navigateRemoveUntil(context, const CheckStoreCategories());
         } 
         else if (state is SignUpAccountFailure) 
         {
@@ -41,6 +41,28 @@ class StoreSignupPage extends StatelessWidget {
       {
         return Scaffold(
           backgroundColor: Colors.white,
+          bottomNavigationBar: Padding
+          (
+            padding: const EdgeInsets.all(16),
+            child:  CustomButton
+            (
+              text: 'التالي',
+              onTap: () 
+              {
+                if(formKey.currentState!.validate())
+                {
+                  cubit.createStoreAccount
+                  (
+                    tradeName: tradeName.text,
+                    phone: phoneNumber.text,
+                    country: cubit.selectedCountry,
+                    province: cubit.selectedProvince,
+                    address: address.text
+                  );
+                }
+              },
+            ),
+          ),
           body: Form(
             key: formKey,
             child: ListView
@@ -80,25 +102,6 @@ class StoreSignupPage extends StatelessWidget {
 
                       const SizedBox(height: 10,),
                       CustomTextFormField(hint: 'العنوان التفصيلي',controller: address,),
-
-                      const SizedBox(height: 24,),
-                      CustomButton(
-                        text: 'التالي',
-                        onTap: () 
-                        {
-                          if(formKey.currentState!.validate())
-                          {
-                            cubit.createStoreAccount
-                            (
-                              tradeName: tradeName.text,
-                              phone: phoneNumber.text,
-                              country: cubit.selectedCountry,
-                              province: cubit.selectedProvince,
-                              address: address.text
-                            );
-                          }
-                        },
-                      ),
                     ],
                   ),
                 )

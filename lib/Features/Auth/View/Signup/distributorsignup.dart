@@ -29,7 +29,7 @@ class DistributorSignupPage extends StatelessWidget {
       {
         if (state is SignUpAccountSuccess) 
         {
-          navigateRemoveUntil(context, CheckDistributorCategories());
+          navigateRemoveUntil(context, const CheckDistributorCategories());
         } 
         else if (state is SignUpAccountFailure) 
         {
@@ -41,6 +41,26 @@ class DistributorSignupPage extends StatelessWidget {
         return Scaffold
         (
           backgroundColor: Colors.white,
+          bottomNavigationBar: Padding
+          (
+            padding: const EdgeInsets.all(16),
+            child: CustomButton(
+            text: 'التالي',
+            onTap: () 
+            {
+              if(formKey.currentState!.validate())
+              {
+                cubit.createDistributorAccount
+                (
+                  tradeName: tradeName.text,
+                  phone: phoneNumber.text,
+                  country: cubit.selectedCountry,
+                  province: cubit.selectedProvince,
+                );
+              }
+            },
+          ),
+          ),
           body: Form(
             key: formKey,
             child: ListView(
@@ -76,24 +96,6 @@ class DistributorSignupPage extends StatelessWidget {
 
                       const SizedBox(height: 10,),
                       ChoiceButton(type: provincesConst),
-                      
-                      const SizedBox(height: 24,),
-                      CustomButton(
-                        text: 'التالي',
-                        onTap: () 
-                        {
-                          if(formKey.currentState!.validate())
-                          {
-                            cubit.createDistributorAccount
-                            (
-                              tradeName: tradeName.text,
-                              phone: phoneNumber.text,
-                              country: cubit.selectedCountry,
-                              province: cubit.selectedProvince,
-                            );
-                          }
-                        },
-                      ),
                     ],
                   ),
                 )
