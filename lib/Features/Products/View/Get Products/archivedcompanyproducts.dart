@@ -72,12 +72,11 @@ class ArchivedCompanyProducts extends StatelessWidget
                       (
                         itemCount: cubit.archivedProducts.length,
                         clipBehavior: Clip.none,
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount
                         (
-                          crossAxisCount: 2,
-                          childAspectRatio: .5,
+                          crossAxisCount: MediaQuery.of(context).size.width > 600 ? 3 : 2,
+                          childAspectRatio: MediaQuery.of(context).size.width > 600 ? 0.85 : 0.75,
                           crossAxisSpacing: 10,
-                          mainAxisSpacing: 100,
                         ),
                         itemBuilder: (context, index)
                         {
