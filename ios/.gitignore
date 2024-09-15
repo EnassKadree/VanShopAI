@@ -32,3 +32,25 @@ Runner/GeneratedPluginRegistrant.*
 !default.mode2v3
 !default.pbxuser
 !default.perspectivev3
+
+# Ignore the Firebase configuration file for iOS
+GoogleService-Info.plist
+
+# Ignore Xcode project user-specific settings
+xcuserdata/
+
+# Ignore generated files from Cocoapods (dependency manager)
+Pods/
+Podfile.lock
+
+# Ignore archived builds
+*.xcarchive
+
+# Ignore build folders
+build/
+
+# Ignore provisioning profiles
+*.mobileprovision
+
+# Ignore xcdebugger (Xcode debugger settings)
+*.xcdebugger/
