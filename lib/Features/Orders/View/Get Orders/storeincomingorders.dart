@@ -27,7 +27,7 @@ class StoreIncomingOrdersPage extends StatelessWidget
         (
           children: 
           [
-            TitleText('الطلبيات التي يتم تجهيزها', fontSize: 32),
+            titleText('الطلبيات التي يتم تجهيزها', fontSize: 32),
             const SizedBox(height: 16),
             BlocBuilder<GetOrdersCubit, GetOrdersState>
             (

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../Core/Helper/navigators.dart';
-import '../../../../Extensions/sharedprefsUtils.dart';
+import '../../../../Extensions/sharedprefsutils.dart';
 import '../../../Auth/View/Login/login.dart';
 
 class LogoutButton extends StatelessWidget 
@@ -42,7 +42,7 @@ class LogoutButton extends StatelessWidget
                   {
                     await FirebaseAuth.instance.signOut();
                     prefs.clear();
-                    navigateRemoveUntil(context, LoginPage());
+                    navigateRemoveUntil(context, const LoginPage());
                   }, 
                   child: Text('نعم',style: TextStyle(color: Colors.orange[700]),)
                 ),

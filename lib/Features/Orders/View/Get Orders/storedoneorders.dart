@@ -26,7 +26,7 @@ class StoreDoneOrdersPage extends StatelessWidget
         (
           children: 
           [
-            TitleText('الطلبيات المستلمة', fontSize: 32),
+            titleText('الطلبيات المستلمة', fontSize: 32),
             const SizedBox(height: 16),
             BlocBuilder<GetOrdersCubit, GetOrdersState>
             (

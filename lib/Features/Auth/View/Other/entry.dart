@@ -22,7 +22,7 @@ class EntryPage extends StatelessWidget
         [
           ClipPath
           (
-            clipper: MyFirstCustomClipper(),
+            clipper: MyThirdCustomClipper(),
             child: Container
             (
               width: double.infinity,

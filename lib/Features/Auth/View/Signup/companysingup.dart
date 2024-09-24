@@ -1,4 +1,3 @@
-// ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Auth/Controller/Signup%20Account%20Cubit/signup_account_cubit.dart';
@@ -33,7 +32,7 @@ class CompanySignupPage extends StatelessWidget
         } 
         else if (state is SignUpAccountFailure) 
         {
-          ShowSnackBar(context, state.error);
+          showSnackBar(context, state.error);
         }
       },
       builder: (context, state) 
@@ -91,7 +90,7 @@ class CompanySignupPage extends StatelessWidget
                       CustomTextFormField(hint: 'رقم الهاتف',controller: phoneNumber,),
                       
                       const SizedBox(height: 10,),
-                      ChoiceButton(type: countriesConst),
+                      const ChoiceButton(type: countriesConst),
                     ],
                   ),
                 )

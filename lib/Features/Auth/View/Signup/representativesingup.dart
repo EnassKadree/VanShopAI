@@ -1,4 +1,3 @@
-// ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Core/Helper/navigators.dart';
@@ -29,11 +28,11 @@ class RepresentativeSignupPage extends StatelessWidget
       {
         if (state is SignUpAccountSuccess) 
         {
-          navigateRemoveUntil(context, LoginPage());
+          navigateRemoveUntil(context, const LoginPage());
         } 
         else if (state is SignUpAccountFailure) 
         {
-          ShowSnackBar(context, state.error);
+          showSnackBar(context, state.error);
         }
       },
       builder: (context, state) 
@@ -93,14 +92,14 @@ class RepresentativeSignupPage extends StatelessWidget
                       CustomTextFormField(hint: 'رقم الهاتف',controller: phoneNumber,),
 
                       const SizedBox(height: 10,),
-                      ChoiceButton
+                      const ChoiceButton
                       (type: companiesConst,),
 
                       const SizedBox( height: 10,),
-                      ChoiceButton(type: countriesConst),
+                      const ChoiceButton(type: countriesConst),
                       
                       const SizedBox(height: 10,),
-                      ChoiceButton
+                      const ChoiceButton
                       (type: provincesConst,),
                     ],
                   ),

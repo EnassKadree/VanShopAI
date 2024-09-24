@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart'; 
-import 'package:bloc/bloc.dart';
 
 import '../../../Core/Model/order.dart';
 
@@ -21,7 +21,7 @@ class GetOrderDetailsCubit extends Cubit<GetOrderDetailsState>
 
       if (order.originalProducts == null) 
       {
-      order.originalProducts = List.from(order.products); 
+        order.originalProducts = List.from(order.products); 
       } else 
       {
         order.products = List.from(order.originalProducts!);

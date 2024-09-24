@@ -47,11 +47,11 @@ class OrderCard extends StatelessWidget
             {
               if(state is UpdateOrderFailure)
               {
-                ShowSnackBar(context, 'تعذر تعديل الطلب');
+                showSnackBar(context, 'تعذر تعديل الطلب');
               }
               if(state is UpdateOrderSuccess)
               {
-                ShowSnackBar(context, 'تم تعديل الطلب بنجاح');
+                showSnackBar(context, 'تم تعديل الطلب بنجاح');
               }
             },
             builder: (context, state) 

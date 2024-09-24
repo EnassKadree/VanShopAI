@@ -1,9 +1,9 @@
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Core/Model/order.dart';
 
 import '../../../Core/Helper/constants.dart';
-import '../../../../Extensions/sharedprefsUtils.dart';
+import '../../../../Extensions/sharedprefsutils.dart';
 
 part 'get_orders_state.dart';
 
@@ -70,6 +70,7 @@ class GetOrdersCubit extends Cubit<GetOrdersState>
   
   Future<void> getDistsNames(List ordersList) async
   {
+    List<String> distsTemp = [];
     for (OrderModel order in ordersList) 
     {
       String distId = order.distributorId != null ? order.distributorId! : order.representativeId!;
@@ -81,11 +82,12 @@ class GetOrdersCubit extends Cubit<GetOrdersState>
 
       if (distDoc.exists) 
       {
-        distsNames.add(distDoc['trade_name'] as String);
+        distsTemp.add(distDoc['trade_name'] as String);
       } else
       {
-        distsNames.add("Unknown");
+        distsTemp.add("Unknown");
       }
     }
+    distsNames = distsTemp;
   }
 }

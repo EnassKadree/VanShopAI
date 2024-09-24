@@ -27,7 +27,7 @@ class RepIncomingOrdersPage extends StatelessWidget
         (
           children: 
           [
-            TitleText('الطلبيات الواردة', fontSize: 32),
+            titleText('الطلبيات الواردة', fontSize: 32),
             const SizedBox(height: 16),
             BlocBuilder<GetOrdersCubit, GetOrdersState>
             (

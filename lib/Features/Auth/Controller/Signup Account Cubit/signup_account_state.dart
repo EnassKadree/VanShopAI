@@ -1,6 +1,5 @@
 part of 'signup_account_cubit.dart';
 
-@immutable
 sealed class SignUpAccountState {}
 
 final class SignUpAccountInitial extends SignUpAccountState {}

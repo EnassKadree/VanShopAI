@@ -1,14 +1,13 @@
 import 'dart:io';
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:meta/meta.dart';
 import 'package:vanshopai/Features/Core/Helper/snackbar.dart';
 import 'package:vanshopai/Features/Core/Model/product.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart';
-import 'package:vanshopai/Extensions/sharedprefsUtils.dart';
+import 'package:vanshopai/Extensions/sharedprefsutils.dart';
 
 part 'products_state.dart';
 
@@ -228,12 +227,12 @@ class ProductsCubit extends Cubit<ProductsState>
     { 
       if(product.archived) 
       {
-        ShowSnackBar(context, 'تم إلغاء أرشفة المنتج');
+        showSnackBar(context, 'تم إلغاء أرشفة المنتج');
         getProducts(archived: true, sender: sender);
         getProducts(archived: false, sender: sender);
       } else 
       {
-        ShowSnackBar(context, 'تمت أرشفة المنتج');
+        showSnackBar(context, 'تمت أرشفة المنتج');
         getProducts(archived: false, sender: sender);
       }
     });

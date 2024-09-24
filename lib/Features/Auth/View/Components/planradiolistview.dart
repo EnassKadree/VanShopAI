@@ -1,16 +1,14 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Auth/Controller/Subscription%20Plan%20Cubit/subscription_plan_cubit.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
-class planRadioListView extends StatelessWidget 
+class PlanRadioListView extends StatelessWidget 
 {
-  planRadioListView(
+  const PlanRadioListView(
       {super.key,
       required this.type});
-      String type;
+      final String type;
 
   @override
   Widget build(BuildContext context) 

@@ -1,18 +1,16 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Auth/Controller/Signup%20Account%20Cubit/signup_account_cubit.dart';
 import 'package:vanshopai/Features/Core/Helper/navigators.dart';
 import 'package:vanshopai/Features/Core/Helper/snackbar.dart';
-import 'package:vanshopai/Features/Auth/View/Components/radioListView.dart';
+import 'package:vanshopai/Features/Auth/View/Components/radiolistview.dart';
 import 'package:vanshopai/Features/Orders/View/Components/custombutton.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 class ChoiceButton extends StatelessWidget {
-  ChoiceButton({super.key, this.onTap, required this.type});
-  void Function()? onTap;
-  String type;
+  const ChoiceButton({super.key, this.onTap, required this.type});
+  final void Function()? onTap;
+  final String type;
 
   @override
   Widget build(BuildContext context) 
@@ -42,7 +40,7 @@ class ChoiceButton extends StatelessWidget {
               showBottomSheet(context, text);
             }catch(e)
             {
-              ShowSnackBar(context, 'يرجى اختيار بلد أولاً قبل اختيار المحافظة');
+              showSnackBar(context, 'يرجى اختيار بلد أولاً قبل اختيار المحافظة');
             }
           }
         },

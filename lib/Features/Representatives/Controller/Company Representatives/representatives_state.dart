@@ -1,6 +1,5 @@
 part of 'representatives_cubit.dart';
 
-@immutable
 sealed class RepresentativesState {}
 
 final class RepresentativesInitial extends RepresentativesState {}

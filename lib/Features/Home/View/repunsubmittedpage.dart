@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Features/Core/Helper/navigators.dart';
 import 'package:vanshopai/Features/Auth/View/Login/login.dart';
 
-import '../../../Extensions/sharedprefsUtils.dart';
+import '../../../Extensions/sharedprefsutils.dart';
 
 class RepUnSubmittedPage extends StatelessWidget 
 {
@@ -43,7 +43,7 @@ class RepUnSubmittedPage extends StatelessWidget
               {
                 await FirebaseAuth.instance.signOut();
                 prefs.clear();
-                navigateRemoveUntil(context, LoginPage());
+                navigateRemoveUntil(context, const LoginPage());
               },
               child: Row
               (

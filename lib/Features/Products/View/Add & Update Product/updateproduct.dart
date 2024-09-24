@@ -39,11 +39,11 @@ class UpdateProductPage extends StatelessWidget
         {
           if(state is UpdateProductFailure)
           {
-            ShowSnackBar(context, 'حصل خطأ ما! حاول مرة أخرى');
+            showSnackBar(context, 'حصل خطأ ما! حاول مرة أخرى');
           }
           else if(state is UpdateProductSuccess)
           {
-            ShowSnackBar(context, 'تم تعديل معلومات المنتج بنجاح');
+            showSnackBar(context, 'تم تعديل معلومات المنتج بنجاح');
             if(product.archived)
             {
               cubit.getProducts(archived: true, sender: sender);

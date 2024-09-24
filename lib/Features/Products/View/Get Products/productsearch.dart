@@ -24,7 +24,7 @@ class ProductSearch extends StatelessWidget
         (
           children: 
           [
-            TitleText('ابحث عن منتج', fontSize: 32),
+            titleText('ابحث عن منتج', fontSize: 32),
             const SizedBox(height: 20,),
             const SearchTextField(),
             

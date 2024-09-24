@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:vanshopai/Features/Products/Controller/Products%20Cubit/products_cubit.dart';
@@ -13,7 +11,7 @@ import 'package:vanshopai/Components/customtextfield.dart';
 import 'package:vanshopai/Components/progressindicator.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
-import '../../../../Extensions/sharedprefsUtils.dart';
+import '../../../../Extensions/sharedprefsutils.dart';
 
 
 class AddDistProductPage extends StatelessWidget 
@@ -39,11 +37,11 @@ class AddDistProductPage extends StatelessWidget
         {
           if(state is AddProductFailure)
           {
-            ShowSnackBar(context, 'حصل خطأ ما! حاول مرة أخرى');
+            showSnackBar(context, 'حصل خطأ ما! حاول مرة أخرى');
           }
           else if(state is AddProductSuccess)
           {
-            ShowSnackBar(context, 'تمت إضافة المنتج بنجاح');
+            showSnackBar(context, 'تمت إضافة المنتج بنجاح');
             cubit.getProducts(archived: false, sender: distributorsConst);
             pop(context);
           }
@@ -63,7 +61,7 @@ class AddDistProductPage extends StatelessWidget
               (
                 children: 
                 [
-                  TitleText(
+                  titleText(
                     'إضافة منتج جديد',
                     fontSize: 32
                   ),

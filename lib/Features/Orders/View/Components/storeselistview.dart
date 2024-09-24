@@ -23,11 +23,11 @@ class StoresListView extends StatelessWidget
       {
         if(state is AddStoreSuccess)
         {
-          ShowSnackBar(context, 'تم إضافة المتجر إلى قائمة زبائنك بنجاح');
+          showSnackBar(context, 'تم إضافة المتجر إلى قائمة زبائنك بنجاح');
         }
         if(state is AddStoreFailure)
         {
-          ShowSnackBar(context, 'تعذر إضافة المتجر إلى قائمة زبائنك');
+          showSnackBar(context, 'تعذر إضافة المتجر إلى قائمة زبائنك');
         }
       },
       builder: (context, state) {

@@ -24,7 +24,7 @@ class CompanyRequests extends StatelessWidget
         (
           children: 
           [
-            TitleText
+            titleText
             (
               'طلبات المصادقة',
               fontSize: 32

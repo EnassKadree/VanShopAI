@@ -71,7 +71,7 @@ class RepresentativeInfoCard extends StatelessWidget
     {
       await launchUrl(emailUri);
     } else {
-      ShowSnackBar(context, 'لا يمكن فتح البريد الإلكتروني المطلوب');
+      showSnackBar(context, 'لا يمكن فتح البريد الإلكتروني المطلوب');
     }
   }
 }

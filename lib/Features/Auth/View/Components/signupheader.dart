@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:vanshopai/Extensions/clipper.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
@@ -33,7 +32,7 @@ class SignupHeader extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: gradientColors, // Colors similar to the image
+                colors: gradientColors,
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -49,19 +48,19 @@ class SignupHeader extends StatelessWidget {
               const SizedBox(height: 50,),
               Container
               (
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color.fromARGB(255, 252, 249, 245),
+                  color: const Color.fromARGB(255, 252, 249, 245),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black54,
-                      blurRadius: 4,
+                      color: Colors.black.withOpacity(.2),
+                      blurRadius: 1,
                       spreadRadius: 1,
                     )
                   ],
                 ),
                 padding: const EdgeInsets.all(8),
-                child: Image.asset(logo, height: 130,fit: BoxFit.cover,), // Adjust logo size to fit design
+                child: Image.asset(logo, height: 130,fit: BoxFit.cover,),
               ),
             ],
           ),

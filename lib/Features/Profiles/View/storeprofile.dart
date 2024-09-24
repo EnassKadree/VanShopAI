@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../Core/Helper/text.dart';
-import '../../../Extensions/sharedprefsUtils.dart';
+import '../../../Extensions/sharedprefsutils.dart';
 import 'Components/logutbuttton.dart';
 import 'Components/profilecard.dart';
 
@@ -27,7 +27,7 @@ class StoreProfile extends StatelessWidget
             (
               children: 
               [
-                TitleText('الملف الشخصي',fontSize: 32),
+                titleText('الملف الشخصي',fontSize: 32),
                 const Spacer(),
                 const LogoutButton()
               ],

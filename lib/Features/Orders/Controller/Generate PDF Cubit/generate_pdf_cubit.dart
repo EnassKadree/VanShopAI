@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:bloc/bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_share/flutter_share.dart';
@@ -20,7 +18,7 @@ class GeneratePdfCubit extends Cubit<GeneratePdfState>
 
   Future<void> shareOrder(OrderModel order) async 
   {
-      emit(GeneratePDFLoading());
+    emit(GeneratePDFLoading());
     final pdfData = await generateOrderPdf(order);
     final tempDir = await getTemporaryDirectory();
     final file = File('${tempDir.path}/order_${order.id}.pdf');

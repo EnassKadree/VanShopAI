@@ -1,6 +1,5 @@
 part of 'get_stores_cubit.dart';
 
-@immutable
 sealed class GetStoresState {}
 
 final class GetStoresInitial extends GetStoresState {}

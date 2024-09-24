@@ -1,6 +1,5 @@
 part of 'update_order_cubit.dart';
 
-@immutable
 sealed class UpdateOrderState {}
 
 final class UpdateOrderInitial extends UpdateOrderState {}

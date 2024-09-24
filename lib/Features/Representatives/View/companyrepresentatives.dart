@@ -23,7 +23,7 @@ class CompanyRepresentatives extends StatelessWidget
         (
           children: 
           [
-            TitleText
+            titleText
             (
               'مندوبو الشركة',
               fontSize: 32

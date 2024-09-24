@@ -151,9 +151,9 @@ class DeleteAlertDialog extends StatelessWidget
       listener: (context, state)
       {
         if(state is DeleteProductFailure)
-        { ShowSnackBar(context, 'حصل خطأ ما! لم يتم حذف المنتج، حاول مرة أخرى');}
+        { showSnackBar(context, 'حصل خطأ ما! لم يتم حذف المنتج، حاول مرة أخرى');}
         else if(state is DeleteProductSuccess)
-        { ShowSnackBar(context, 'تم حذف المنتج بنجاح'); pop(context);}
+        { showSnackBar(context, 'تم حذف المنتج بنجاح'); pop(context);}
       },
       builder: (context, state) 
       {

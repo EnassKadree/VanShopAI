@@ -1,8 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Stores/Controller/Get%20Stores%20Cubit/get_stores_cubit.dart';
-import 'package:vanshopai/Extensions/sharedprefsUtils.dart';
+import 'package:vanshopai/Extensions/sharedprefsutils.dart';
 
 import '../../../Core/Model/store.dart';
 

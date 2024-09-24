@@ -23,11 +23,11 @@ class CheckDistributorPlan extends StatelessWidget
         {
           if(state is SavePlanFailure)
           {
-            ShowSnackBar(context, state.error!);
+            showSnackBar(context, state.error!);
           }
           else if(state is SavePlanSuccess)
           {
-            navigateRemoveUntil(context, LoginPage());
+            navigateRemoveUntil(context, const LoginPage());
           }
         },
         builder: (context, state) 
@@ -51,7 +51,7 @@ class CheckDistributorPlan extends StatelessWidget
                       fontSize: 32,
                       fontWeight: FontWeight.bold),
                 ),
-                planRadioListView(type: distributorsConst),
+                const PlanRadioListView(type: distributorsConst),
                 CustomButton
                 (
                   text: 'تم',

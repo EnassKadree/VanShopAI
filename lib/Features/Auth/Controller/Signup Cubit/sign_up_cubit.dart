@@ -1,7 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'sign_up_state.dart';
 
@@ -28,7 +27,7 @@ class SignUpCubit extends Cubit<SignUpState>
     }on FirebaseAuthException catch(e)
     {
       if(e.code == 'weak-password')
-      { emit(SignUpFailure('كلمة السر ضعيفة جداًن حاول تجربة كلمة سر أقوى')); }
+      { emit(SignUpFailure('كلمة السر ضعيفة جداً حاول تجربة كلمة سر أقوى')); }
       else if(e.code == 'email-already-in-use')
       { emit(SignUpFailure('هذا الحساب موجود بالفعل! إن كنت تمتلك حساباً قم بتسجيل الدخول')); }
       else

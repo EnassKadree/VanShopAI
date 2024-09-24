@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Products/Controller/Get%20Products%20Cubit/get_products_cubit.dart';
 import 'package:vanshopai/Features/Stores/Controller/Get%20Stores%20Cubit/get_stores_cubit.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart';
-import '../../../../Extensions/sharedprefsUtils.dart';
+import '../../../../Extensions/sharedprefsutils.dart';
 import '../../../Core/Helper/text.dart';
 import '../Components/addorderbutton.dart';
 import '../Components/productsbuilder.dart';
@@ -38,9 +38,9 @@ class AddDistOrderPage extends StatelessWidget
             children: 
             [
               const SizedBox(height: 24,),
-              Center(child: TitleText('إنشاء طلبية جديدة', fontSize: 32)),
+              Center(child: titleText('إنشاء طلبية جديدة', fontSize: 32)),
               const SizedBox(height: 16,),
-              TitleText('اختر المتجر'),
+              titleText('اختر المتجر'),
               BlocBuilder<GetStoresCubit, GetStoresState>
               (
                 builder: (context, state) 
@@ -49,7 +49,7 @@ class AddDistOrderPage extends StatelessWidget
                 }
               ),
               const SizedBox(height: 16,),
-              TitleText('اختر المنتجات'),
+              titleText('اختر المنتجات'),
               BlocBuilder<GetProductsCubit, GetProductsState>
               (
                 builder: (context, state) 

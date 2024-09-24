@@ -24,7 +24,7 @@ class StoreDists extends StatelessWidget
         (
           children: 
           [
-            TitleText
+            titleText
             (
               'مندوبو الشركات',
               fontSize: 32
@@ -40,7 +40,7 @@ class StoreDists extends StatelessWidget
             const SizedBox(height: 12,),
             const Divider(),
             const SizedBox(height: 12,),
-            TitleText
+            titleText
             (
               'الموزعون',
               fontSize: 32

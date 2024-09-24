@@ -26,7 +26,7 @@ class AddDistStorePage extends StatelessWidget
           children: 
           [
             const SizedBox(height: 24,),
-            TitleText('إضافة متاجر جديدة', fontSize: 32),
+            titleText('إضافة متاجر جديدة', fontSize: 32),
             BlocBuilder<GetStoresCubit, GetStoresState>
             (
               builder: (context, state)

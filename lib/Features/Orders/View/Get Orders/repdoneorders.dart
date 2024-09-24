@@ -26,7 +26,7 @@ class RepDoneOrdersPage extends StatelessWidget
         (
           children: 
           [
-            TitleText('الطلبيات المنتهية', fontSize: 32),
+            titleText('الطلبيات المنتهية', fontSize: 32),
             const SizedBox(height: 16),
             BlocBuilder<GetOrdersCubit, GetOrdersState>
             (

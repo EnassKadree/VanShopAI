@@ -1,7 +1,4 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Auth/Controller/Categories%20Cubit/categories_cubit.dart';
 import 'package:vanshopai/Features/Core/Helper/navigators.dart';
@@ -28,7 +25,7 @@ class CheckDistributorCategories extends StatelessWidget
           {
             if(state is SaveCategoriesFailure)
             {
-              ShowSnackBar(context, state.error);
+              showSnackBar(context, state.error);
             }
             else if(state is SaveCategoriesSuccess)
             {
@@ -80,7 +77,7 @@ class CheckDistributorCategories extends StatelessWidget
                   const SizedBox(
                     height: 16,
                   ),
-                  CheckBoxListView(),
+                  const CheckBoxListView(),
                   CustomButton(
                     text: 'تم',
                     onTap: () async

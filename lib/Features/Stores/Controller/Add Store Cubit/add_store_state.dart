@@ -1,6 +1,5 @@
 part of 'add_store_cubit.dart';
 
-@immutable
 sealed class AddStoreState {}
 
 final class AddStoreInitial extends AddStoreState {}

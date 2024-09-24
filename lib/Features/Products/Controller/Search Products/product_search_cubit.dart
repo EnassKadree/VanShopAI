@@ -1,6 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 import '../../../Core/Model/product.dart';
@@ -57,7 +56,6 @@ class ProductSearchCubit extends Cubit<ProductSearchState>
       emit(ProductSearchSuccess(products, owners));
     } catch (e) 
     {
-      print(e.toString());
       emit(ProductSearchFailure(e.toString()));
     }
   }

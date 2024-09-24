@@ -89,14 +89,14 @@ class OrderDetailsPage extends StatelessWidget
           padding: const EdgeInsets.all(24),
           child: ListView(
             children: [
-              Center(child: TitleText('تفاصيل الطلب', fontSize: 32)),
+              Center(child: titleText('تفاصيل الطلب', fontSize: 32)),
               const SizedBox(
                 height: 24,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  TitleText('الزبون:'),
+                  titleText('الزبون:'),
                   const SizedBox(
                     width: 8,
                   ),
@@ -110,7 +110,7 @@ class OrderDetailsPage extends StatelessWidget
               const SizedBox(
                 height: 8,
               ),
-              TitleText('المنتجات:'),
+              titleText('المنتجات:'),
               const SizedBox(
                 height: 20,
               ),
@@ -178,7 +178,7 @@ class OrderDetailsPage extends StatelessWidget
               const SizedBox(height: 16),
               Row(
                 children: [
-                  TitleText('الإجمالي:  ', fontSize: 20),
+                  titleText('الإجمالي:  ', fontSize: 20),
                   Text(
                       '\$${calculateTotalPrice(order.products).toStringAsFixed(2)}',
                       style: const TextStyle(

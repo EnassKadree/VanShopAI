@@ -1,11 +1,10 @@
-// ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Auth/Controller/Categories%20Cubit/categories_cubit.dart';
 
 class CheckBoxListView extends StatelessWidget 
 {
-  CheckBoxListView({super.key});
+  const CheckBoxListView({super.key});
 
   @override
   Widget build(BuildContext context) {

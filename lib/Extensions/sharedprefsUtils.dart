@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vanshopai/Features/Auth/View/Login/login.dart';
@@ -13,18 +11,6 @@ late SharedPreferences prefs;
 Future<void> initSharedPreferences() async 
 {
   prefs = await SharedPreferences.getInstance();
-}
-
-Map<String, dynamic>? getUserData()  
-{
-  String? userDataString = prefs.getString('userData');
-
-  if (userDataString != null) 
-  {
-    Map<String, dynamic> userData = jsonDecode(userDataString);
-    return userData;
-  }
-  return null;
 }
 
 Widget getHomePage(String userType) 
@@ -45,5 +31,5 @@ Widget getHomePage(String userType)
   {
     return const StoreHome();
   }
-  return LoginPage();
+  return const LoginPage();
 }

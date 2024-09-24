@@ -20,7 +20,7 @@ class RepresentativeInfo extends StatelessWidget
         (
           children: 
           [
-            Center(child: TitleText(rep.tradeName, fontSize: 32)),
+            Center(child: titleText(rep.tradeName, fontSize: 32)),
             const SizedBox(height: 6,),
             RepresentativeInfoCard(data: rep.email, type: 'email'),
             RepresentativeInfoCard(data: rep.phone, type: 'phone'),

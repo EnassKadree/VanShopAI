@@ -1,4 +1,3 @@
-// ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Auth/Controller/Signup%20Cubit/sign_up_cubit.dart';
@@ -9,12 +8,11 @@ import 'package:vanshopai/Features/Auth/View/Other/authhome.dart';
 import 'package:vanshopai/Features/Auth/View/Components/signupheader.dart';
 import 'package:vanshopai/Features/Orders/View/Components/custombutton.dart';
 import 'package:vanshopai/Components/customtextfield.dart';
-import 'package:vanshopai/Extensions/sharedprefsUtils.dart';
+import 'package:vanshopai/Extensions/sharedprefsutils.dart';
 
 class UserSignupPage extends StatelessWidget 
 {
   const UserSignupPage({super.key});
-
 
   @override
   Widget build(BuildContext context) 
@@ -28,12 +26,12 @@ class UserSignupPage extends StatelessWidget
       {
         if (state is SignUpSuccess) 
         {
-          ShowSnackBar(context, 'لقد أرسلنا رابط تحقق لبريدك الإلكتروني، يرجى فتحه لاستكمال إجراءات تسجيل الدخول ');
+          showSnackBar(context, 'لقد أرسلنا رابط تحقق لبريدك الإلكتروني، يرجى فتحه لاستكمال إجراءات تسجيل الدخول ');
           navigateTo(context, const AuthHomePage());
         } 
         else if (state is SignUpFailure) 
         {
-          ShowSnackBar(context, state.error);
+          showSnackBar(context, state.error);
         }
       },
       builder: (context, state) 
@@ -118,7 +116,7 @@ class UserSignupPage extends StatelessWidget
                                 overflow: TextOverflow.visible,
                                 style: TextStyle(color: Colors.orange[700]!)),
                             onTap: () {
-                              navigateTo(context, LoginPage());
+                              navigateTo(context, const LoginPage());
                             },
                           )
                         ],

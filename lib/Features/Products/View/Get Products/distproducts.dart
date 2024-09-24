@@ -36,7 +36,7 @@ class DistProducts extends StatelessWidget
         (
           children: 
           [
-            TitleText
+            titleText
             (
               'المنتجات', 
               fontSize: 32
@@ -86,8 +86,7 @@ class DistProducts extends StatelessWidget
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount
                       (
                         crossAxisCount: MediaQuery.of(context).size.width > 600 ? 3 : 2,
-                        childAspectRatio: MediaQuery.of(context).size.width > 600 ? 0.85 : 0.75,
-                        crossAxisSpacing: 10,
+                        childAspectRatio: MediaQuery.of(context).size.width > 600 ? 0.85 : 0.82,
                       ),
                       itemBuilder: (context, index)
                       {

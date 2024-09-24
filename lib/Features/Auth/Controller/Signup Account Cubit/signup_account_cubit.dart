@@ -1,7 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 part 'signup_account_state.dart';
@@ -107,11 +106,11 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
     emit(SignUpAccountLoading());
     User? user = FirebaseAuth.instance.currentUser;
     if(user == null)
-    { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً'));}
+    { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً')); return; }
     else
     {
       if(country == null)
-      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً'));}
+      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً')); return;}
       try
       {
         await fireStore.collection(companiesConst).doc(user.uid).set
@@ -137,13 +136,13 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
     User? user = FirebaseAuth.instance.currentUser;
 
     if(user == null)
-    { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً'));}
+    { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً')); return; }
     else
     {
       if(country == null)
-      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً'));}
+      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً')); return; }
       if(province == null)
-      { emit(SignUpAccountFailure('يرجى تحديد محافظة أولاً'));}
+      { emit(SignUpAccountFailure('يرجى تحديد محافظة أولاً')); return; }
       try
       {
         await fireStore.collection(distributorsConst).doc(user.uid).set
@@ -172,16 +171,16 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
     User? user = FirebaseAuth.instance.currentUser;
 
     if(user == null)
-    { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً'));}
+    { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً')); return;}
     
     else
     {
       if(company == null)
-      { emit(SignUpAccountFailure('يرجى تحديد شركة أولاً'));}
+      { emit(SignUpAccountFailure('يرجى تحديد شركة أولاً')); return;}
       if(country == null)
-      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً'));}
+      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً')); return;}
       if(province == null)
-      { emit(SignUpAccountFailure('يرجى تحديد محافظة أولاً'));}
+      { emit(SignUpAccountFailure('يرجى تحديد محافظة أولاً')); return;}
       try
       {
         QuerySnapshot querySnapshot = await fireStore.collection(companiesConst).where('trade_name', isEqualTo: company).get();
@@ -198,7 +197,6 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
           'rejected' : false,
           'createdAt': FieldValue.serverTimestamp(),
           'stores' : [],
-          'categories': [],
         });
         emit(SignUpAccountSuccess());
       }catch(e)
@@ -215,13 +213,13 @@ class SignUpAccountCubit extends Cubit<SignUpAccountState>
     User? user = FirebaseAuth.instance.currentUser;
 
     if(user == null)
-    { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً'));}
+    { emit(SignUpAccountFailure('يرجى إنشاء حساب أولاً')); return; }
     else
     {
       if(country == null)
-      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً'));}
+      { emit(SignUpAccountFailure('يرجى تحديد بلد أولاً')); return; }
       if(province == null)
-      { emit(SignUpAccountFailure('يرجى تحديد محافظة أولاً'));}
+      { emit(SignUpAccountFailure('يرجى تحديد محافظة أولاً')); return; }
       try
       {
         await fireStore.collection(storesConst).doc(user.uid).set

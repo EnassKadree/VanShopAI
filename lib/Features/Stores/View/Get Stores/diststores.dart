@@ -33,7 +33,7 @@ class DistStores extends StatelessWidget
         (
           children: 
           [
-            TitleText('زبائني', fontSize: 32),
+            titleText('زبائني', fontSize: 32),
             const SizedBox(height: 16),
             BlocBuilder<GetStoresCubit, GetStoresState>
             (

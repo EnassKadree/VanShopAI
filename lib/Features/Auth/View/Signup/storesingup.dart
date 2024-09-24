@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Core/Helper/navigators.dart';
@@ -14,7 +12,6 @@ import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 class StoreSignupPage extends StatelessWidget {
   const StoreSignupPage({super.key});
-
 
   @override
   Widget build(BuildContext context) 
@@ -34,7 +31,7 @@ class StoreSignupPage extends StatelessWidget {
         } 
         else if (state is SignUpAccountFailure) 
         {
-          ShowSnackBar(context, state.error);
+          showSnackBar(context, state.error);
         }
       },
       builder: (context, state) 
@@ -95,10 +92,10 @@ class StoreSignupPage extends StatelessWidget {
                       CustomTextFormField(hint: 'رقم الهاتف',controller: phoneNumber,),
 
                       const SizedBox(height: 10,),
-                      ChoiceButton(type: countriesConst),
+                      const ChoiceButton(type: countriesConst),
 
                       const SizedBox(height: 10,),
-                      ChoiceButton(type: provincesConst),
+                      const ChoiceButton(type: provincesConst),
 
                       const SizedBox(height: 10,),
                       CustomTextFormField(hint: 'العنوان التفصيلي',controller: address,),

@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable, argument_type_not_assignable_to_error_handler
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Auth/Controller/Login%20Cubit/login_cubit.dart';
@@ -11,19 +9,19 @@ import 'package:vanshopai/Features/Home/View/companyhome.dart';
 import 'package:vanshopai/Features/Orders/View/Components/custombutton.dart';
 import 'package:vanshopai/Components/customtextfield.dart';
 
-import '../../../../Extensions/sharedprefsUtils.dart';
+import '../../../../Extensions/sharedprefsutils.dart';
 
 class LoginPage extends StatelessWidget 
 {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
-  GlobalKey<FormState> formKey = GlobalKey();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) 
   {
+    final GlobalKey<FormState> formKey = GlobalKey();
+    final TextEditingController email = TextEditingController();
+    final TextEditingController password = TextEditingController();
     LoginCubit cubit = BlocProvider.of<LoginCubit>(context);
     return BlocConsumer<LoginCubit, LoginState>
     (
@@ -31,7 +29,7 @@ class LoginPage extends StatelessWidget
       {
         if (state is LoginFailure) 
         {
-          ShowSnackBar(context, state.error);
+          showSnackBar(context, state.error);
         }
         else if(state is LoginSuccess)
         {

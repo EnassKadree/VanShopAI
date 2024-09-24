@@ -1,6 +1,5 @@
 part of 'product_search_cubit.dart';
 
-@immutable
 sealed class ProductSearchState {}
 
 final class ProductSearchInitial extends ProductSearchState {}

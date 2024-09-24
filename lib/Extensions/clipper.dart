@@ -40,17 +40,48 @@ class MySecondCustomClipper extends CustomClipper<Path>
     ..lineTo(0, size.height - 20)
     ..quadraticBezierTo
     (
-      size.width/4,
+      size.width * .25,
       size.height - 150,
-      size.width /2 ,
-      size.height-80
+      size.width * .50 ,
+      size.height - 80
     )
     ..quadraticBezierTo
     (
-      3/4 * size.width,
+      size.width * .75,
       size.height - 20,
       size.width,
       size.height - 90
+    )
+    ..lineTo(size.width, 0);
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) 
+  {
+    return false;
+  }
+}
+
+class MyThirdCustomClipper extends CustomClipper<Path>
+{
+  @override
+  Path getClip(Size size) 
+  {
+    return Path()
+    ..lineTo(0, size.height)
+    ..quadraticBezierTo
+    (
+      size.width * .25,
+      size.height -40,
+      size.width * .50,
+      size.height-20
+    )
+    ..quadraticBezierTo
+    (
+      size.width * .75,
+      size.height,
+      size.width,
+      size.height-30
     )
     ..lineTo(size.width, 0);
   }

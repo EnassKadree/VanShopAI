@@ -51,7 +51,7 @@ class OrderReviewPage extends StatelessWidget
           {
             if(state is AddOrderSuccess)
             {
-              ShowSnackBar(context, 'تم إضافة الطلب بنجاح');
+              showSnackBar(context, 'تم إضافة الطلب بنجاح');
               if(store)
               {
                 navigateRemoveUntil(context, const StoreHome());
@@ -69,7 +69,7 @@ class OrderReviewPage extends StatelessWidget
             }
             if(state is AddOrderFailure)
             {
-              ShowSnackBar(context, 'حصل خطأ ما! يرجى التأكد من الاتصال بالإنترنت ثم إعادة المحاولة');
+              showSnackBar(context, 'حصل خطأ ما! يرجى التأكد من الاتصال بالإنترنت ثم إعادة المحاولة');
             }
           },
           builder: (context, state) 
@@ -85,7 +85,7 @@ class OrderReviewPage extends StatelessWidget
               (
                 children:
                 [
-                  Center(child: TitleText('مراجعة الطلبية', fontSize: 32)),
+                  Center(child: titleText('مراجعة الطلبية', fontSize: 32)),
                   const SizedBox(
                     height: 24,
                   ),
@@ -94,7 +94,7 @@ class OrderReviewPage extends StatelessWidget
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: 
                     [
-                      TitleText('الزبون:'),
+                      titleText('الزبون:'),
                       const SizedBox(
                         width: 8,
                       ),
@@ -111,7 +111,7 @@ class OrderReviewPage extends StatelessWidget
                   (
                     height: 8,
                   ),
-                  TitleText('المنتجات:'),
+                  titleText('المنتجات:'),
                   const SizedBox(
                     height: 20,
                   ),
@@ -180,7 +180,7 @@ class OrderReviewPage extends StatelessWidget
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      TitleText('الإجمالي:  ', fontSize: 20),
+                      titleText('الإجمالي:  ', fontSize: 20),
                       Text('\$${totalPrice.toStringAsFixed(2)}',
                           style: const TextStyle(
                             fontSize: 20,

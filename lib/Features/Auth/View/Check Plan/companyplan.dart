@@ -22,11 +22,11 @@ class CheckCompanyPlan extends StatelessWidget
         {
           if(state is SavePlanFailure)
           {
-            ShowSnackBar(context, state.error!);
+            showSnackBar(context, state.error!);
           }
           else if(state is SavePlanSuccess)
           {
-            navigateRemoveUntil(context, LoginPage());
+            navigateRemoveUntil(context, const LoginPage());
           }
         },
         builder: (context, state) 
@@ -50,7 +50,7 @@ class CheckCompanyPlan extends StatelessWidget
                       fontSize: 32,
                       fontWeight: FontWeight.bold),
                 ),
-                planRadioListView(type: companiesConst,),
+                const PlanRadioListView(type: companiesConst,),
                 CustomButton
                 (
                   text: 'تم',
