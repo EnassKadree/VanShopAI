@@ -5,7 +5,7 @@ import 'package:vanshopai/Features/Auth/View/Other/authhome.dart';
 import 'package:vanshopai/Features/Auth/View/Other/entry.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:vanshopai/Extensions/sharedprefsutils.dart';
+import 'Extensions/sharedprefsutils.dart';
 import 'firebase_options.dart';
 
 void main() async 

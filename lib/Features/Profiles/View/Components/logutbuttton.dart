@@ -2,9 +2,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-
-import '../../../Core/Helper/navigators.dart';
 import '../../../../Extensions/sharedprefsutils.dart';
+import '../../../Core/Helper/navigators.dart';
 import '../../../Auth/View/Login/login.dart';
 
 class LogoutButton extends StatelessWidget 

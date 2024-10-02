@@ -9,9 +9,9 @@
         </intent>
     </queries>
     <application
-        android:label="vanshopai"
+        android:label="VanShopAI"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

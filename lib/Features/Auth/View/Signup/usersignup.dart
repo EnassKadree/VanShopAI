@@ -8,7 +8,8 @@ import 'package:vanshopai/Features/Auth/View/Other/authhome.dart';
 import 'package:vanshopai/Features/Auth/View/Components/signupheader.dart';
 import 'package:vanshopai/Features/Orders/View/Components/custombutton.dart';
 import 'package:vanshopai/Components/customtextfield.dart';
-import 'package:vanshopai/Extensions/sharedprefsutils.dart';
+
+import '../../../../Extensions/sharedprefsutils.dart';
 
 class UserSignupPage extends StatelessWidget 
 {

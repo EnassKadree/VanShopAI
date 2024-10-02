@@ -7,7 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:vanshopai/Features/Core/Helper/snackbar.dart';
 import 'package:vanshopai/Features/Core/Model/product.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart';
-import 'package:vanshopai/Extensions/sharedprefsutils.dart';
+
+import '../../../../Extensions/sharedprefsutils.dart';
 
 part 'products_state.dart';
 

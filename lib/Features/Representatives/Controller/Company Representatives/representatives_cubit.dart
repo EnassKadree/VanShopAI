@@ -4,7 +4,6 @@ import 'package:vanshopai/Features/Core/Model/representative.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart';
 
 import '../../../../Extensions/sharedprefsutils.dart';
-
 part 'representatives_state.dart';
 
 class RepresentativesCubit extends Cubit<RepresentativesState> 

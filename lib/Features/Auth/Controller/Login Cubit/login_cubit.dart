@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vanshopai/Features/Core/Helper/navigators.dart';
 import 'package:vanshopai/Features/Core/Helper/snackbar.dart';
-import 'package:vanshopai/Extensions/sharedprefsUtils.dart';
 
+import '../../../../Extensions/sharedprefsutils.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> 
@@ -108,6 +108,8 @@ class LoginCubit extends Cubit<LoginState>
       navigateRemoveUntil(context, getHomePage(userType));
     }catch(e)
     {
+      print('--------------------------------------------------------------');
+      print(e);
       emit(LoginFailure(e.toString()));
     }
   }

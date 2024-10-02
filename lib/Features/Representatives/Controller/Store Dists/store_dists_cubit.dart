@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vanshopai/Extensions/sharedprefsutils.dart';
 import 'package:vanshopai/Features/Core/Helper/constants.dart';
 import 'package:vanshopai/Features/Core/Model/representative.dart';
-
+import '../../../../Extensions/sharedprefsutils.dart';
 import '../../../Core/Model/distributor.dart';
-
 part 'store_dists_state.dart';
 
 class StoreDistsCubit extends Cubit<StoreDistsState> 
